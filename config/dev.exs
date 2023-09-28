@@ -2,8 +2,8 @@ import Config
 
 # Configure your database
 config :the_adventuring_day, TheAdventuringDay.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: "user",
+  password: "pass",
   hostname: "localhost",
   database: "the_adventuring_day_dev",
   stacktrace: true,
@@ -77,3 +77,5 @@ config :phoenix, :plug_init_mode, :runtime
 
 # Disable swoosh api client as it is only required for production adapters.
 config :swoosh, :api_client, false
+
+config :the_adventuring_day, :random_table_collection_repo, TheAdventuringDay.RandomTableCollectionRepo

@@ -6,8 +6,8 @@ import Config
 # to provide built-in test partitioning in CI environment.
 # Run `mix help test` for more information.
 config :the_adventuring_day, TheAdventuringDay.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: "user",
+  password: "pass",
   hostname: "localhost",
   database: "the_adventuring_day_test#{System.get_env("MIX_TEST_PARTITION")}",
   pool: Ecto.Adapters.SQL.Sandbox,
@@ -31,3 +31,5 @@ config :logger, level: :warning
 
 # Initialize plugs at runtime for faster test compilation
 config :phoenix, :plug_init_mode, :runtime
+
+config :the_adventuring_day, :random_table_collection_repo, TheAdventuringDay.RandomTableCollectionRepo
