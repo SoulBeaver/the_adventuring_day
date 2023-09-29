@@ -1,4 +1,4 @@
-defmodule TheAdventuringDay.Component.RandomTable.RandomTableCollection do
+defmodule TheAdventuringDay.Component.RandomTable.Domain.RandomTableCollection do
   @moduledoc """
   TODO
   """
@@ -10,7 +10,7 @@ defmodule TheAdventuringDay.Component.RandomTable.RandomTableCollection do
   @type table_name() :: String.t()
   @type tables() :: %{table_name() => list(random_table_entry())}
 
-  @opaque t() :: %__MODULE__{
+  @type t() :: %__MODULE__{
           collection_name: String.t(),
           tables: tables()
         }

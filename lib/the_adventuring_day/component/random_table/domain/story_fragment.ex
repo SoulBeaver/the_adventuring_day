@@ -1,13 +1,13 @@
-defmodule TheAdventuringDay.Component.RandomTable.StoryFragment do
+defmodule TheAdventuringDay.Component.RandomTable.Domain.StoryFragment do
   @moduledoc """
   TODO
   """
 
-  alias TheAdventuringDay.Component.RandomTable.RandomTableCollection
+  alias TheAdventuringDay.Component.RandomTable.Domain.RandomTableCollection
 
   defstruct ~w[fragment collection_name table_name substitution]a
 
-  @opaque t() :: %__MODULE__{
+  @type t() :: %__MODULE__{
           fragment: String.t(),
           collection_name: String.t(),
           table_name: String.t(),
@@ -27,6 +27,10 @@ defmodule TheAdventuringDay.Component.RandomTable.StoryFragment do
       substitution: nil
     }
   end
+
+  def table_name(%__MODULE__{} = fragment), do: fragment.table_name
+
+  def collection_name(%__MODULE__{} = fragment), do: fragment.collection_name
 
   @defaults %{reroll_all: false}
 

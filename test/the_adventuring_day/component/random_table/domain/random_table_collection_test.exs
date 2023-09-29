@@ -1,7 +1,7 @@
 defmodule TheAdventuringDay.Component.RandomTable.RandomTableCollectionTest do
   use ExUnit.Case, async: true
 
-  alias TheAdventuringDay.Component.RandomTable.RandomTableCollection
+  alias TheAdventuringDay.Component.RandomTable.Domain.RandomTableCollection
 
   test "picks a random entry from list" do
     random_table = random_table_collection()

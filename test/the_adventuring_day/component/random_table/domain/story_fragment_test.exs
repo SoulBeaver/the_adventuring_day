@@ -1,7 +1,7 @@
 defmodule TheAdventuringDay.Component.RandomTable.StoryFragmentTest do
   use ExUnit.Case
 
-  alias TheAdventuringDay.Component.RandomTable.{RandomTableCollection, StoryFragment}
+  alias TheAdventuringDay.Component.RandomTable.Domain.{RandomTableCollection, StoryFragment}
 
   test "creates a new fragment" do
     assert StoryFragment.new("coll.table") == %StoryFragment{

@@ -1,9 +1,9 @@
-defmodule TheAdventuringDay.Component.RandomTable.StoryTemplate do
+defmodule TheAdventuringDay.Component.RandomTable.Domain.StoryTemplate do
   @moduledoc """
   TODO
   """
 
-  alias TheAdventuringDay.Component.RandomTable.{RandomTableCollection, StoryFragment}
+  alias TheAdventuringDay.Component.RandomTable.Domain.{RandomTableCollection, StoryFragment}
 
   @collection_regex ~r/#([a-zA-Z_.]+)#/
 

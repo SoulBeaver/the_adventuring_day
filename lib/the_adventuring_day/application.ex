@@ -17,9 +17,11 @@ defmodule TheAdventuringDay.Application do
       # Start Finch
       {Finch, name: TheAdventuringDay.Finch},
       # Start the Endpoint (http/https)
-      TheAdventuringDayWeb.Endpoint
+      TheAdventuringDayWeb.Endpoint,
       # Start a worker by calling: TheAdventuringDay.Worker.start_link(arg)
       # {TheAdventuringDay.Worker, arg}
+      {Registry, [name: TheAdventuringDay.Registry.StoryWorkshop, keys: :unique]},
+      {DynamicSupervisor, [name: TheAdventuringDay.Supervisor.StoryWorkshop, strategy: :one_for_one]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
