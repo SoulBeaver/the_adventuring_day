@@ -34,9 +34,9 @@ defmodule TheAdventuringDay.Component.RandomTable.Domain.StoryTemplateTest do
     story_template =
       """
       Once upon a time there was a #ouat.damsel# who was kidnapped by a #ouat.adjective# #ouat.monster#.
-
+      
       When soon there came a #ouat.hero# #ouat.hero_attire# who #ouat.monster_interaction# the #ouat.monster# and #ouat.rescuee_interaction# the #ouat.damsel#.
-
+      
       The end.
       """
       |> StoryTemplate.new()

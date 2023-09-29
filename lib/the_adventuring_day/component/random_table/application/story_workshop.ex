@@ -113,14 +113,13 @@ defmodule TheAdventuringDay.Component.RandomTable.Application.StoryWorkshop do
       updated_workshop = %__MODULE__{workshop | template: updated_template}
 
       write_story_keep_substitutions(updated_workshop)
-     end
+    end
   end
 
   defp write_story_keep_substitutions(%__MODULE__{} = workshop) do
-    with template <- workshop.template,
+    with %StoryTemplate{} = template <- workshop.template,
          {:ok, random_table_collections} <- @random_table_repo.get_collections(template.fragments),
          {:ok, template_with_substitutions} <- StoryTemplate.with_substitutions(template, random_table_collections) do
-
       {:ok, StoryTemplate.write_story(template_with_substitutions), template_with_substitutions}
     else
       error -> error

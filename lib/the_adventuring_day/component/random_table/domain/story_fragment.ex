@@ -45,7 +45,8 @@ defmodule TheAdventuringDay.Component.RandomTable.Domain.StoryFragment do
     with true <- collection.collection_name == fragment.collection_name,
          true <- Map.has_key?(collection.tables, fragment.table_name) do
       %__MODULE__{
-        fragment | substitution: RandomTableCollection.pick_random(collection, fragment.table_name)
+        fragment
+        | substitution: RandomTableCollection.pick_random(collection, fragment.table_name)
       }
     else
       _ ->

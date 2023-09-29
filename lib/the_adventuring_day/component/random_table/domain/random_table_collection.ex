@@ -41,7 +41,6 @@ defmodule TheAdventuringDay.Component.RandomTable.Domain.RandomTableCollection d
   def pick_random(collection, table_name) do
     case collection.tables[table_name] do
       nil -> {:error, :unknown_table}
-
       table -> Enum.random(table)
     end
   end

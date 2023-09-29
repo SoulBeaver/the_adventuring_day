@@ -90,7 +90,8 @@ defmodule TheAdventuringDay.Component.RandomTable.Domain.StoryTemplate do
 
         {:ok, %__MODULE__{template | fragments: MapSet.union(remaining_fragments, fragments_to_reset)}}
 
-      error -> error
+      error ->
+        error
     end
   end
 

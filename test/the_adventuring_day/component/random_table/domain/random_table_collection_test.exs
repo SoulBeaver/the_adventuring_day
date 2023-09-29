@@ -33,7 +33,7 @@ defmodule TheAdventuringDay.Component.RandomTable.RandomTableCollectionTest do
     random_table = random_table_collection()
 
     assert RandomTableCollection.pick_random(random_table, "missing") ==
-              {:error, :unknown_table}
+             {:error, :unknown_table}
   end
 
   defp random_table_collection() do

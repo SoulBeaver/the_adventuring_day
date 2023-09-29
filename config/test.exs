@@ -32,4 +32,6 @@ config :logger, level: :warning
 # Initialize plugs at runtime for faster test compilation
 config :phoenix, :plug_init_mode, :runtime
 
-config :the_adventuring_day, :random_table_collection_repo, TheAdventuringDay.Infrastructure.Persistence.RandomTableCollectionRepo
+config :the_adventuring_day,
+       :random_table_collection_repo,
+       TheAdventuringDay.Infrastructure.Persistence.RandomTableCollectionRepo

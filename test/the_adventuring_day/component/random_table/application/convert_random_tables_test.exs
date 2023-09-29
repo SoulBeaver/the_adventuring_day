@@ -5,15 +5,17 @@ defmodule TheAdventuringDay.Component.RandomTable.Application.ConvertRandomTable
 
   @repo Application.compile_env!(:the_adventuring_day, :random_table_collection_repo)
 
-  @json_data [%{
-    "header" => %{
-      "descriptor" => "This thing is...",
-      "dieSize" => 3,
-      "rollsRequired" => 1
-    },
-    "results" => ["small", "medium", "large"],
-    "rollBehavior" => "REPEAT"
-  }]
+  @json_data [
+    %{
+      "header" => %{
+        "descriptor" => "This thing is...",
+        "dieSize" => 3,
+        "rollsRequired" => 1
+      },
+      "results" => ["small", "medium", "large"],
+      "rollBehavior" => "REPEAT"
+    }
+  ]
 
   setup do
     @repo.truncate()
@@ -62,15 +64,17 @@ defmodule TheAdventuringDay.Component.RandomTable.Application.ConvertRandomTable
       ConvertRandomTables.convert_random_tables(
         collection_name: "sizes",
         table_names: ["categories"],
-        random_table_data: [%{
-          "header" => %{
-            "descriptor" => "This thing is...",
-            "dieSize" => 3,
-            "rollsRequired" => 1
-          },
-          "results" => ["tiny", "humanoid", "giant"],
-          "rollBehavior" => "REPEAT"
-        }]
+        random_table_data: [
+          %{
+            "header" => %{
+              "descriptor" => "This thing is...",
+              "dieSize" => 3,
+              "rollsRequired" => 1
+            },
+            "results" => ["tiny", "humanoid", "giant"],
+            "rollBehavior" => "REPEAT"
+          }
+        ]
       )
 
     assert result.collection_name == "sizes"

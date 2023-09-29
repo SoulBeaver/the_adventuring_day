@@ -22,13 +22,14 @@ defmodule TheAdventuringDay.Component.RandomTable.Application.StoryWorkshopTest 
     {story, fragments} = StoryWorkshop.roll_dem_bones("location")
 
     assert story == "The Nebulous Spire"
-    assert fragments == MapSet.new([
-      StoryFragment.new("locations_all.description")
-      |> StoryFragment.create_substitution(collection),
 
-      StoryFragment.new("locations_all.structure")
-      |> StoryFragment.create_substitution(collection)
-    ])
+    assert fragments ==
+             MapSet.new([
+               StoryFragment.new("locations_all.description")
+               |> StoryFragment.create_substitution(collection),
+               StoryFragment.new("locations_all.structure")
+               |> StoryFragment.create_substitution(collection)
+             ])
   end
 
   test "with replacements" do
@@ -42,6 +43,7 @@ defmodule TheAdventuringDay.Component.RandomTable.Application.StoryWorkshopTest 
     _ = StoryWorkshop.roll_dem_bones("replacement")
 
     @repo.truncate()
+
     {:ok, alt_collection} =
       RandomTableCollection.new("locations_all", %{"description" => ["Bright"], "structure" => ["Quarry"]})
       |> @repo.create()
@@ -49,12 +51,13 @@ defmodule TheAdventuringDay.Component.RandomTable.Application.StoryWorkshopTest 
     {story, fragments} = StoryWorkshop.reroll("replacement", ["locations_all.description"])
 
     assert story == "The Bright Spire"
-    assert fragments == MapSet.new([
-      StoryFragment.new("locations_all.description")
-      |> StoryFragment.create_substitution(alt_collection),
 
-      StoryFragment.new("locations_all.structure")
-      |> StoryFragment.create_substitution(collection)
-    ])
+    assert fragments ==
+             MapSet.new([
+               StoryFragment.new("locations_all.description")
+               |> StoryFragment.create_substitution(alt_collection),
+               StoryFragment.new("locations_all.structure")
+               |> StoryFragment.create_substitution(collection)
+             ])
   end
 end
