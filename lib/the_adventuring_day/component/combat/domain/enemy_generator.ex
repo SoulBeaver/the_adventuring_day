@@ -26,12 +26,7 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyGenerator do
     @type enemy_type() :: :standard | :double_strength | :triple_strength | :mook | :elite | :weakling
   end
 
-  defstruct available_budget: 0, enemy_template_builder: nil
-
-  @typep t :: %__MODULE__{
-    available_budget: integer(),
-    enemy_template_builder: map()
-  }
+  defstruct available_budget: 0, enemy_template_spec: nil
 
   @enemy_roles [:archer, :blocker, :caster, :leader, :spoiler, :troop, :wrecker]
   @enemy_levels [:same_level, :one_level_higher, :one_level_lower]
@@ -47,14 +42,14 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyGenerator do
   def generate_enemies(group_size) do
     available_enemy_budget = available_enemy_budget_for(group_size)
 
-    enemy_template_builder =
+    enemy_template_spec =
       enemy_templates()
       |> Enum.filter(fn template -> template.min_budget_required <= available_enemy_budget end)
       |> Enum.random()
 
     generator_template = %__MODULE__{
-      available_budget: available_enemy_budget - enemy_template_builder.min_budget_required,
-      enemy_template_builder: enemy_template_builder
+      available_budget: available_enemy_budget - enemy_template_spec.min_budget_required,
+      enemy_template_spec: enemy_template_spec
     }
 
     completed_template = complete_template(generator_template)
@@ -62,7 +57,7 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyGenerator do
     {:ok, %EnemyTemplate{
       available_budget: available_enemy_budget,
       budget_used: available_enemy_budget - completed_template.available_budget,
-      template: completed_template.enemy_template_builder.template
+      template: completed_template.enemy_template_spec.template
     }}
   end
 
@@ -90,11 +85,11 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyGenerator do
           enemy_types: [:mook]
         },
         restrictions: [
-          %{max_size: 1, enemy_types: [:leader, :blocker]},
-          %{max_size: 2, enemy_types: [:wrecker]},
+          %{max_size: 1, enemy_roles: [:leader, :blocker]},
+          %{max_size: 2, enemy_roles: [:wrecker]},
         ],
         permutations: [
-          %{when: %{enemy_type: :wrecker, has_count: 2}, then: %{enemy_level: :one_level_lower}}
+          %{when: %{enemy_role: :wrecker, has_count: 2}, then: %{enemy_level: :one_level_lower}}
         ]
       },
     ]
@@ -117,7 +112,7 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyGenerator do
 
   defp maybe_add_new_enemy(generator_template) do
     add_new_enemy? =
-      case length(generator_template.enemy_template_builder.template) do
+      case length(generator_template.enemy_template_spec.template) do
         2 -> :rand.uniform(100) < 75
         3 -> :rand.uniform(100) < 50
         _ -> false
@@ -130,14 +125,14 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyGenerator do
     end
   end
 
-  defp add_new_enemy(%__MODULE__{available_budget: available_budget, enemy_template_builder: template} = gen) do
+  defp add_new_enemy(%__MODULE__{available_budget: available_budget, enemy_template_spec: template} = gen) do
     new_enemy = generate_enemy(template.addons)
     updated_template = %{template | template: [new_enemy | template.template]}
 
     if is_within_threshold(available_budget - enemy_budget_cost_for(new_enemy)) do
       %__MODULE__{
         available_budget: available_budget - enemy_budget_cost_for(new_enemy),
-        enemy_template_builder: updated_template
+        enemy_template_spec: updated_template
       }
     else
       maybe_add_new_enemy(gen)
@@ -147,7 +142,7 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyGenerator do
   defp maybe_increase_enemy_count(generator_template)
     when generator_template.available_budget <= 0.5, do: generator_template
 
-  defp maybe_increase_enemy_count(%__MODULE__{available_budget: available_budget, enemy_template_builder: template} = gen) do
+  defp maybe_increase_enemy_count(%__MODULE__{available_budget: available_budget, enemy_template_spec: template} = gen) do
     bolstered_enemy =
       template.template
       |> Enum.random()
@@ -162,7 +157,7 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyGenerator do
     if is_within_threshold(available_budget - enemy_budget_cost_for(bolstered_enemy)) do
       maybe_increase_enemy_count(%__MODULE__{
         available_budget: available_budget - enemy_budget_cost_for(bolstered_enemy),
-        enemy_template_builder: updated_template
+        enemy_template_spec: updated_template
       })
     else
       maybe_increase_enemy_count(gen) # try, try again

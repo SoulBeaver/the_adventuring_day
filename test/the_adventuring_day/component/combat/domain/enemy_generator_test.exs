@@ -56,9 +56,16 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyGeneratorTest do
     end
   end
 
-  # property "Generating enemies never generates more than four different enemies" do
-  #   check all(
+  property "Generating enemies never generates more than four different enemies" do
+    check all(
+      group_size <- member_of(@group_size)
+    ) do
+      {:ok, template} = EnemyGenerator.generate_enemies(group_size)
 
-  #   )
-  # end
+      enemy_groups = length(template.template)
+
+      assert enemy_groups >= 3 and enemy_groups <= 4,
+        "Expected between 3 and 4 enemy groups, but got #{enemy_groups}"
+    end
+  end
 end

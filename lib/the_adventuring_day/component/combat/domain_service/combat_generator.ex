@@ -1,4 +1,4 @@
-defmodule TheAdventuringDay.Component.RandomTable.DomainService.CombatGenerator do
+defmodule TheAdventuringDay.Component.Combat.DomainService.CombatGenerator do
   @moduledoc """
   TODO
   """
