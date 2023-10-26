@@ -61,6 +61,9 @@ defmodule TheAdventuringDay.MixProject do
       {:gettext, "~> 0.20"},
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
+
+      {:stream_data, "~> 0.6", only: :test},
+
       {:excoveralls, "~> 0.17.1", only: :test},
       {:dialyxir, "~> 1.4.1", only: [:dev], runtime: false},
       {:bunt, "~> 0.2.1"},
