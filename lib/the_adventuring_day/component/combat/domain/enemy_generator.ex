@@ -1,4 +1,4 @@
-defmodule TheAdventuringDay.Component.RandomTable.Domain.EnemyGenerator do
+defmodule TheAdventuringDay.Component.Combat.Domain.EnemyGenerator do
   @moduledoc """
   TODO rename monster to enemy
   """

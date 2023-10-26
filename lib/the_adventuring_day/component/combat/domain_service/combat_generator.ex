@@ -3,7 +3,7 @@ defmodule TheAdventuringDay.Component.RandomTable.DomainService.CombatGenerator 
   TODO
   """
 
-  alias TheAdventuringDay.Component.RandomTable.Domain.EnemyGenerator
+  alias TheAdventuringDay.Component.Combat.Domain.EnemyGenerator
 
   @type difficulty :: :easy | :medium | :hard | :deadly
   @type environment :: :indoor | :outdoor
