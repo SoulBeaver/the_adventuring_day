@@ -55,4 +55,10 @@ defmodule TheAdventuringDay.Component.RandomTable.Domain.EnemyGeneratorTest do
         "Expected budget remaining (#{budget_remaining}) to be between -0.5 and 0.5; available (#{template.available_budget}), used (#{template.budget_used})"
     end
   end
+
+  # property "Generating enemies never generates more than four different enemies" do
+  #   check all(
+
+  #   )
+  # end
 end
