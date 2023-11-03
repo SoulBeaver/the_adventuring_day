@@ -3,7 +3,9 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyGenerator do
   TODO rename monster to enemy
   """
 
-  defmodule EnemyTemplate do
+  alias TheAdventuringDay.Component.Combat.Domain.EnemyTemplateSpec
+
+  defmodule GeneratedEnemyTemplate do
     defstruct available_budget: 0,
             budget_used: 0,
             template: []
@@ -21,85 +23,49 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyGenerator do
       type: enemy_type()
     }
 
-    @type enemy_role() :: :archer | :blocker | :caster | :leader | :spoiler | :troop | :wrecker
-    @type enemy_level() :: :same_level | :one_level_higher | :one_level_lower | :two_levels_higher | :two_levels_lower
-    @type enemy_type() :: :standard | :double_strength | :triple_strength | :mook | :elite | :weakling
+    @type enemy_role() :: EnemyTemplateSpec.enemy_role()
+    @type enemy_level() :: EnemyTemplateSpec.enemy_level()
+    @type enemy_type() :: EnemyTemplateSpec.enemy_type()
   end
 
   defstruct available_budget: 0, enemy_template_spec: nil
 
-  @enemy_roles [:archer, :blocker, :caster, :leader, :spoiler, :troop, :wrecker]
-  @enemy_levels [:same_level, :one_level_higher, :one_level_lower]
-  @enemy_types [:standard, :double_strength, :triple_strength, :mook, :elite, :weakling]
-
   # def generate_enemies(complexity, difficulty, group_size)
-  @spec generate_enemies(pos_integer()) :: {:ok, EnemyTemplate.t()} | {:error, term()}
+  @spec generate_enemies(pos_integer()) :: {:ok, GeneratedEnemyTemplate.t()} | {:error, term()}
   def generate_enemies(group_size)
 
   def generate_enemies(group_size)
     when group_size <= 0 or group_size > 7, do: {:error, :invalid_group_size}
 
   def generate_enemies(group_size) do
-    available_enemy_budget = available_enemy_budget_for(group_size)
-
-    enemy_template_spec =
-      enemy_templates()
-      |> Enum.filter(fn template -> template.min_budget_required <= available_enemy_budget end)
-      |> Enum.random()
+    available_budget = available_encounter_budget_for(group_size)
+    enemy_template_spec = random_enemy_template_builder_spec(available_budget)
 
     generator_template = %__MODULE__{
-      available_budget: available_enemy_budget - enemy_template_spec.min_budget_required,
+      available_budget: available_budget - enemy_template_spec.min_budget_required,
       enemy_template_spec: enemy_template_spec
     }
 
     completed_template = complete_template(generator_template)
 
-    {:ok, %EnemyTemplate{
-      available_budget: available_enemy_budget,
-      budget_used: available_enemy_budget - completed_template.available_budget,
-      template: completed_template.enemy_template_spec.template
+    {:ok, %GeneratedEnemyTemplate{
+      available_budget: available_budget,
+      budget_used: available_budget - completed_template.available_budget,
+      template: completed_template.enemy_template_spec.template |> sanitize_template()
     }}
   end
 
-  defp budget_used(template) do
-    template.template
-    |> Enum.map(fn enemy -> enemy_budget_cost_for(enemy) * enemy.amount end)
-    |> Enum.sum()
+  defp random_enemy_template_builder_spec(available_budget) do
+    repo = Application.get_env(:the_adventuring_day, :enemy_template_spec_repo)
+
+    repo.random_enemy_template_spec(available_budget)
   end
 
-  # scenario: no addons
-  # scenario: template with 4 enemies
-  # scenario: template with 2 enemies (solo + minions?)
-  defp enemy_templates() do
-    [
-      %{
-        min_budget_required: 4.5,
-        template: [
-          %{amount: 1, role: :skirmisher, level: :same_level,      type: :standard},
-          %{amount: 2, role: :troop,      level: :one_level_lower, type: :standard},
-          %{amount: 1, role: :wrecker,    level: :same_level,      type: :double_strength},
-        ],
-        addons: %{
-          enemy_roles: [:archer, :blocker, :caster, :leader, :spoiler],
-          enemy_levels: [:same_level, :one_level_lower],
-          enemy_types: [:mook]
-        },
-        restrictions: [
-          %{max_size: 1, enemy_roles: [:leader, :blocker]},
-          %{max_size: 2, enemy_roles: [:wrecker]},
-        ],
-        permutations: [
-          %{when: %{enemy_role: :wrecker, has_count: 2}, then: %{enemy_level: :one_level_lower}}
-        ]
-      },
-    ]
-  end
-
-  defp available_enemy_budget_for(4), do: 5
-  defp available_enemy_budget_for(5), do: 7
-  defp available_enemy_budget_for(6), do: 9
-  defp available_enemy_budget_for(7), do: 11
-  defp available_enemy_budget_for(group_size) when group_size < 4, do: group_size
+  defp available_encounter_budget_for(4), do: 5
+  defp available_encounter_budget_for(5), do: 7
+  defp available_encounter_budget_for(6), do: 9
+  defp available_encounter_budget_for(7), do: 11
+  defp available_encounter_budget_for(group_size) when group_size < 4, do: group_size
 
   defp complete_template(generator_template)
     when generator_template.available_budget <= 0.5, do: generator_template
@@ -126,7 +92,7 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyGenerator do
   end
 
   defp add_new_enemy(%__MODULE__{available_budget: available_budget, enemy_template_spec: template} = gen) do
-    new_enemy = generate_enemy(template.addons)
+    new_enemy = EnemyTemplateSpec.generate_enemy(template)
     updated_template = %{template | template: [new_enemy | template.template]}
 
     if is_within_threshold(available_budget - enemy_budget_cost_for(new_enemy)) do
@@ -174,17 +140,9 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyGenerator do
     enemy_a.type == enemy_b.type
   end
 
-  defp generate_enemy(%{enemy_roles: enemy_roles, enemy_levels: enemy_levels, enemy_types: enemy_types}) do
-    role = enemy_roles |> Enum.random()
-    enemy_level = enemy_levels |> Enum.random()
-    enemy_type =
-      if :rand.uniform(100) > 90 do
-        enemy_types |> Enum.random()
-      else
-        :standard
-      end
-
-    %{amount: 1, role: role, level: enemy_level, type: enemy_type}
+  defp sanitize_template(template) do
+    template
+    |> Enum.map(fn t -> Map.from_struct(t) |> Map.delete(:id) end)
   end
 
   defp enemy_budget_cost_for(%{amount: _amount, role: _role, level: level, type: type}) do

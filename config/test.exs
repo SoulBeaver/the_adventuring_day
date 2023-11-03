@@ -9,7 +9,8 @@ config :the_adventuring_day, TheAdventuringDay.Repo,
   username: "user",
   password: "pass",
   hostname: "localhost",
-  database: "the_adventuring_day_test#{System.get_env("MIX_TEST_PARTITION")}",
+  database: "the_adventuring_day_dev",
+  #database: "the_adventuring_day_test#{System.get_env("MIX_TEST_PARTITION")}",
   pool: Ecto.Adapters.SQL.Sandbox,
   pool_size: 10
 
@@ -35,3 +36,7 @@ config :phoenix, :plug_init_mode, :runtime
 config :the_adventuring_day,
        :random_table_collection_repo,
        TheAdventuringDay.Infrastructure.Persistence.RandomTableCollectionRepo
+
+config :the_adventuring_day,
+       :enemy_template_spec_repo,
+       TheAdventuringDay.Infrastructure.Persistence.EnemyTemplateSpecRepo
