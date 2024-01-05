@@ -7,6 +7,8 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyGeneratorTest do
 
   @repo Application.compile_env!(:the_adventuring_day, :enemy_template_spec_repo)
 
+  @group_size [4, 5, 6]
+
   test "cannot generate enemies for invalid group sizes" do
     assert EnemyGenerator.generate_enemies(-1) == {:error, :invalid_group_size}
     assert EnemyGenerator.generate_enemies(0)  == {:error, :invalid_group_size}
@@ -32,22 +34,6 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyGeneratorTest do
     }
   end
 
-  # test "generates additional enemies" do
-  #   {:ok, template} = EnemyGenerator.generate_enemies(5)
-
-  #   assert template == %EnemyTemplate{
-  #     available_budget: 7,
-  #     budget_used: 6.5,
-  #     template: [
-  #       %{amount: 1, role: :skirmisher, level: :same_level, type: :standard},
-  #       %{amount: 2, role: :troop, level: :one_level_lower, type: :standard},
-  #       %{amount: 1, role: :wrecker, level: :same_level, type: :double_strength},
-  #     ]
-  #   }
-  # end
-
-  @group_size [4, 5, 6]
-
   property "Generating enemies is always within -0.5 and 0.5 of the encounter budget" do
     check all(group_size <- member_of(@group_size)) do
       simple_spec()
@@ -62,17 +48,38 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyGeneratorTest do
     end
   end
 
-  property "Generating enemies never generates more than four different enemies" do
+  property "Generating enemies with restrictions never creates more than allowed of that type" do
     check all(group_size <- member_of(@group_size)) do
-      simple_spec()
+      restricted_spec()
       |> Enum.map(fn spec -> @repo.insert_enemy_template_spec(spec) end)
 
       {:ok, template} = EnemyGenerator.generate_enemies(group_size)
 
-      enemy_groups = length(template.template)
+      enemy_amounts = template.template |> Enum.map(fn enemy -> enemy.amount end)
 
-      assert enemy_groups >= 3 and enemy_groups <= 4,
-        "Expected between 3 and 4 enemy groups, but got #{enemy_groups}"
+      assert enemy_amounts |> Enum.all?(fn amt -> amt <= 2 end),
+        "Expected all enemy types to only have one of each"
+    end
+  end
+
+  property "Generating wreckers with permutations always has them at double_strength or standard" do
+    check all(group_size <- member_of(@group_size)) do
+      permutation_spec()
+      |> Enum.map(fn spec -> @repo.insert_enemy_template_spec(spec) end)
+
+      {:ok, template} = EnemyGenerator.generate_enemies(group_size)
+
+      wrecker_template = template.template |> Enum.filter(fn enemy -> enemy.role == :wrecker end) |> hd
+
+      case wrecker_template.amount do
+        1.0 ->
+          assert wrecker_template.type == :double_strength,
+            "Expected a single wrecker to be double strength, but was #{wrecker_template.type}"
+
+        2.0 ->
+          assert wrecker_template.type == :standard,
+            "Expected two wreckers to be standard strength, but was #{wrecker_template.type}"
+      end
     end
   end
 
@@ -90,12 +97,55 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyGeneratorTest do
           enemy_levels: [:same_level, :one_level_lower],
           enemy_types: [:mook]
         },
+        restrictions: [],
+        permutations: []
+      },
+    ]
+  end
+
+  def restricted_spec() do
+    [
+      %{
+        min_budget_required: 4,
+        template: [
+          %{amount: 1, role: :skirmisher, level: :same_level,      type: :standard},
+          %{amount: 1, role: :troop,      level: :same_level,      type: :standard},
+          %{amount: 1, role: :wrecker,    level: :same_level,      type: :double_strength},
+        ],
+        addons: %{
+          enemy_roles: [:archer, :blocker, :caster, :leader, :spoiler],
+          enemy_levels: [:same_level, :one_level_lower],
+          enemy_types: [:mook]
+        },
         restrictions: [
-          %{max_size: 1, enemy_roles: [:leader, :blocker]},
-          %{max_size: 2, enemy_roles: [:wrecker]},
+          %{max_size: 2, enemy_roles: [:leader, :blocker, :wrecker, :archer, :caster, :spoiler, :skirmisher, :troop]},
         ],
         permutations: [
-          %{when: %{enemy_role: :wrecker, has_count: 2}, then: %{enemy_level: :one_level_lower}}
+          %{when: %{enemy_role: :wrecker, has_count: 2}, then: %{level: :same_level}}
+        ]
+      },
+    ]
+  end
+
+  def permutation_spec() do
+    [
+      %{
+        min_budget_required: 4,
+        template: [
+          %{amount: 1, role: :skirmisher, level: :same_level,      type: :standard},
+          %{amount: 1, role: :troop,      level: :same_level,      type: :standard},
+          %{amount: 1, role: :wrecker,    level: :same_level,      type: :double_strength},
+        ],
+        addons: %{
+          enemy_roles: [:archer, :blocker, :caster, :leader, :spoiler],
+          enemy_levels: [:same_level, :one_level_lower],
+          enemy_types: [:mook]
+        },
+        restrictions: [
+          %{max_size: 1, enemy_roles: [:leader]},
+        ],
+        permutations: [
+          %{when: %{role: :wrecker, amount: 2}, then: %{type: :standard}}
         ]
       },
     ]

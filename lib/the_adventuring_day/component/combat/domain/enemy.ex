@@ -6,6 +6,8 @@ defmodule TheAdventuringDay.Component.Combat.Domain.Enemy do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias TheAdventuringDay.Component.Combat.Domain.EnemyTemplateSpec
+
   @type t :: %{
     amount: pos_integer(),
     role: enemy_role(),
@@ -13,9 +15,9 @@ defmodule TheAdventuringDay.Component.Combat.Domain.Enemy do
     type: enemy_type()
   }
 
-  @type enemy_role() :: :archer | :blocker | :caster | :leader | :spoiler | :troop | :wrecker
-  @type enemy_level() :: :same_level | :one_level_higher | :one_level_lower | :two_levels_higher | :two_levels_lower
-  @type enemy_type() :: :standard | :double_strength | :triple_strength | :mook | :elite | :weakling
+  @type enemy_role() :: EnemyTemplateSpec.enemy_role()
+  @type enemy_level() :: EnemyTemplateSpec.enemy_level()
+  @type enemy_type() :: EnemyTemplateSpec.enemy_type()
 
   embedded_schema do
     field :amount, :float

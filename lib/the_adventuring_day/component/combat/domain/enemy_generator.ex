@@ -74,28 +74,42 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyGenerator do
     generator_template
     |> maybe_add_new_enemy()
     |> maybe_increase_enemy_count()
+    |> apply_permutations()
+    |> complete_template()
   end
 
   defp maybe_add_new_enemy(generator_template) do
-    add_new_enemy? =
+    must_add_new_enemy? =
+      capable_of_adding_to_existing_enemies?(generator_template)
+
+    maybe_add_new_enemy? =
       case length(generator_template.enemy_template_spec.template) do
         2 -> :rand.uniform(100) < 75
         3 -> :rand.uniform(100) < 50
         _ -> false
       end
 
-    if add_new_enemy? do
+    if must_add_new_enemy? or maybe_add_new_enemy? do
       add_new_enemy(generator_template)
     else
       generator_template
     end
   end
 
+  defp capable_of_adding_to_existing_enemies?(%__MODULE__{available_budget: available_budget, enemy_template_spec: template_spec} = gen) do
+    not(template_spec.template
+    |> filter_restricted(template_spec)
+    |> Enum.filter(fn enemy ->
+      is_within_threshold?(available_budget - enemy_budget_cost_for(enemy |> Map.update!(:amount, &(&1+1))))
+    end)
+    |> Enum.empty?())
+  end
+
   defp add_new_enemy(%__MODULE__{available_budget: available_budget, enemy_template_spec: template} = gen) do
     new_enemy = EnemyTemplateSpec.generate_enemy(template)
     updated_template = %{template | template: [new_enemy | template.template]}
 
-    if is_within_threshold(available_budget - enemy_budget_cost_for(new_enemy)) do
+    if is_within_threshold?(available_budget - enemy_budget_cost_for(new_enemy)) do
       %__MODULE__{
         available_budget: available_budget - enemy_budget_cost_for(new_enemy),
         enemy_template_spec: updated_template
@@ -111,6 +125,7 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyGenerator do
   defp maybe_increase_enemy_count(%__MODULE__{available_budget: available_budget, enemy_template_spec: template} = gen) do
     bolstered_enemy =
       template.template
+      |> filter_restricted(template)
       |> Enum.random()
       |> Map.update!(:amount, &(&1+1))
 
@@ -120,17 +135,34 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyGenerator do
 
     updated_template = %{template | template: [bolstered_enemy | other_enemies]}
 
-    if is_within_threshold(available_budget - enemy_budget_cost_for(bolstered_enemy)) do
-      maybe_increase_enemy_count(%__MODULE__{
+    is_within_threshold? = is_within_threshold?(available_budget - enemy_budget_cost_for(bolstered_enemy))
+
+    if is_within_threshold? do
+      %__MODULE__{
         available_budget: available_budget - enemy_budget_cost_for(bolstered_enemy),
         enemy_template_spec: updated_template
-      })
+      }
     else
-      maybe_increase_enemy_count(gen) # try, try again
+      gen
     end
   end
 
-  defp is_within_threshold(budget_remaining) do
+  defp filter_restricted(enemy_template, template_spec) when length(template_spec.restrictions) == 0 do
+    enemy_template
+  end
+
+  defp filter_restricted(enemy_template, template_spec) do
+    restrictions = template_spec.restrictions
+
+    enemy_template
+    |> Enum.filter(fn enemy ->
+      restrictions |> Enum.any?(fn %{max_size: max_size, enemy_roles: enemy_roles} ->
+        (enemy.role not in enemy_roles) or (enemy.amount < max_size)
+      end)
+    end)
+  end
+
+  defp is_within_threshold?(budget_remaining) do
     budget_remaining >= -0.5
   end
 
@@ -169,4 +201,44 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyGenerator do
   defp enemy_level_and_type_reference(:one_level_lower, :triple_strength), do: 2
   defp enemy_level_and_type_reference(:one_level_lower, :weakling), do: 0.5
   defp enemy_level_and_type_reference(:one_level_lower, :mook), do: 0.75
+
+  defp apply_permutations(%__MODULE__{enemy_template_spec: template_spec} = gen) when length(template_spec.permutations) == 0 do
+    gen
+  end
+
+  defp apply_permutations(%__MODULE__{enemy_template_spec: template_spec} = gen) do
+    permutations = template_spec.permutations
+
+    updated_template =
+      template_spec.template
+      |> Enum.map(fn enemy -> apply_permutation(permutations, enemy) end)
+
+    %{gen | enemy_template_spec: %{template_spec | template: updated_template}}
+    #|> IO.inspect(label: :updated_template_spec)
+  end
+
+  defp apply_permutation(permutations, enemy) do
+    enemy
+    # |> IO.inspect(label: :enemy)
+
+    permutation? =
+      permutations
+      |> Enum.find(fn %{when: when_clause} ->
+        IO.inspect(enemy, label: :enemy)
+        IO.inspect(when_clause, label: :when_clause)
+
+        Map.intersect(enemy, when_clause)
+        |> Map.equal?(when_clause)
+      end)
+
+    if permutation? != nil do
+      permutation? |> IO.inspect(label: :permutation)
+      enemy |> IO.inspect(label: :enemy_to_update)
+
+      Map.merge(enemy, permutation?.then)
+      |> IO.inspect(label: :updated_enemy)
+    else
+      enemy
+    end
+  end
 end

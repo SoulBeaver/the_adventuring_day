@@ -49,7 +49,7 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyTemplateSpec do
   @type enemy_level() :: :same_level | :one_level_higher | :one_level_lower | :two_levels_higher | :two_levels_lower
   @type enemy_type() :: :standard | :double_strength | :triple_strength | :mook | :elite | :weakling
 
-  @enemy_roles [:archer, :blocker, :caster, :leader, :spoiler, :troop, :wrecker]
+  @enemy_roles [:archer, :blocker, :caster, :leader, :skirmisher, :spoiler, :troop, :wrecker]
   @enemy_levels [:same_level, :one_level_higher, :one_level_lower]
   @enemy_types [:standard, :double_strength, :triple_strength, :mook, :elite, :weakling]
 
