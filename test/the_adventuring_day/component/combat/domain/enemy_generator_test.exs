@@ -123,9 +123,7 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyGeneratorTest do
         restrictions: [
           %{max_size: 2, enemy_roles: [:leader, :blocker, :wrecker, :archer, :caster, :spoiler, :skirmisher, :troop]},
         ],
-        permutations: [
-          %{when: %{enemy_role: :wrecker, has_count: 2}, then: %{level: :same_level}}
-        ]
+        permutations: []
       },
     ]
   end

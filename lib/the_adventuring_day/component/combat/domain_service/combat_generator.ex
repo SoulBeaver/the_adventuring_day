@@ -12,7 +12,7 @@ defmodule TheAdventuringDay.Component.Combat.DomainService.CombatGenerator do
 
   # def generate(complexity, realism, difficulty, environment, group_size)
   @spec generate(difficulty(), environment(), pos_integer()) :: map()
-  def generate(difficulty, environment, group_size) do
+  def generate(_difficulty, _environment, group_size) do
     enemies = EnemyGenerator.generate_enemies(group_size)
 
     %{

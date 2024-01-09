@@ -35,6 +35,10 @@ defmodule TheAdventuringDay.Component.Combat.Domain.Enemy do
     enemy_level_and_type_reference(level, type) * amount
   end
 
+  def budget_cost_for_single(%{role: _role, level: level, type: type}) do
+    enemy_level_and_type_reference(level, type)
+  end
+
   defp enemy_level_and_type_reference(:same_level, :standard), do: 1
   defp enemy_level_and_type_reference(:same_level, :elite), do: 1.5
   defp enemy_level_and_type_reference(:same_level, :double_strength), do: 2

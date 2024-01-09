@@ -6,6 +6,8 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyGenerator do
   alias TheAdventuringDay.Component.Combat.Domain.Enemy
   alias TheAdventuringDay.Component.Combat.Domain.EnemyTemplateSpec
 
+  @budget_threshold -0.5 # How far over budget the generation is allowed to go.
+
   defmodule GeneratedEnemyTemplate do
     defstruct available_budget: 0,
             budget_used: 0,
@@ -31,7 +33,45 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyGenerator do
 
   defstruct total_budget: 0, available_budget: 0, enemy_template_spec: nil
 
-  # def generate_enemies(complexity, difficulty, group_size)
+  @doc """
+  Generates a list of enemies for the encounter based on an existing template.
+  A template looks something like this:
+
+    %{
+      min_budget_required: 4,
+      template: [
+        %{amount: 1, role: :skirmisher, level: :same_level,      type: :standard},
+        %{amount: 1, role: :troop,      level: :same_level,      type: :standard},
+        %{amount: 1, role: :wrecker,    level: :same_level,      type: :double_strength},
+      ],
+      addons: %{
+        enemy_roles: [:archer, :blocker, :caster, :leader, :spoiler],
+        enemy_levels: [:same_level, :one_level_lower],
+        enemy_types: [:mook]
+      },
+      restrictions: [
+        %{max_size: 1, enemy_roles: [:leader]},
+        %{max_size: 2, enemy_roles: [:wrecker]}
+      ],
+      permutations: [
+        %{when_amount: 2, when_role: :wrecker, then_type: :standard}
+      ]
+    }
+
+  It is pre-populated with a selection of enemies. Each enemy has:
+
+  - Amount. How many units of that kind.
+  - Role. The role of the unit specific to the 13th Age ruleset.
+  - Level. Its level relative to the party.
+  - Type. Its strength as a unit. Standard units are roughly on par with 1 PC, double_strength 2 PCs and so on.
+
+  Generation adds to the existing enemies or creates new ones based on the available budget given by the group_size parameter.
+  There's a little wiggle room, but generation stops once the template is within -0.5 - 0.5 of the available budget.
+
+  New enemies are added from the available list of the Addons section. The maximum amount and type of enemies is limited by
+  the Restrictions section. Permutations changes the existing template based on certain parameters. In the above example two
+  :double_strength wreckers are downgraded to :standard even if they fit into the budget because of the massive damage they'd cause.
+  """
   @spec generate_enemies(pos_integer()) :: {:ok, GeneratedEnemyTemplate.t()} | {:error, term()}
   def generate_enemies(group_size)
 
@@ -98,23 +138,24 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyGenerator do
     end
   end
 
-  defp capable_of_adding_to_existing_enemies?(%__MODULE__{available_budget: available_budget, enemy_template_spec: template_spec} = gen) do
-    not(template_spec.template
-    |> filter_restricted(template_spec)
-    |> Enum.filter(fn enemy ->
-      is_within_threshold?(available_budget - Enemy.budget_cost_for(enemy |> Map.put(:amount, 1)))
-    end)
-    |> Enum.empty?())
+  defp capable_of_adding_to_existing_enemies?(%__MODULE__{available_budget: available_budget, enemy_template_spec: template_spec}) do
+    not(
+      EnemyTemplateSpec.filter_restricted(template_spec)
+      |> Enum.filter(fn enemy ->
+        is_within_budget_threshold?(available_budget - Enemy.budget_cost_for_single(enemy))
+      end)
+      |> Enum.empty?()
+    )
   end
 
   defp add_new_enemy(%__MODULE__{available_budget: available_budget, enemy_template_spec: template} = gen) do
     new_enemy = EnemyTemplateSpec.generate_enemy(template)
     updated_template = %{template | template: [new_enemy | template.template]}
 
-    if is_within_threshold?(available_budget - Enemy.budget_cost_for(new_enemy)) do
+    if is_within_budget_threshold?(available_budget - Enemy.budget_cost_for_single(new_enemy)) do
       %__MODULE__{
         total_budget: gen.total_budget,
-        available_budget: available_budget - Enemy.budget_cost_for(new_enemy),
+        available_budget: available_budget - Enemy.budget_cost_for_single(new_enemy),
         enemy_template_spec: updated_template
       }
     else
@@ -125,53 +166,37 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyGenerator do
   defp maybe_increase_enemy_count(generator_template)
     when generator_template.available_budget <= 0.5, do: generator_template
 
-  defp maybe_increase_enemy_count(%__MODULE__{available_budget: available_budget, enemy_template_spec: template} = gen) do
+  defp maybe_increase_enemy_count(%__MODULE__{available_budget: available_budget, enemy_template_spec: enemy_template_spec} = gen) do
     bolstered_enemy =
-      template.template
-      |> filter_restricted(template)
+      EnemyTemplateSpec.filter_restricted(enemy_template_spec)
       |> Enum.filter(fn enemy ->
-        is_within_threshold?(available_budget - Enemy.budget_cost_for(enemy |> Map.put(:amount, 1)))
+        is_within_budget_threshold?(available_budget - Enemy.budget_cost_for_single(enemy))
       end)
       |> Enum.random()
       |> Map.update!(:amount, &(&1+1))
 
     other_enemies =
-      template.template
+      enemy_template_spec.template
       |> Enum.filter(fn enemy -> not are_enemies_equal?(enemy, bolstered_enemy) end)
 
-    updated_template = %{template | template: [bolstered_enemy | other_enemies]}
+    updated_enemy_template_spec = %{enemy_template_spec | template: [bolstered_enemy | other_enemies]}
 
-    is_within_threshold? =
-      is_within_threshold?(gen.total_budget - EnemyTemplateSpec.budget_cost(updated_template))
+    is_within_budget_threshold? =
+      is_within_budget_threshold?(gen.total_budget - EnemyTemplateSpec.budget_cost(updated_enemy_template_spec))
 
-    if is_within_threshold? do
+    if is_within_budget_threshold? do
       %__MODULE__{
         total_budget: gen.total_budget,
-        available_budget: gen.total_budget - EnemyTemplateSpec.budget_cost(updated_template),
-        enemy_template_spec: updated_template
+        available_budget: gen.total_budget - EnemyTemplateSpec.budget_cost(updated_enemy_template_spec),
+        enemy_template_spec: updated_enemy_template_spec
       }
     else
       gen
     end
   end
 
-  defp filter_restricted(enemy_template, template_spec) when length(template_spec.restrictions) == 0 do
-    enemy_template
-  end
-
-  defp filter_restricted(enemy_template, template_spec) do
-    restrictions = template_spec.restrictions
-
-    enemy_template
-    |> Enum.filter(fn enemy ->
-      restrictions |> Enum.all?(fn %{max_size: max_size, enemy_roles: enemy_roles} ->
-        (enemy.role not in enemy_roles) or (enemy.amount < max_size)
-      end)
-    end)
-  end
-
-  defp is_within_threshold?(budget_remaining) do
-    budget_remaining >= -0.5
+  defp is_within_budget_threshold?(budget_remaining) do
+    budget_remaining >= @budget_threshold
   end
 
   defp are_enemies_equal?(enemy_a, enemy_b) do

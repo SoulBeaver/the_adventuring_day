@@ -7,6 +7,7 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyTemplateSpec do
   import Ecto.Changeset
 
   alias TheAdventuringDay.Component.Combat.Domain.Enemy
+  alias TheAdventuringDay.Component.Combat.Domain.Restriction
   alias TheAdventuringDay.Component.Combat.Domain.Permutation
 
   @type t() :: %__MODULE__{
@@ -50,10 +51,6 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyTemplateSpec do
   @type enemy_level() :: :same_level | :one_level_higher | :one_level_lower | :two_levels_higher | :two_levels_lower
   @type enemy_type() :: :standard | :double_strength | :triple_strength | :mook | :elite | :weakling
 
-  @enemy_roles [:archer, :blocker, :caster, :leader, :skirmisher, :spoiler, :troop, :wrecker]
-  @enemy_levels [:same_level, :one_level_higher, :one_level_lower]
-  @enemy_types [:standard, :double_strength, :triple_strength, :mook, :elite, :weakling]
-
   @all_fields [
     :min_budget_required
   ]
@@ -69,58 +66,82 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyTemplateSpec do
       field :enemy_types, {:array, Ecto.Enum}, values: [:standard, :double_strength, :triple_strength, :mook, :elite, :weakling]
     end
 
-    embeds_many :restrictions, Restrictions do
-      field :max_size, :integer
-      field :enemy_roles, {:array, Ecto.Enum}, values: [:archer, :blocker, :caster, :leader, :skirmisher, :spoiler, :troop, :wrecker]
-    end
-
+    embeds_many :restrictions, Restriction
     embeds_many :permutations, Permutation
   end
 
+  @spec changeset(TheAdventuringDay.Component.Combat.Domain.EnemyTemplateSpec.t()) :: Ecto.Changeset.t()
   def changeset(%__MODULE__{} = spec, params \\ %{}) do
     spec
     |> cast(params, @all_fields)
     |> cast_embed(:template)
     |> cast_embed(:addons, with: &addons_changeset/2)
-    |> cast_embed(:restrictions, with: &restrictions_changeset/2)
+    |> cast_embed(:restrictions)
     |> cast_embed(:permutations)
     |> validate_number(:min_budget_required, greater_than: 0)
   end
 
-  def addons_changeset(addons, params \\ %{}) do
+  defp addons_changeset(addons, params) do
     addons
     |> cast(params, [:enemy_roles, :enemy_levels, :enemy_types])
   end
 
-  def restrictions_changeset(restrictions, params \\ %{}) do
-    restrictions
-    |> cast(params, [:max_size, :enemy_roles])
-  end
-
-  def permutations_changeset(permutations, params \\ %{}) do
-    permutations
-    |> cast(params, [:when, :then])
-  end
-
+  @doc """
+  Calculates the total budget required for this template
+  """
+  @spec budget_cost(t()) :: pos_integer()
   def budget_cost(%__MODULE__{template: template}) do
     template
     |> Enum.map(fn enemy -> Enemy.budget_cost_for(enemy) end)
     |> Enum.sum()
   end
 
-  def generate_enemy(%__MODULE__{addons: addons}) do
+  @doc """
+  Generates a new enemy based on the Addons section of the template
+  """
+  @spec generate_enemy(t()) :: Enemy.t()
+  def generate_enemy(%__MODULE__{addons: addons} = enemy_template_spec) do
     role = addons.enemy_roles |> Enum.random()
     enemy_level = addons.enemy_levels |> Enum.random()
-    enemy_type =
-      if :rand.uniform(100) > 90 do
-        addons.enemy_types |> Enum.random()
-      else
-        :standard
-      end
+    enemy_type = generate_pseudorandom_enemy_type(enemy_template_spec)
 
     %Enemy{amount: 1, role: role, level: enemy_level, type: enemy_type}
   end
 
+  defp generate_pseudorandom_enemy_type(enemy_template_spec) do
+    any_mooks_present? =
+      enemy_template_spec.template
+      |> Enum.any?(fn enemy -> enemy.type == :mook end)
+
+    # Prefer the generation of a new mook enemy if none exist.
+    if any_mooks_present? do
+      if :rand.uniform(100) > 90 do
+        enemy_template_spec.addons.enemy_types |> Enum.random()
+      else
+        :standard
+      end
+    else
+      if :rand.uniform(100) > 10 do
+        :mook
+      else
+        :standard
+      end
+    end
+  end
+
+  @doc """
+  Applies any matching permutations to the existing template.
+
+  For example, if a step during the enemy_generator adds a second wrecker unit to the template
+  and the permutations looked like so:
+
+    permutations: [
+      %{when_amount: 2, when_role: :wrecker, then_type: :standard}
+    ]
+
+  Then this step would change the type of the two wreckers to :standard.
+  """
+  @spec apply_permutations(t()) :: t()
   def apply_permutations(%__MODULE__{permutations: permutations} = enemy_template_spec) do
     updated_template =
       enemy_template_spec.template
@@ -139,5 +160,30 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyTemplateSpec do
     else
       enemy
     end
+  end
+
+  @doc """
+  Returns a list of enemies this template is able to generate based on the
+  template's Restrictions.
+
+  A common example is to have only one :leader unit per template so as to not
+  overcomplicate combat or create HP sponges due to their healing effects.
+  """
+  @spec filter_restricted(t()) :: template()
+  def filter_restricted(enemy_template_spec)
+
+  def filter_restricted(%__MODULE__{} = enemy_template_spec) when length(enemy_template_spec.restrictions) == 0 do
+    enemy_template_spec.template
+  end
+
+  def filter_restricted(%__MODULE__{} = enemy_template_spec) do
+    restrictions = enemy_template_spec.restrictions
+
+    enemy_template_spec.template
+    |> Enum.filter(fn enemy ->
+      restrictions |> Enum.all?(fn %{max_size: max_size, enemy_roles: enemy_roles} ->
+        (enemy.role not in enemy_roles) or (enemy.amount < max_size)
+      end)
+    end)
   end
 end
