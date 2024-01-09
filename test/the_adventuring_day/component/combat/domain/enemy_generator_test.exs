@@ -62,14 +62,17 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyGeneratorTest do
     end
   end
 
-  property "Generating wreckers with permutations always has them at double_strength or standard" do
+    property "Generating wreckers with permutations always has them at double_strength or standard" do
     check all(group_size <- member_of(@group_size)) do
       permutation_spec()
       |> Enum.map(fn spec -> @repo.insert_enemy_template_spec(spec) end)
 
       {:ok, template} = EnemyGenerator.generate_enemies(group_size)
 
-      wrecker_template = template.template |> Enum.filter(fn enemy -> enemy.role == :wrecker end) |> hd
+      wrecker_template =
+        template.template
+        |> Enum.filter(fn enemy -> enemy.role == :wrecker end)
+        |> hd
 
       case wrecker_template.amount do
         1.0 ->
@@ -143,9 +146,10 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyGeneratorTest do
         },
         restrictions: [
           %{max_size: 1, enemy_roles: [:leader]},
+          %{max_size: 2, enemy_roles: [:wrecker]}
         ],
         permutations: [
-          %{when: %{role: :wrecker, amount: 2}, then: %{type: :standard}}
+          %{when_amount: 2, when_role: :wrecker, then_type: :standard}
         ]
       },
     ]

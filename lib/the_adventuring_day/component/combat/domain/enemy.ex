@@ -30,4 +30,29 @@ defmodule TheAdventuringDay.Component.Combat.Domain.Enemy do
     enemy
     |> cast(params, [:amount, :role, :level, :type])
   end
+
+  def budget_cost_for(%{amount: amount, role: _role, level: level, type: type}) do
+    enemy_level_and_type_reference(level, type) * amount
+  end
+
+  defp enemy_level_and_type_reference(:same_level, :standard), do: 1
+  defp enemy_level_and_type_reference(:same_level, :elite), do: 1.5
+  defp enemy_level_and_type_reference(:same_level, :double_strength), do: 2
+  defp enemy_level_and_type_reference(:same_level, :triple_strength), do: 3
+  defp enemy_level_and_type_reference(:same_level, :weakling), do: 0.5
+  defp enemy_level_and_type_reference(:same_level, :mook), do: 1
+
+  defp enemy_level_and_type_reference(:one_level_higher, :standard), do: 1.5
+  defp enemy_level_and_type_reference(:one_level_higher, :elite), do: 2
+  defp enemy_level_and_type_reference(:one_level_higher, :double_strength), do: 3
+  defp enemy_level_and_type_reference(:one_level_higher, :triple_strength), do: 4
+  defp enemy_level_and_type_reference(:one_level_higher, :weakling), do: 1
+  defp enemy_level_and_type_reference(:one_level_higher, :mook), do: 1.5
+
+  defp enemy_level_and_type_reference(:one_level_lower, :standard), do: 0.75
+  defp enemy_level_and_type_reference(:one_level_lower, :elite), do: 1
+  defp enemy_level_and_type_reference(:one_level_lower, :double_strength), do: 1.5
+  defp enemy_level_and_type_reference(:one_level_lower, :triple_strength), do: 2
+  defp enemy_level_and_type_reference(:one_level_lower, :weakling), do: 0.5
+  defp enemy_level_and_type_reference(:one_level_lower, :mook), do: 0.75
 end

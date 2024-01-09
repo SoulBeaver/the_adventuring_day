@@ -7,6 +7,7 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyTemplateSpec do
   import Ecto.Changeset
 
   alias TheAdventuringDay.Component.Combat.Domain.Enemy
+  alias TheAdventuringDay.Component.Combat.Domain.Permutation
 
   @type t() :: %__MODULE__{
     min_budget_required: pos_integer(),
@@ -73,10 +74,7 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyTemplateSpec do
       field :enemy_roles, {:array, Ecto.Enum}, values: [:archer, :blocker, :caster, :leader, :skirmisher, :spoiler, :troop, :wrecker]
     end
 
-    embeds_many :permutations, Permutations do
-      field :when, :map
-      field :then, :map
-    end
+    embeds_many :permutations, Permutation
   end
 
   def changeset(%__MODULE__{} = spec, params \\ %{}) do
@@ -85,7 +83,7 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyTemplateSpec do
     |> cast_embed(:template)
     |> cast_embed(:addons, with: &addons_changeset/2)
     |> cast_embed(:restrictions, with: &restrictions_changeset/2)
-    |> cast_embed(:permutations, with: &permutations_changeset/2)
+    |> cast_embed(:permutations)
     |> validate_number(:min_budget_required, greater_than: 0)
   end
 
@@ -104,6 +102,12 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyTemplateSpec do
     |> cast(params, [:when, :then])
   end
 
+  def budget_cost(%__MODULE__{template: template}) do
+    template
+    |> Enum.map(fn enemy -> Enemy.budget_cost_for(enemy) end)
+    |> Enum.sum()
+  end
+
   def generate_enemy(%__MODULE__{addons: addons}) do
     role = addons.enemy_roles |> Enum.random()
     enemy_level = addons.enemy_levels |> Enum.random()
@@ -115,5 +119,25 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyTemplateSpec do
       end
 
     %Enemy{amount: 1, role: role, level: enemy_level, type: enemy_type}
+  end
+
+  def apply_permutations(%__MODULE__{permutations: permutations} = enemy_template_spec) do
+    updated_template =
+      enemy_template_spec.template
+      |> Enum.map(fn enemy -> apply_permutation(permutations, enemy) end)
+
+    %{enemy_template_spec | template: updated_template}
+  end
+
+  defp apply_permutation(permutations, enemy) do
+    applicable_permutation =
+      permutations
+      |> Enum.find(fn permutation -> Permutation.matches?(permutation, enemy) end)
+
+    if applicable_permutation != nil do
+      Permutation.apply(applicable_permutation, enemy)
+    else
+      enemy
+    end
   end
 end

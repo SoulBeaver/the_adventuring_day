@@ -3,6 +3,7 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyGenerator do
   TODO rename monster to enemy
   """
 
+  alias TheAdventuringDay.Component.Combat.Domain.Enemy
   alias TheAdventuringDay.Component.Combat.Domain.EnemyTemplateSpec
 
   defmodule GeneratedEnemyTemplate do
@@ -28,7 +29,7 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyGenerator do
     @type enemy_type() :: EnemyTemplateSpec.enemy_type()
   end
 
-  defstruct available_budget: 0, enemy_template_spec: nil
+  defstruct total_budget: 0, available_budget: 0, enemy_template_spec: nil
 
   # def generate_enemies(complexity, difficulty, group_size)
   @spec generate_enemies(pos_integer()) :: {:ok, GeneratedEnemyTemplate.t()} | {:error, term()}
@@ -42,6 +43,7 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyGenerator do
     enemy_template_spec = random_enemy_template_builder_spec(available_budget)
 
     generator_template = %__MODULE__{
+      total_budget: available_budget,
       available_budget: available_budget - enemy_template_spec.min_budget_required,
       enemy_template_spec: enemy_template_spec
     }
@@ -80,7 +82,7 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyGenerator do
 
   defp maybe_add_new_enemy(generator_template) do
     must_add_new_enemy? =
-      capable_of_adding_to_existing_enemies?(generator_template)
+      not capable_of_adding_to_existing_enemies?(generator_template)
 
     maybe_add_new_enemy? =
       case length(generator_template.enemy_template_spec.template) do
@@ -100,7 +102,7 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyGenerator do
     not(template_spec.template
     |> filter_restricted(template_spec)
     |> Enum.filter(fn enemy ->
-      is_within_threshold?(available_budget - enemy_budget_cost_for(enemy |> Map.update!(:amount, &(&1+1))))
+      is_within_threshold?(available_budget - Enemy.budget_cost_for(enemy |> Map.put(:amount, 1)))
     end)
     |> Enum.empty?())
   end
@@ -109,9 +111,10 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyGenerator do
     new_enemy = EnemyTemplateSpec.generate_enemy(template)
     updated_template = %{template | template: [new_enemy | template.template]}
 
-    if is_within_threshold?(available_budget - enemy_budget_cost_for(new_enemy)) do
+    if is_within_threshold?(available_budget - Enemy.budget_cost_for(new_enemy)) do
       %__MODULE__{
-        available_budget: available_budget - enemy_budget_cost_for(new_enemy),
+        total_budget: gen.total_budget,
+        available_budget: available_budget - Enemy.budget_cost_for(new_enemy),
         enemy_template_spec: updated_template
       }
     else
@@ -126,6 +129,9 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyGenerator do
     bolstered_enemy =
       template.template
       |> filter_restricted(template)
+      |> Enum.filter(fn enemy ->
+        is_within_threshold?(available_budget - Enemy.budget_cost_for(enemy |> Map.put(:amount, 1)))
+      end)
       |> Enum.random()
       |> Map.update!(:amount, &(&1+1))
 
@@ -135,11 +141,13 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyGenerator do
 
     updated_template = %{template | template: [bolstered_enemy | other_enemies]}
 
-    is_within_threshold? = is_within_threshold?(available_budget - enemy_budget_cost_for(bolstered_enemy))
+    is_within_threshold? =
+      is_within_threshold?(gen.total_budget - EnemyTemplateSpec.budget_cost(updated_template))
 
     if is_within_threshold? do
       %__MODULE__{
-        available_budget: available_budget - enemy_budget_cost_for(bolstered_enemy),
+        total_budget: gen.total_budget,
+        available_budget: gen.total_budget - EnemyTemplateSpec.budget_cost(updated_template),
         enemy_template_spec: updated_template
       }
     else
@@ -156,7 +164,7 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyGenerator do
 
     enemy_template
     |> Enum.filter(fn enemy ->
-      restrictions |> Enum.any?(fn %{max_size: max_size, enemy_roles: enemy_roles} ->
+      restrictions |> Enum.all?(fn %{max_size: max_size, enemy_roles: enemy_roles} ->
         (enemy.role not in enemy_roles) or (enemy.amount < max_size)
       end)
     end)
@@ -177,68 +185,16 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyGenerator do
     |> Enum.map(fn t -> Map.from_struct(t) |> Map.delete(:id) end)
   end
 
-  defp enemy_budget_cost_for(%{amount: _amount, role: _role, level: level, type: type}) do
-    enemy_level_and_type_reference(level, type)
-  end
-
-  defp enemy_level_and_type_reference(:same_level, :standard), do: 1
-  defp enemy_level_and_type_reference(:same_level, :elite), do: 1.5
-  defp enemy_level_and_type_reference(:same_level, :double_strength), do: 2
-  defp enemy_level_and_type_reference(:same_level, :triple_strength), do: 3
-  defp enemy_level_and_type_reference(:same_level, :weakling), do: 0.5
-  defp enemy_level_and_type_reference(:same_level, :mook), do: 1
-
-  defp enemy_level_and_type_reference(:one_level_higher, :standard), do: 1.5
-  defp enemy_level_and_type_reference(:one_level_higher, :elite), do: 2
-  defp enemy_level_and_type_reference(:one_level_higher, :double_strength), do: 3
-  defp enemy_level_and_type_reference(:one_level_higher, :triple_strength), do: 4
-  defp enemy_level_and_type_reference(:one_level_higher, :weakling), do: 1
-  defp enemy_level_and_type_reference(:one_level_higher, :mook), do: 1.5
-
-  defp enemy_level_and_type_reference(:one_level_lower, :standard), do: 0.75
-  defp enemy_level_and_type_reference(:one_level_lower, :elite), do: 1
-  defp enemy_level_and_type_reference(:one_level_lower, :double_strength), do: 1.5
-  defp enemy_level_and_type_reference(:one_level_lower, :triple_strength), do: 2
-  defp enemy_level_and_type_reference(:one_level_lower, :weakling), do: 0.5
-  defp enemy_level_and_type_reference(:one_level_lower, :mook), do: 0.75
-
   defp apply_permutations(%__MODULE__{enemy_template_spec: template_spec} = gen) when length(template_spec.permutations) == 0 do
     gen
   end
 
-  defp apply_permutations(%__MODULE__{enemy_template_spec: template_spec} = gen) do
-    permutations = template_spec.permutations
+  defp apply_permutations(%__MODULE__{total_budget: total_budget, enemy_template_spec: template_spec} = gen) do
+    updated_template = EnemyTemplateSpec.apply_permutations(template_spec)
+    updated_budget = total_budget - EnemyTemplateSpec.budget_cost(template_spec)
 
-    updated_template =
-      template_spec.template
-      |> Enum.map(fn enemy -> apply_permutation(permutations, enemy) end)
-
-    %{gen | enemy_template_spec: %{template_spec | template: updated_template}}
-    #|> IO.inspect(label: :updated_template_spec)
-  end
-
-  defp apply_permutation(permutations, enemy) do
-    enemy
-    # |> IO.inspect(label: :enemy)
-
-    permutation? =
-      permutations
-      |> Enum.find(fn %{when: when_clause} ->
-        IO.inspect(enemy, label: :enemy)
-        IO.inspect(when_clause, label: :when_clause)
-
-        Map.intersect(enemy, when_clause)
-        |> Map.equal?(when_clause)
-      end)
-
-    if permutation? != nil do
-      permutation? |> IO.inspect(label: :permutation)
-      enemy |> IO.inspect(label: :enemy_to_update)
-
-      Map.merge(enemy, permutation?.then)
-      |> IO.inspect(label: :updated_enemy)
-    else
-      enemy
-    end
+    %{gen |
+      available_budget: updated_budget,
+      enemy_template_spec: updated_template}
   end
 end
