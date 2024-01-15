@@ -10,4 +10,8 @@ defmodule TheAdventuringDay.Repo.Migrations.CreateEnemyTemplateSpecs do
       add :permutations, {:array, :map}
     end
   end
+
+  def down do
+    drop table(:enemy_template_specs)
+  end
 end

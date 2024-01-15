@@ -85,3 +85,7 @@ config :the_adventuring_day,
 config :the_adventuring_day,
        :enemy_template_spec_repo,
        TheAdventuringDay.Infrastructure.Persistence.EnemyTemplateSpecRepo
+
+config :the_adventuring_day,
+       :terrain_features_repo,
+       TheAdventuringDay.Infrastructure.Persistence.TerrainFeaturesRepo

@@ -10,7 +10,7 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyTemplateSpecTest do
 
   test "Prefers creating mooks most of the time" do
     simple_spec()
-    |> Enum.map(&(@repo.insert_enemy_template_spec(&1)))
+    |> Enum.map(&@repo.insert_enemy_template_spec(&1))
 
     enemy_template_spec = @repo.random_enemy_template_spec(7)
 
@@ -18,7 +18,8 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyTemplateSpecTest do
 
     mook_enemies = generated_enemies |> Enum.filter(fn enemy -> enemy.type == :mook end)
 
-    assert length(mook_enemies) > (@sample_size / 2) # At least half or more generated enemies are mooks
+    # At least half or more generated enemies are mooks
+    assert length(mook_enemies) > @sample_size / 2
   end
 
   def simple_spec() do
@@ -26,9 +27,9 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyTemplateSpecTest do
       %{
         min_budget_required: 4.5,
         template: [
-          %{amount: 1, role: :skirmisher, level: :same_level,      type: :standard},
-          %{amount: 2, role: :troop,      level: :one_level_lower, type: :standard},
-          %{amount: 1, role: :wrecker,    level: :same_level,      type: :double_strength},
+          %{amount: 1, role: :skirmisher, level: :same_level, type: :standard},
+          %{amount: 2, role: :troop, level: :one_level_lower, type: :standard},
+          %{amount: 1, role: :wrecker, level: :same_level, type: :double_strength}
         ],
         addons: %{
           enemy_roles: [:archer, :blocker, :caster, :leader, :spoiler],
@@ -37,7 +38,7 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyTemplateSpecTest do
         },
         restrictions: [],
         permutations: []
-      },
+      }
     ]
   end
 end

@@ -18,3 +18,14 @@ config :logger, level: :info
 
 # Runtime production configuration, including reading
 # of environment variables, is done on config/runtime.exs.
+config :the_adventuring_day,
+       :random_table_collection_repo,
+       TheAdventuringDay.Infrastructure.Persistence.RandomTableCollectionRepo
+
+config :the_adventuring_day,
+       :enemy_template_spec_repo,
+       TheAdventuringDay.Infrastructure.Persistence.EnemyTemplateSpecRepo
+
+config :the_adventuring_day,
+       :terrain_features_repo,
+       TheAdventuringDay.Infrastructure.Persistence.TerrainFeaturesRepo

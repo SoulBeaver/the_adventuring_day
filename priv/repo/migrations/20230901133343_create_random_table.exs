@@ -7,4 +7,8 @@ defmodule TheAdventuringDay.Repo.Migrations.CreateRandomTable do
       add :tables, :map
     end
   end
+
+  def down do
+    drop table(:random_table_collections)
+  end
 end
