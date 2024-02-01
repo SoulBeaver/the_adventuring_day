@@ -29,3 +29,7 @@ config :the_adventuring_day,
 config :the_adventuring_day,
        :terrain_features_repo,
        TheAdventuringDay.Infrastructure.Persistence.TerrainFeaturesRepo
+
+config :the_adventuring_day,
+       :hazard_features_repo,
+       TheAdventuringDay.Infrastructure.Persistence.HazardFeaturesRepo

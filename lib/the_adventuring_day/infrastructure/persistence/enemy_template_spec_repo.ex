@@ -8,11 +8,18 @@ defmodule TheAdventuringDay.Infrastructure.Persistence.EnemyTemplateSpecRepo do
   alias TheAdventuringDay.Component.Combat.Domain.EnemyTemplateSpec
   alias TheAdventuringDay.Repo
 
-  @spec insert_enemy_template_spec(map()) :: EnemyTemplateSpec.t()
+  @spec insert_enemy_template_spec(map()) :: {:ok, EnemyTemplateSpec.t()} | {:error, term()}
   def insert_enemy_template_spec(params) do
     %EnemyTemplateSpec{}
     |> EnemyTemplateSpec.changeset(params)
     |> Repo.insert()
+  end
+
+  @spec insert_enemy_template_spec!(map()) :: EnemyTemplateSpec.t()
+  def insert_enemy_template_spec!(params) do
+    %EnemyTemplateSpec{}
+    |> EnemyTemplateSpec.changeset(params)
+    |> Repo.insert!()
   end
 
   @spec random_enemy_template_spec(pos_integer()) :: EnemyTemplateSpec.t()

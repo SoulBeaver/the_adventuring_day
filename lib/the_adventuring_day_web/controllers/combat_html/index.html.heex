@@ -1,0 +1,36 @@
+<header>
+  <h1>Random Combat Encounter!</h1>
+</header>
+&nbsp;
+<section>
+  <%= for enemy <- @enemies do %>
+    <p>
+      <%= enemy.amount %>, <%= enemy.level %>, <%= enemy.role %>, <%= enemy.type %>
+    </p>
+  <% end %>
+</section>
+<section>
+  <%= for terrain <- @terrain_features do %>
+    &nbsp;
+    <p>
+      <%= terrain.terrain_type %>, <%= terrain.name %>
+    </p>
+    <p>
+      <%= terrain.description %>
+    </p>
+    <p>
+      <%= terrain.interior_examples %>
+    </p>
+  <% end %>
+</section>
+<section>
+  <%= for hazard <- @hazard_features do %>
+    &nbsp;
+    <p>
+      <%= hazard.hazard_type %>, <%= hazard.name %>
+    </p>
+    <p>
+      <%= hazard.description %>
+    </p>
+  <% end %>
+</section>

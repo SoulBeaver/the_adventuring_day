@@ -10,8 +10,9 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 
-alias TheAdventuringDay.Infrastructure.Persistence.TerrainFeaturesRepo
 alias TheAdventuringDay.Infrastructure.Persistence.EnemyTemplateSpecRepo
+alias TheAdventuringDay.Infrastructure.Persistence.TerrainFeaturesRepo
+alias TheAdventuringDay.Infrastructure.Persistence.HazardFeaturesRepo
 
 # Terrain Features data
 
@@ -103,5 +104,34 @@ if Mix.env() == :dev or Mix.env() == :prod do
     """,
     interior_examples: ["Low walls", "Piles of rubble"],
     exterior_examples: ["Fallen trees", "Trenches", "Obscuring foliage"]
+  })
+
+  HazardFeaturesRepo.insert_hazard_feature!(%{
+    hazard_type: :trap,
+    name: "Sawblades",
+    description: """
+    Sawblades in the walls, floor or ceiling. Stepping on a pressure plate activates the sawblades and slice through whatever's in their path.
+    """
+  })
+
+  EnemyTemplateSpecRepo.insert_enemy_template_spec!(%{
+    min_budget_required: 4,
+    template: [
+      %{amount: 1, role: :skirmisher, level: :same_level, type: :standard},
+      %{amount: 2, role: :troop, level: :one_level_lower, type: :standard},
+      %{amount: 1, role: :wrecker, level: :same_level, type: :double_strength}
+    ],
+    addons: %{
+      enemy_roles: [:archer, :blocker, :caster, :leader, :spoiler],
+      enemy_levels: [:same_level, :one_level_lower],
+      enemy_types: [:mook]
+    },
+    restrictions: [
+      %{max_size: 1, enemy_roles: [:leader]},
+      %{max_size: 2, enemy_roles: [:wrecker]}
+    ],
+    permutations: [
+      %{when_amount: 2, when_role: :wrecker, then_type: :standard}
+    ]
   })
 end
