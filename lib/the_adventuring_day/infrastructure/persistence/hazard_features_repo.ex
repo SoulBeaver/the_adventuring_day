@@ -22,13 +22,13 @@ def insert_hazard_feature(params) do
   |> Repo.insert()
 end
 
-@spec random_hazard_feature() :: HazardFeatures.t()
-def random_hazard_feature() do
+@spec random_hazard_features(pos_integer()) :: HazardFeatures.t()
+def random_hazard_features(amount) do
   from(ets in HazardFeatures,
     where: true,
     order_by: fragment("RANDOM()"),
-    limit: 1)
-  |> Repo.one!()
+    limit: ^amount)
+  |> Repo.all()
 end
 
 def truncate() do

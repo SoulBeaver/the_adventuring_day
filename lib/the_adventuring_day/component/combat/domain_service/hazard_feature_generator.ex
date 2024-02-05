@@ -28,18 +28,19 @@ defmodule TheAdventuringDay.Component.Combat.DomainService.HazardFeatureGenerato
   end
 
   def generate_hazard_features(max_hazard_features) do
-    hazard_features =
-      (1..:rand.uniform(max_hazard_features))
-      |> Enum.map(fn _ -> random_hazard_feature() end)
-      |> Enum.map(fn template -> sanitize_template(template) end)
+    hazards =
+      :rand.uniform(max_hazard_features)
+      |> random_hazard_features()
+      |> Enum.uniq_by(&(&1.id))
+      |> Enum.map(&sanitize_template/1)
 
-    {:ok, hazard_features}
+    {:ok, hazards}
   end
 
-  defp random_hazard_feature() do
+  defp random_hazard_features(amount) do
     repo = Application.get_env(:the_adventuring_day, :hazard_features_repo)
 
-    repo.random_hazard_feature()
+    repo.random_hazard_features(amount)
   end
 
   defp sanitize_template(template) do
