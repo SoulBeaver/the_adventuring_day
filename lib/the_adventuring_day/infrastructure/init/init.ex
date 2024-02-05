@@ -1,28 +1,31 @@
-defmodule TheAdventuringDay.Component.Combat.DomainService.CombatGeneratorTest do
-  use TheAdventuringDay.DataCase
-  use ExUnitProperties
+defmodule TheAdventuringDay.Infrastructure.Init.Init do
+  @moduledoc """
+  Initialization module for DB data that must run prior to the app being used.
+  """
 
-  alias TheAdventuringDay.Component.Combat.DomainService.CombatGenerator
-  alias TheAdventuringDay.Infrastructure.Persistence.HazardFeaturesRepo
-  alias TheAdventuringDay.Infrastructure.Persistence.TerrainFeaturesRepo
   alias TheAdventuringDay.Infrastructure.Persistence.EnemyTemplateSpecRepo
+  alias TheAdventuringDay.Infrastructure.Persistence.TerrainFeaturesRepo
+  alias TheAdventuringDay.Infrastructure.Persistence.HazardFeaturesRepo
 
-  test "creates a valid combat encounter" do
-    setup_enemy_template_data()
-    setup_terrain_features_data()
+  def seed_data() do
+    truncate_tables()
 
-    {:ok, encounter} =
-      CombatGenerator.generate(:standard, :interior, 5)
+    seed_enemy_template_specs()
+    seed_terrain_features()
+    seed_hazard_features()
 
-    # assert match?(%CombatGenerator{
-    #   enemies: %GeneratedEnemyTemplate{},
-    #   terrain_features: [%GeneratedTerrainFeature{}]
-    # }, encounter)
+    :ok
   end
 
-  def setup_enemy_template_data() do
-    %{
-      min_budget_required: 4.5,
+  defp truncate_tables() do
+    EnemyTemplateSpecRepo.truncate()
+    TerrainFeaturesRepo.truncate()
+    HazardFeaturesRepo.truncate()
+  end
+
+  defp seed_enemy_template_specs() do
+    EnemyTemplateSpecRepo.insert_enemy_template_spec!(%{
+      min_budget_required: 4,
       template: [
         %{amount: 1, role: :skirmisher, level: :same_level, type: :standard},
         %{amount: 2, role: :troop, level: :one_level_lower, type: :standard},
@@ -33,22 +36,18 @@ defmodule TheAdventuringDay.Component.Combat.DomainService.CombatGeneratorTest d
         enemy_levels: [:same_level, :one_level_lower],
         enemy_types: [:mook]
       },
-      restrictions: [],
-      permutations: []
-    }
-    |> EnemyTemplateSpecRepo.insert_enemy_template_spec()
+      restrictions: [
+        %{max_size: 1, enemy_roles: [:leader]},
+        %{max_size: 2, enemy_roles: [:wrecker]}
+      ],
+      permutations: [
+        %{when_amount: 2, when_role: :wrecker, then_type: :standard}
+      ]
+    })
   end
 
-  def setup_terrain_features_data() do
-    HazardFeaturesRepo.insert_hazard_feature(%{
-      hazard_type: :trap,
-      name: "Sawblades",
-      description: """
-      Sawblades in the walls, floor or ceiling. Stepping on a pressure plate activates the sawblades and slice through whatever's in their path.
-      """
-    })
-
-    TerrainFeaturesRepo.insert_terrain_feature(%{
+  defp seed_terrain_features() do
+    TerrainFeaturesRepo.insert_terrain_feature!(%{
       terrain_type: :difficult,
       name: "Difficult terrain",
       description: """
@@ -67,7 +66,7 @@ defmodule TheAdventuringDay.Component.Combat.DomainService.CombatGeneratorTest d
       ]
     })
 
-    TerrainFeaturesRepo.insert_terrain_feature(%{
+    TerrainFeaturesRepo.insert_terrain_feature!(%{
       terrain_type: :hindering,
       name: "Hindering terrain",
       description: """
@@ -81,7 +80,7 @@ defmodule TheAdventuringDay.Component.Combat.DomainService.CombatGeneratorTest d
       exterior_examples: ["Pits", "Deep water", "Lava", "Fire"]
     })
 
-    TerrainFeaturesRepo.insert_terrain_feature(%{
+    TerrainFeaturesRepo.insert_terrain_feature!(%{
       terrain_type: :blocking,
       name: "Blocking terrain",
       description: """
@@ -95,7 +94,7 @@ defmodule TheAdventuringDay.Component.Combat.DomainService.CombatGeneratorTest d
       exterior_examples: ["Impassable rubble", "Trees", "Dense thickets", "Large rock formations"]
     })
 
-    TerrainFeaturesRepo.insert_terrain_feature(%{
+    TerrainFeaturesRepo.insert_terrain_feature!(%{
       terrain_type: :challenging,
       name: "Challenging terrain",
       description: """
@@ -109,7 +108,7 @@ defmodule TheAdventuringDay.Component.Combat.DomainService.CombatGeneratorTest d
       exterior_examples: ["Slick ice", "Deep mud", "Climbing", "Deep water", "Narrow ledge"]
     })
 
-    TerrainFeaturesRepo.insert_terrain_feature(%{
+    TerrainFeaturesRepo.insert_terrain_feature!(%{
       terrain_type: :obscured,
       name: "Obscured terrain",
       description: """
@@ -123,7 +122,7 @@ defmodule TheAdventuringDay.Component.Combat.DomainService.CombatGeneratorTest d
       exterior_examples: ["Fog", "Mist", "Nighttime"]
     })
 
-    TerrainFeaturesRepo.insert_terrain_feature(%{
+    TerrainFeaturesRepo.insert_terrain_feature!(%{
       terrain_type: :cover,
       name: "Cover terrain",
       description: """
@@ -135,6 +134,16 @@ defmodule TheAdventuringDay.Component.Combat.DomainService.CombatGeneratorTest d
       """,
       interior_examples: ["Low walls", "Piles of rubble"],
       exterior_examples: ["Fallen trees", "Trenches", "Obscuring foliage"]
+    })
+  end
+
+  defp seed_hazard_features() do
+    HazardFeaturesRepo.insert_hazard_feature!(%{
+      hazard_type: :trap,
+      name: "Sawblades",
+      description: """
+      Sawblades in the walls, floor or ceiling. Stepping on a pressure plate activates the sawblades and slice through whatever's in their path.
+      """
     })
   end
 end

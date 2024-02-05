@@ -103,7 +103,7 @@ defmodule TheAdventuringDay.Component.Combat.DomainService.EnemyGenerator do
   defp random_enemy_template_builder_spec(available_budget) do
     repo = Application.get_env(:the_adventuring_day, :enemy_template_spec_repo)
 
-    repo.random_enemy_template_spec(available_budget)
+    repo.random_enemy_template_spec!(available_budget)
   end
 
   defp available_encounter_budget_for(4), do: 5

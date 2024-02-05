@@ -22,8 +22,8 @@ defmodule TheAdventuringDay.Infrastructure.Persistence.EnemyTemplateSpecRepo do
     |> Repo.insert!()
   end
 
-  @spec random_enemy_template_spec(pos_integer()) :: EnemyTemplateSpec.t()
-  def random_enemy_template_spec(available_budget) do
+  @spec random_enemy_template_spec!(pos_integer()) :: EnemyTemplateSpec.t()
+  def random_enemy_template_spec!(available_budget) do
     query =
       from(ets in EnemyTemplateSpec,
         where: ets.min_budget_required <= ^available_budget,

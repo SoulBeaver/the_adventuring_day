@@ -18,6 +18,7 @@ defmodule TheAdventuringDayWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    get "/init", InitController, :index
     get "/combat", CombatController, :index
   end
 

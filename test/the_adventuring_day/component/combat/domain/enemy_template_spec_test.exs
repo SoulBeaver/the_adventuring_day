@@ -12,7 +12,7 @@ defmodule TheAdventuringDay.Component.Combat.Domain.EnemyTemplateSpecTest do
     simple_spec()
     |> Enum.map(&@repo.insert_enemy_template_spec(&1))
 
-    enemy_template_spec = @repo.random_enemy_template_spec(7)
+    enemy_template_spec = @repo.random_enemy_template_spec!(7)
 
     generated_enemies = 1..@sample_size |> Enum.map(fn _ -> EnemyTemplateSpec.generate_enemy(enemy_template_spec) end)
 
