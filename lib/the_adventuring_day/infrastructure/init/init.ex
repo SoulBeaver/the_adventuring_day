@@ -53,16 +53,16 @@ defmodule TheAdventuringDay.Infrastructure.Init.Init do
       description: """
       Difficult terrain slows down characters without blocking line of sight. In encounter design, difficult terrain is a useful tool to make a path less appealing without removing it as an option. It gives you some of the benefits of walls and other terrain that blocks movement without the drawback of constricting the party's options.
       """,
-      interior_examples: ["Rubble", "Uneven ground", "Steep slope", "Oil slick"],
+      interior_examples: ["rubble", "uneven ground", "steep slope", "oil slick"],
       exterior_examples: [
-        "Rubble",
-        "Uneven ground",
-        "Shallow water",
-        "Fallen trees",
-        "Steep slope",
-        "Mud",
-        "Thick undergrowth",
-        "Dense vines"
+        "rubble",
+        "uneven ground",
+        "shallow water",
+        "fallen trees",
+        "steep slope",
+        "mud",
+        "thick undergrowth",
+        "dense vines"
       ]
     })
 
@@ -76,8 +76,8 @@ defmodule TheAdventuringDay.Infrastructure.Init.Init do
 
       Too much hindering terrain makes melee characters and monsters worthless. It is best used to protect a monster or two, or as a favorable defensive position that the PCs can exploit.
       """,
-      interior_examples: ["Pits", "Room underwater", "Fire", "Lava"],
-      exterior_examples: ["Pits", "Deep water", "Lava", "Fire"]
+      interior_examples: ["pits", "room underwater", "fire", "lava"],
+      exterior_examples: ["pits", "deep water", "lava", "fire"]
     })
 
     TerrainFeaturesRepo.insert_terrain_feature!(%{
@@ -90,8 +90,8 @@ defmodule TheAdventuringDay.Infrastructure.Init.Init do
 
       Don't use too much blocking terrain. Fights in endless narrow corridors are boring. While the fighter beats on the monster, the rest of the party must rely on ranged attacks.
       """,
-      interior_examples: ["Walls", "Doors", "Impassable rubble", "Makeshift fortification"],
-      exterior_examples: ["Impassable rubble", "Trees", "Dense thickets", "Large rock formations"]
+      interior_examples: ["walls", "doors", "impassable rubble", "makeshift fortification"],
+      exterior_examples: ["impassable rubble", "trees", "dense thickets", "large rock formations"]
     })
 
     TerrainFeaturesRepo.insert_terrain_feature!(%{
@@ -104,8 +104,8 @@ defmodule TheAdventuringDay.Infrastructure.Init.Init do
 
       Too much challenging terrain wears down the party or slows the action if the characters have a few unlucky tests. If the characters are cautious, they can treat it as hindering terrain instead.
       """,
-      interior_examples: ["Oil slick", "Thin beams", "Climbing", "Precarious bridge", "Narrow ledge"],
-      exterior_examples: ["Slick ice", "Deep mud", "Climbing", "Deep water", "Narrow ledge"]
+      interior_examples: ["oil slick", "thin beams", "climbing", "precarious bridge", "narrow ledge"],
+      exterior_examples: ["slick ice", "deep mud", "climbing", "deep water", "narrow ledge"]
     })
 
     TerrainFeaturesRepo.insert_terrain_feature!(%{
@@ -118,8 +118,8 @@ defmodule TheAdventuringDay.Infrastructure.Init.Init do
 
       Obscured terrain becomes a problem when it shuts down the fight. The characters likely stick close together, and if the monsters can ignore the concealing terrain due to some magical effect, the fight might be unfair rather than tense.
       """,
-      interior_examples: ["Fog", "Darkness", "Poison mist"],
-      exterior_examples: ["Fog", "Mist", "Nighttime"]
+      interior_examples: ["fog", "darkness", "poison mist"],
+      exterior_examples: ["fog", "mist", "nighttime"]
     })
 
     TerrainFeaturesRepo.insert_terrain_feature!(%{
@@ -132,17 +132,17 @@ defmodule TheAdventuringDay.Infrastructure.Init.Init do
 
       Too much cover makes the encounter too difficult for ranged attackers
       """,
-      interior_examples: ["Low walls", "Piles of rubble"],
-      exterior_examples: ["Fallen trees", "Trenches", "Obscuring foliage"]
+      interior_examples: ["low walls", "piles of rubble"],
+      exterior_examples: ["fallen trees", "trenches", "obscuring foliage"]
     })
   end
 
   defp seed_hazard_features() do
     HazardFeaturesRepo.insert_hazard_feature!(%{
       hazard_type: :trap,
-      name: "Sawblades",
+      name: "Sawblade trap",
       description: """
-      Sawblades in the walls, floor or ceiling. Stepping on a pressure plate activates the sawblades and slice through whatever's in their path.
+      There are sawblades in the walls, floor or ceiling. Stepping on a pressure plate activates the sawblades and slice through whatever's in their path.
       """
     })
   end

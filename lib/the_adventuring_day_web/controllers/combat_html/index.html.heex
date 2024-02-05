@@ -1,36 +1,47 @@
-<header>
-  <h1>Random Combat Encounter!</h1>
-</header>
-&nbsp;
-<section>
-  <%= for enemy <- @enemies do %>
-    <p>
-      <%= enemy.amount %>, <%= enemy.level %>, <%= enemy.role %>, <%= enemy.type %>
-    </p>
-  <% end %>
-</section>
-<section>
-  <%= for terrain <- @terrain_features do %>
-    &nbsp;
-    <p>
-      <%= terrain.terrain_type %>, <%= terrain.name %>
-    </p>
-    <p>
-      <%= terrain.description %>
-    </p>
-    <p>
-      <%= terrain.interior_examples %>
-    </p>
-  <% end %>
-</section>
-<section>
-  <%= for hazard <- @hazard_features do %>
-    &nbsp;
-    <p>
-      <%= hazard.hazard_type %>, <%= hazard.name %>
-    </p>
-    <p>
-      <%= hazard.description %>
-    </p>
-  <% end %>
-</section>
+<div class="">
+  <div>
+    <p class="text-2xl font-medium text-black">Random Combat Encounter!</p>
+    <p>During your travels you encounter a band of enemies intent on spilling bloot and stealing your hard-earned loot.</p>
+  </div>
+
+  <div class="py-2">
+    <p class="text-xl font-medium text-black">Enemies</p>
+    <p>You steel yourself, draw your weapon and size up your enemies in the same breath.</p>
+    <p>This pack is made up of:</p>
+
+    <ul class="list-none py-2">
+      <%= for enemy <- @enemies do %>
+        <li>
+          <%= format_enemy(enemy) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="py-2">
+    <p class="text-xl font-medium text-black">Terrain</p>
+    <p>You glance around, looking for advantages and making a mental note of traps and pitfalls.</p>
+
+    <ul class="list-none py-2">
+      <%= for terrain <- organize_terrain_features(@terrain_features) do %>
+        <li>
+          <%= format_terrain_feature(terrain) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="py-2">
+    <p class="text-xl font-medium text-black">Hazards</p>
+    <p>Not everything here is as it seems. Be on your guard, traps and pitfalls will make your life harder.</p>
+
+    <ul class="list-none py-2">
+      <%= for hazard <- @hazard_features do %>
+        <li class="py-2">
+          <p>You encounter a <b><%= hazard.name %></b>!</p>
+          <p><%= hazard.description %></p>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
