@@ -78,6 +78,9 @@ config :phoenix, :plug_init_mode, :runtime
 # Disable swoosh api client as it is only required for production adapters.
 config :swoosh, :api_client, false
 
+# Disable cache so that OpenApi updates with every change.
+config :open_api_spex, :cache_adapter, OpenApiSpex.Plug.NoneCache
+
 config :the_adventuring_day,
        :random_table_collection_repo,
        TheAdventuringDay.Infrastructure.Persistence.RandomTableCollectionRepo

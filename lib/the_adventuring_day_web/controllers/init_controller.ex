@@ -4,12 +4,12 @@ defmodule TheAdventuringDayWeb.InitController do
   alias TheAdventuringDay.Infrastructure.Init.Init
 
   def index(conn, _params) do
-    init = Init.seed_data()
+    init_status = Init.seed_data()
 
     render(
         conn,
         :index,
-        init: init
+        status: init_status
     )
   end
 end

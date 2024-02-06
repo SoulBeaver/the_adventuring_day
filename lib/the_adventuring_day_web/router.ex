@@ -16,16 +16,18 @@ defmodule TheAdventuringDayWeb.Router do
 
   scope "/", TheAdventuringDayWeb do
     pipe_through :browser
-
-    get "/", PageController, :home
-    get "/init", InitController, :index
-    get "/combat", CombatController, :index
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", TheAdventuringDayWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", TheAdventuringDayWeb do
+    pipe_through :api
+
+    get "/init", InitController, :index
+
+    post "/combat", CombatController, :generate
+    get "/combat/hazard", CombatController, :new_hazard
+    get "/combat/terrain_feature", CombatController, :new_terrain_feature
+  end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
   if Application.compile_env(:the_adventuring_day, :dev_routes) do
