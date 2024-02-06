@@ -3,7 +3,7 @@ defmodule TheAdventuringDayWeb.InitJSON do
   TODO
   """
 
-  def index(status) do
+  def index(%{status: status}) do
     %{status: status}
   end
 end

@@ -12,21 +12,31 @@ defmodule TheAdventuringDayWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+
+    plug OpenApiSpex.Plug.PutApiSpec, module: TheAdventuringDayWeb.ApiSpec
   end
 
   scope "/", TheAdventuringDayWeb do
     pipe_through :browser
+
+    get "/swaggerui", OpenApiSpex.Plug.SwaggerUI, @swagger_ui_config
   end
 
   # Other scopes may use custom stacks.
   scope "/api", TheAdventuringDayWeb do
     pipe_through :api
 
-    get "/init", InitController, :index
+    post "/init", InitController, :init
 
     post "/combat", CombatController, :generate
     get "/combat/hazard", CombatController, :new_hazard
     get "/combat/terrain_feature", CombatController, :new_terrain_feature
+  end
+
+  scope "/api" do
+    pipe_through :api
+
+    get "/openapi", OpenApiSpex.Plug.RenderSpec, []
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development

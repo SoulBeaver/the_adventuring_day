@@ -1,6 +1,6 @@
 defmodule TheAdventuringDayWeb.ApiSpec do
   alias OpenApiSpex.{Components, Info, OpenApi, Paths, Server}
-  alias MyAppWeb.{Endpoint, Router}
+  alias TheAdventuringDayWeb.{Endpoint, Router}
   @behaviour OpenApi
 
   @impl OpenApi
