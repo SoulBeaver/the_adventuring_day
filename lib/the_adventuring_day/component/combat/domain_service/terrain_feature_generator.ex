@@ -22,7 +22,7 @@ defmodule TheAdventuringDay.Component.Combat.DomainService.TerrainFeatureGenerat
   TODO
   """
   @spec generate_terrain_features(pos_integer()) :: {:ok, list(GeneratedTerrainFeature.t())} | {:error, term()}
-  def generate_terrain_features(max_terrain_features \\ 4)
+  def generate_terrain_features(max_terrain_features \\ 3)
 
   def generate_terrain_features(max_terrain_features) when max_terrain_features <= 0 do
     {:error, :invalid_max_terrain_features}

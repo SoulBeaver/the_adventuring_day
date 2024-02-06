@@ -21,7 +21,7 @@ defmodule TheAdventuringDay.Component.Combat.DomainService.HazardFeatureGenerato
   TODO
   """
   @spec generate_hazard_features(pos_integer()) :: {:ok, list(GeneratedHazardFeature.t())} | {:error, term()}
-  def generate_hazard_features(max_hazard_features \\ 4)
+  def generate_hazard_features(max_hazard_features \\ 2)
 
   def generate_hazard_features(max_hazard_features) when max_hazard_features <= 0 do
     {:error, :invalid_max_hazard_features}

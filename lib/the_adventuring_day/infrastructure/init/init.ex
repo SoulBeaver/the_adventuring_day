@@ -32,7 +32,7 @@ defmodule TheAdventuringDay.Infrastructure.Init.Init do
         %{amount: 1, role: :wrecker, level: :same_level, type: :double_strength}
       ],
       addons: %{
-        enemy_roles: [:archer, :blocker, :caster, :leader, :spoiler],
+        enemy_roles: [:archer, :blocker, :caster, :leader, :spoiler, :troop],
         enemy_levels: [:same_level, :one_level_lower],
         enemy_types: [:mook]
       },
@@ -42,6 +42,100 @@ defmodule TheAdventuringDay.Infrastructure.Init.Init do
       ],
       permutations: [
         %{when_amount: 2, when_role: :wrecker, then_type: :standard}
+      ]
+    })
+
+    EnemyTemplateSpecRepo.insert_enemy_template_spec!(%{
+      min_budget_required: 3.5,
+      template: [
+        %{amount: 1, role: :spoiler, level: :one_level_higher, type: :standard},
+        %{amount: 2, role: :troop, level: :same_level, type: :mook}
+      ],
+      addons: %{
+        enemy_roles: [:archer, :blocker, :caster, :leader, :spoiler, :troop],
+        enemy_levels: [:same_level, :one_level_lower],
+        enemy_types: [:double_strength, :elite]
+      },
+      restrictions: [
+        %{max_size: 2, enemy_roles: [:spoiler]},
+        %{max_size: 2, enemy_types: [:mook]},
+        %{max_size: 1, enemy_roles: [:wrecker]}
+      ],
+      permutations: []
+    })
+
+    EnemyTemplateSpecRepo.insert_enemy_template_spec!(%{
+      min_budget_required: 3.75,
+      template: [
+        %{amount: 1, role: :leader, level: :same_level, type: :standard},
+        %{amount: 1, role: :archer, level: :same_level, type: :standard},
+        %{amount: 1, role: :blocker, level: :same_level, type: :standard},
+        %{amount: 1, role: :troop, level: :same_level, type: :mook},
+      ],
+      addons: %{
+        enemy_roles: [:archer, :blocker, :caster, :leader, :spoiler, :troop],
+        enemy_levels: [:same_level, :one_level_higher, :one_level_lower],
+        enemy_types: [:double_strength, :elite, :mook]
+      },
+      restrictions: [
+        %{max_size: 1, enemy_roles: [:leader]}
+      ],
+      permutations: []
+    })
+
+    EnemyTemplateSpecRepo.insert_enemy_template_spec!(%{
+      min_budget_required: 3.5,
+      template: [
+        %{amount: 1, role: :wrecker, level: :same_level, type: :double_strength},
+        %{amount: 1, role: :archer, level: :same_level, type: :mook},
+        %{amount: 1, role: :troop, level: :same_level, type: :mook},
+      ],
+      addons: %{
+        enemy_roles: [:archer, :caster, :spoiler, :troop],
+        enemy_levels: [:same_level, :one_level_higher, :one_level_lower],
+        enemy_types: [:double_strength, :elite, :mook]
+      },
+      restrictions: [
+        %{max_size: 1, enemy_roles: [:wrecker]}
+      ],
+      permutations: []
+    })
+
+    EnemyTemplateSpecRepo.insert_enemy_template_spec!(%{
+      min_budget_required: 5,
+      template: [
+        %{amount: 3, role: :troop, level: :same_level, type: :standard},
+        %{amount: 1, role: :caster, level: :same_level, type: :standard},
+        %{amount: 1, role: :spoiler, level: :same_level, type: :standard}
+      ],
+      addons: %{
+        enemy_roles: [:archer, :blocker, :caster, :leader, :spoiler, :troop],
+        enemy_levels: [:same_level, :one_level_higher, :one_level_lower],
+        enemy_types: [:double_strength, :elite, :mook]
+      },
+      restrictions: [
+        %{max_size: 1, enemy_roles: [:leader]}
+      ],
+      permutations: []
+    })
+
+    EnemyTemplateSpecRepo.insert_enemy_template_spec!(%{
+      min_budget_required: 3.5,
+      template: [
+        %{amount: 2, role: :wrecker, level: :same_level, type: :mook},
+        %{amount: 1, role: :wrecker, level: :same_level, type: :standard},
+        %{amount: 1, role: :spoiler, level: :same_level, type: :standard}
+      ],
+      addons: %{
+        enemy_roles: [:archer, :blocker, :caster, :leader, :spoiler, :troop],
+        enemy_levels: [:same_level, :one_level_higher, :one_level_lower],
+        enemy_types: [:double_strength, :elite, :mook]
+      },
+      restrictions: [
+        %{max_size: 1, enemy_roles: [:leader]}
+      ],
+      permutations: [
+        %{when_amount: 3, when_role: :wrecker, then_level: :one_level_lower}
       ]
     })
   end
@@ -143,6 +237,126 @@ defmodule TheAdventuringDay.Infrastructure.Init.Init do
       name: "Sawblade trap",
       description: """
       There are sawblades in the walls, floor or ceiling. Stepping on a pressure plate activates the sawblades and slice through whatever's in their path.
+      """
+    })
+
+    HazardFeaturesRepo.insert_hazard_feature!(%{
+      hazard_type: :terrain,
+      name: "Spiderwebs",
+      description: """
+      Huge spiderwebs that not only count as difficult terrain, they each have thousands of smaller spiders waiting in the wings to descent and bite whichever creature is stuck there.
+      """
+    })
+
+    HazardFeaturesRepo.insert_hazard_feature!(%{
+      hazard_type: :trap,
+      name: "Illusory wall",
+      description: """
+      This room appears much smaller than it actually is. Anyone thrown against the wall instead flies through, dispelling the illusion and revealing a much larger arena behind it.
+      """
+    })
+
+    HazardFeaturesRepo.insert_hazard_feature!(%{
+      hazard_type: :trap,
+      name: "Crushing walls",
+      description: """
+      The walls of this area are closing in on one another. Perhaps it's two side walls, or maybe the ceiling. In a matter of rounds everything in this room will be crushed.
+      """
+    })
+
+    HazardFeaturesRepo.insert_hazard_feature!(%{
+      hazard_type: :terrain,
+      name: "Grasping slime",
+      description: """
+      Grasping slime is difficult terrain that literally reaches up to grab the legs and arms of anyone passing through.
+      """
+    })
+
+    HazardFeaturesRepo.insert_hazard_feature!(%{
+      hazard_type: :terrain,
+      name: "Ember moss",
+      description: """
+      This pernicious moss clumps drains the character standing on them of heat. Whats worse, the user becomes vulnerable to cold.
+      """
+    })
+
+    HazardFeaturesRepo.insert_hazard_feature!(%{
+      hazard_type: :zone,
+      name: "Falling swords",
+      description: """
+      Hundreds of swords hang like the sword of damocles over the arena. Every once in a while some of them fall down and slice through anything in their path.
+      """
+    })
+
+    HazardFeaturesRepo.insert_hazard_feature!(%{
+      hazard_type: :zone,
+      name: "Dimensional turbulence",
+      description: """
+      This nexus has long lost its control and stability as a gateway to another plane. A random amount of creatures nearest to the nexus are immediately teleported to somewhere else in the arena.
+      """
+    })
+
+    HazardFeaturesRepo.insert_hazard_feature!(%{
+      hazard_type: :zone,
+      name: "Astral flame",
+      description: """
+      Fiery liquid that sheds bright light, the astral flame completely engulfs whatever it touches. Every so often it moves, slowly, to a new location.
+      """
+    })
+
+    HazardFeaturesRepo.insert_hazard_feature!(%{
+      hazard_type: :zone,
+      name: "Ravenous bats",
+      description: """
+      These bats have long succumbed to an unknown frenzy. Only living flesh will sate them, and not even yours is enough to do so. These are like flying piranhas attracted by blood.
+      """
+    })
+
+    HazardFeaturesRepo.insert_hazard_feature!(%{
+      hazard_type: :terrain,
+      name: "Blood rock",
+      description: """
+      Bloodred moss clumps cover the rocks in this area. Anyone standing close to them becomes infected with rage. All of their critical hits become more potent.
+      """
+    })
+
+    HazardFeaturesRepo.insert_hazard_feature!(%{
+      hazard_type: :terrain,
+      name: "Abyssal wellspring",
+      description: """
+      A wellspring capable of judging a lifetime's worth of deeds. Any found guilty of committing grievous acts against demons and devils is severely punished in its presence.
+      """
+    })
+
+    HazardFeaturesRepo.insert_hazard_feature!(%{
+      hazard_type: :trap,
+      name: "Undead in a barrel",
+      description: """
+      The loathsome undead have been forced into a barrel and were sealed away for millennia. The stench from opening it would be unbearable, not to mention the rotblack sludge of the undead's remains.
+      """
+    })
+
+    HazardFeaturesRepo.insert_hazard_feature!(%{
+      hazard_type: :terrain,
+      name: "Fate of Phalanxes",
+      description: """
+      Helmeted iron skulls tumble over one another at the bottom of this mass grave, their horns forming a cruel curved bed of mithril spikes.
+      """
+    })
+
+    HazardFeaturesRepo.insert_hazard_feature!(%{
+      hazard_type: :terrain,
+      name: "Corroded cavity",
+      description: """
+      Transluscent emerald sludge churns at the bottom of this rough-hewn pit. Three corroded skeletons hang suspended in the sludge.
+      """
+    })
+
+    HazardFeaturesRepo.insert_hazard_feature!(%{
+      hazard_type: :trap,
+      name: "Bear trap",
+      description: """
+      A mean metal snare used to agonize and inhibit the movement of its victims. Either out in the open or cleverly hidden.
       """
     })
   end
