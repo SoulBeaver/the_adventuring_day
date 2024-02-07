@@ -11,7 +11,7 @@ defmodule TheAdventuringDay.Component.Combat.DomainService.CombatGeneratorTest d
     setup_enemy_template_data()
     setup_terrain_features_data()
 
-    {:ok, encounter} =
+    {:ok, _encounter} =
       CombatGenerator.generate(:standard, :interior, 5)
 
     # assert match?(%CombatGenerator{

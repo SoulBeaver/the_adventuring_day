@@ -11,9 +11,9 @@ defmodule TheAdventuringDay.Infrastructure.Init.InitTest do
   test "Initializes the database" do
     Init.seed_data()
 
-    assert Repo.aggregate(EnemyTemplateSpec, :count, :id) == 1
+    assert Repo.aggregate(EnemyTemplateSpec, :count, :id) == 6
     assert Repo.aggregate(TerrainFeatures, :count, :id) == 6
-    assert Repo.aggregate(HazardFeatures, :count, :id) == 1
+    assert Repo.aggregate(HazardFeatures, :count, :id) == 16
   end
 
   test "Initialization of the DB is idempotent" do
@@ -21,8 +21,8 @@ defmodule TheAdventuringDay.Infrastructure.Init.InitTest do
     Init.seed_data()
     Init.seed_data()
 
-    assert Repo.aggregate(EnemyTemplateSpec, :count, :id) == 1
+    assert Repo.aggregate(EnemyTemplateSpec, :count, :id) == 6
     assert Repo.aggregate(TerrainFeatures, :count, :id) == 6
-    assert Repo.aggregate(HazardFeatures, :count, :id) == 1
+    assert Repo.aggregate(HazardFeatures, :count, :id) == 16
   end
 end

@@ -9,6 +9,6 @@ defmodule TheAdventuringDayWeb.AuthController do
     conn
     |> AuthPlug.logout()
     |> put_status(302)
-    |> redirect(to: ~p"/items")
+    |> redirect(to: ~p"/")
   end
 end

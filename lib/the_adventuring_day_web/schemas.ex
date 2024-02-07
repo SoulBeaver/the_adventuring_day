@@ -90,7 +90,7 @@ defmodule TheAdventuringDayWeb.Schemas do
         ],
         hazards: [
           %{
-            azard_type: "trap",
+            hazard_type: "trap",
             name: "Sawblade trap",
             description: "Sawblades come out of the floor and slice and dice anything in their path."
           }
@@ -149,7 +149,7 @@ defmodule TheAdventuringDayWeb.Schemas do
         ],
         hazards: [
           %{
-            azard_type: "trap",
+            hazard_type: "trap",
             name: "Sawblade trap",
             description: "Sawblades come out of the floor and slice and dice anything in their path."
           }
@@ -168,7 +168,7 @@ defmodule TheAdventuringDayWeb.Schemas do
       },
       example: %{
         hazard: %{
-          azard_type: "trap",
+          hazard_type: "trap",
           name: "Sawblade trap",
           description: "Sawblades come out of the floor and slice and dice anything in their path."
         }

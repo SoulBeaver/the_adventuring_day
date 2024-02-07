@@ -1,23 +1,24 @@
 defmodule TheAdventuringDayWeb.CombatController do
+  @moduledoc """
+  TODO
+  """
+
   use TheAdventuringDayWeb, :controller
   use OpenApiSpex.ControllerSpecs
 
-  alias OpenApiSpex.{Schema, Reference}
+  alias OpenApiSpex.Reference
 
   alias TheAdventuringDayWeb.Schemas
   alias TheAdventuringDay.Component.Combat.DomainService.CombatGenerator
   alias TheAdventuringDay.Component.Combat.DomainService.HazardFeatureGenerator
   alias TheAdventuringDay.Component.Combat.DomainService.TerrainFeatureGenerator
 
-  # defparams encounter_details %{
-  #   party_members!: :integer,
-  #   encounter_difficulty!: [field: Ecto.Enum, values: [:easy, :medium, :hard]],
-  #   environs: [field: Ecto.Enum, values: [:indoor, :outdoor]],
-  #   complexity: [field: Ecto.Enum, values: [:simple, :complex]]
-  # }
+  action_fallback UpdatedPhxWeb.FallbackController
+
+  plug OpenApiSpex.Plug.CastAndValidate, json_render_error_v2: true
 
   tags ["combat"]
-  # security [%{}, %{"oauth" => ["user:email"]}]
+  # security [%{"JWT" => []}]
 
   operation :generate,
     summary: "Generate combat encounter",
@@ -29,7 +30,7 @@ defmodule TheAdventuringDayWeb.CombatController do
       bad_request: %Reference{"$ref": "#/components/responses/bad_request"}
     ]
 
-  def generate(conn, params) do
+  def generate(conn, _params) do
     {:ok, encounter} = CombatGenerator.generate(:medium, :outdoor, 4)
     render(conn, :new_encounter, encounter: encounter)
   end

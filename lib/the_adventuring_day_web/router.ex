@@ -1,6 +1,16 @@
 defmodule TheAdventuringDayWeb.Router do
   use TheAdventuringDayWeb, :router
 
+  @swagger_ui_config [
+    path: "/api/openapi",
+    default_model_expand_depth: 3,
+    display_operation_id: true,
+    oauth2_redirect_url: {:endpoint_url, "/swaggerui/oauth2-redirect.html"},
+    oauth: []
+  ]
+
+  def swagger_ui_config, do: @swagger_ui_config
+
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
@@ -33,10 +43,10 @@ defmodule TheAdventuringDayWeb.Router do
     get "/logout", AuthController, :logout
   end
 
-  scope "/", TheAdventuringDayWeb do
+  scope "/" do
     pipe_through :browser
 
-    get "/swaggerui", OpenApiSpex.Plug.SwaggerUI, @swagger_ui_config
+    get "/swaggerui", OpenApiSpex.Plug.SwaggerUI, path: "/api/openapi"
   end
 
   # Other scopes may use custom stacks.
@@ -48,6 +58,10 @@ defmodule TheAdventuringDayWeb.Router do
     post "/combat/new", CombatController, :generate
     get "/combat/new/hazard", CombatController, :new_hazard
     get "/combat/new/terrain_feature", CombatController, :new_terrain_feature
+  end
+
+  scope "/api" do
+    pipe_through :api
 
     get "/openapi", OpenApiSpex.Plug.RenderSpec, []
   end
