@@ -24,7 +24,7 @@ defmodule TheAdventuringDay.Component.Combat.DomainService.CombatGenerator do
   @type group_size :: pos_integer()
 
   # def generate(complexity, realism, difficulty, environment, group_size)
-  @spec generate(difficulty(), environment(), group_size()) :: t() | {:error, term()}
+  @spec generate(difficulty(), environment(), group_size()) :: {:ok, t()} | {:error, term()}
   def generate(_difficulty, _environment, group_size) do
     with {:ok, enemies} <- EnemyGenerator.generate_enemies(group_size),
          {:ok, terrain_features} <- TerrainFeatureGenerator.generate_terrain_features(),

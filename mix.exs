@@ -62,6 +62,7 @@ defmodule TheAdventuringDay.MixProject do
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
       {:open_api_spex, "~> 3.18"},
+      {:auth_plug, "~> 1.5"},
 
       {:stream_data, "~> 0.6", only: :test},
 

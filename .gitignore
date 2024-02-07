@@ -35,3 +35,6 @@ the_adventuring_day-*.tar
 npm-debug.log
 /assets/node_modules/
 
+# Ignore .env which contains env vars such as the AUTH token
+.env
+.env.bat

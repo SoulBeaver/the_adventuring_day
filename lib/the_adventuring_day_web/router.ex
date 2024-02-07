@@ -16,6 +16,23 @@ defmodule TheAdventuringDayWeb.Router do
     plug OpenApiSpex.Plug.PutApiSpec, module: TheAdventuringDayWeb.ApiSpec
   end
 
+  pipeline :auth, do: plug(AuthPlug)
+  pipeline :authOptional, do: plug(AuthPlugOptional)
+
+  pipeline :auth_api do
+    plug :fetch_session
+    plug(AuthPlug)
+  end
+
+  scope "/", TheAdventuringDayWeb do
+    pipe_through :browser
+    pipe_through :authOptional
+
+    get "/", PageController, :home
+    get "/login", AuthController, :login
+    get "/logout", AuthController, :logout
+  end
+
   scope "/", TheAdventuringDayWeb do
     pipe_through :browser
 
@@ -28,15 +45,18 @@ defmodule TheAdventuringDayWeb.Router do
 
     post "/init", InitController, :init
 
-    post "/combat", CombatController, :generate
-    get "/combat/hazard", CombatController, :new_hazard
-    get "/combat/terrain_feature", CombatController, :new_terrain_feature
-  end
-
-  scope "/api" do
-    pipe_through :api
+    post "/combat/new", CombatController, :generate
+    get "/combat/new/hazard", CombatController, :new_hazard
+    get "/combat/new/terrain_feature", CombatController, :new_terrain_feature
 
     get "/openapi", OpenApiSpex.Plug.RenderSpec, []
+  end
+
+  scope "/api", TheAdventuringDayWeb do
+    pipe_through :api
+    pipe_through :auth_api
+
+    post "/combat/", CombatController, :save
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development

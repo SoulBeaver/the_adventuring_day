@@ -57,4 +57,16 @@ defmodule TheAdventuringDayWeb.CombatController do
     {:ok, terrain_feature} = TerrainFeatureGenerator.generate_terrain_features(1)
     render(conn, :new_terrain_feature, terrain_feature: terrain_feature |> hd)
   end
+
+  operation :save,
+  summary: "Save the combat encounter",
+  description: "Saves the combat encounter for the logged-in user.",
+  responses: [
+    ok: {"CombatEncounter Response", "application/json", Schemas.CombatEncounterResponse}
+  ]
+
+  def save(conn, _params) do
+    {:ok, encounter} = CombatGenerator.generate(:medium, :outdoor, 4)
+    render(conn, :new_encounter, encounter: encounter)
+  end
 end
