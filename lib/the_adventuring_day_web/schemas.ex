@@ -19,6 +19,28 @@ defmodule TheAdventuringDayWeb.Schemas do
     })
   end
 
+  defmodule Enemies do
+    OpenApiSpex.schema(%{
+      title: "Enemies",
+      description: "Template containing all enemy groups and their respective budget cost.",
+      type: :object,
+      properties: %{
+        available_budget: %Schema{type: :number, format: :float},
+        budget_used: %Schema{type: :number, format: :float},
+        template: %Schema{type: :array, items: Enemy}
+      },
+      example: %{
+        available_budget: 5.0,
+        budget_used: 1.0,
+        template: %{
+          amount: 2,
+          role: "archer",
+          level: "same_level",
+          type: "double_strength"}
+        }
+    })
+  end
+
   defmodule TerrainFeature do
     OpenApiSpex.schema(%{
       title: "TerrainFeature",
@@ -65,9 +87,9 @@ defmodule TheAdventuringDayWeb.Schemas do
       description: "A generated combat encounter",
       type: :object,
       properties: %{
-        enemies: Enemy,
-        terrain_features: TerrainFeature,
-        hazards: Hazard
+        enemies: Enemies,
+        terrain_features: %Schema{type: :array, items: TerrainFeature},
+        hazards: %Schema{type: :array, items: Hazard}
       },
       example: %{
         enemies: %{
@@ -120,6 +142,46 @@ defmodule TheAdventuringDayWeb.Schemas do
     })
   end
 
+  defmodule PersistCombatEncounterRequest do
+    OpenApiSpex.schema(%{
+      title: "PersistCombatEncounterRequest",
+      description: "Request schema for a combat encounter to persist",
+      type: :object,
+      properties: %{
+        encounter: CombatEncounter
+      },
+      example: %{
+        encounter: %{
+          enemies: %{
+            available_budget: 7,
+            budget_used: 6.5,
+            template: [
+              %{amount: 2, role: "archer", level: "same_level", type: "double_strength"},
+              %{amount: 2, role: "troop", level: "same_level", type: "mook"},
+              %{amount: 1, role: "leader", level: "same_level", type: "standard"}
+            ]
+          },
+          terrain_features: [
+            %{
+              terrain_type: "difficult",
+              name: "Difficult terrain",
+              description: "Difficult terrain is difficult to move through and costs additional move points.",
+              interior_examples: ["rubble"],
+              exterior_examples: ["dense foliage"]
+            }
+          ],
+          hazards: [
+            %{
+              hazard_type: "trap",
+              name: "Sawblade trap",
+              description: "Sawblades come out of the floor and slice and dice anything in their path."
+            }
+          ]
+        }
+      }
+    })
+  end
+
   defmodule CombatEncounterResponse do
     OpenApiSpex.schema(%{
       title: "CombatEncounterResponse",
@@ -129,31 +191,33 @@ defmodule TheAdventuringDayWeb.Schemas do
         encounter: CombatEncounter
       },
       example: %{
-        enemies: %{
-          available_budget: 7,
-          budget_used: 6.5,
-          template: [
-            %{amount: 2, role: "archer", level: "same_level", type: "double_strength"},
-            %{amount: 2, role: "troop", level: "same_level", type: "mook"},
-            %{amount: 1, role: "leader", level: "same_level", type: "standard"}
+        encounter: %{
+          enemies: %{
+            available_budget: 7,
+            budget_used: 6.5,
+            template: [
+              %{amount: 2, role: "archer", level: "same_level", type: "double_strength"},
+              %{amount: 2, role: "troop", level: "same_level", type: "mook"},
+              %{amount: 1, role: "leader", level: "same_level", type: "standard"}
+            ]
+          },
+          terrain_features: [
+            %{
+              terrain_type: "difficult",
+              name: "Difficult terrain",
+              description: "Difficult terrain is difficult to move through and costs additional move points.",
+              interior_examples: ["rubble"],
+              exterior_examples: ["dense foliage"]
+            }
+          ],
+          hazards: [
+            %{
+              hazard_type: "trap",
+              name: "Sawblade trap",
+              description: "Sawblades come out of the floor and slice and dice anything in their path."
+            }
           ]
-        },
-        terrain_features: [
-          %{
-            terrain_type: "difficult",
-            name: "Difficult terrain",
-            description: "Difficult terrain is difficult to move through and costs additional move points.",
-            interior_examples: ["rubble"],
-            exterior_examples: ["dense foliage"]
-          }
-        ],
-        hazards: [
-          %{
-            hazard_type: "trap",
-            name: "Sawblade trap",
-            description: "Sawblades come out of the floor and slice and dice anything in their path."
-          }
-        ]
+        }
       }
     })
   end

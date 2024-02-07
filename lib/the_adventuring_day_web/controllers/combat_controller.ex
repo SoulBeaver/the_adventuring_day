@@ -12,6 +12,7 @@ defmodule TheAdventuringDayWeb.CombatController do
   alias TheAdventuringDay.Component.Combat.DomainService.CombatGenerator
   alias TheAdventuringDay.Component.Combat.DomainService.HazardFeatureGenerator
   alias TheAdventuringDay.Component.Combat.DomainService.TerrainFeatureGenerator
+  alias TheAdventuringDay.Infrastructure.Persistence.CombatEncounterRepo
 
   action_fallback UpdatedPhxWeb.FallbackController
 
@@ -62,12 +63,58 @@ defmodule TheAdventuringDayWeb.CombatController do
   operation :save,
   summary: "Save the combat encounter",
   description: "Saves the combat encounter for the logged-in user.",
-  responses: [
+  request_body:
+      {"Combat encounter attributes", "application/json", Schemas.PersistCombatEncounterRequest, required: true},
+  responses: %{
+    422 => OpenApiSpex.JsonErrorResponse.response(),
     ok: {"CombatEncounter Response", "application/json", Schemas.CombatEncounterResponse}
-  ]
+  }
 
-  def save(conn, _params) do
-    {:ok, encounter} = CombatGenerator.generate(:medium, :outdoor, 4)
-    render(conn, :new_encounter, encounter: encounter)
+  def save(conn = %{
+    body_params: %Schemas.PersistCombatEncounterRequest{
+      encounter: %Schemas.CombatEncounter{
+        enemies: %Schemas.Enemies{
+          available_budget: available_budget,
+          budget_used: budget_used,
+          template: template
+        },
+        terrain_features: terrain_features,
+        hazards: hazards
+      }
+    }
+  }, _params) do
+
+    encounter_params = %{
+      person_id: Map.get(conn.assigns.person, :id),
+      enemies: %{
+        available_budget: available_budget,
+        budget_used: budget_used,
+        template: template |> Enum.map(&Map.from_struct/1)
+      },
+      terrain_features: terrain_features |> Enum.map(&Map.from_struct/1),
+      hazards: hazards |> Enum.map(&Map.from_struct/1)
+    }
+
+    with {:ok, saved_encounter} = CombatEncounterRepo.insert_combat_encounter(encounter_params) do
+      saved_encounter |> IO.inspect(label: :saved_encounter)
+      render(conn, :show, encounter: saved_encounter)
+    end
+  end
+
+  operation :show,
+  summary: "Show a saved encounter",
+  description: "Shows a previously saved combat encounter if it exists and the user was the one who saved it.",
+  parameters: [
+    id: [in: :path, type: :integer, description: "Combat Encounter ID"]
+  ],
+  responses: %{
+    ok: {"CombatEncounter Response", "application/json", Schemas.CombatEncounterResponse}
+  }
+
+  def show(conn, %{id: combat_encounter_id}) do
+    person_id = Map.get(conn.assigns.person, :id)
+
+    encounter = CombatEncounterRepo.get_combat_encounter!(combat_encounter_id, person_id)
+    render(conn, :show, encounter: encounter)
   end
 end

@@ -11,6 +11,19 @@ defmodule TheAdventuringDayWeb.CombatJSON do
     }}
   end
 
+  def show(%{encounter: encounter}) do
+    enemies =
+      %{encounter.enemies | template: encounter.enemies.template |> Enum.map(&Map.from_struct/1)}
+      |> Map.from_struct()
+
+    %{encounter: %{
+      :id => encounter.id,
+      :enemies => enemies,
+      :terrain_features => encounter.terrain_features |> Enum.map(&Map.from_struct/1),
+      :hazards => encounter.hazards |> Enum.map(&Map.from_struct/1)
+    }}
+  end
+
   def new_hazard(%{hazard: hazard}) do
     %{hazard: Map.from_struct(hazard)}
   end

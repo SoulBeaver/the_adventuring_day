@@ -10,29 +10,31 @@ defmodule TheAdventuringDay.Component.Combat.DomainService.EnemyGenerator do
   @budget_threshold -0.5
 
   defmodule GeneratedEnemyTemplate do
-    defstruct available_budget: 0,
-              budget_used: 0,
+    defstruct available_budget: 0.0,
+              budget_used: 0.0,
               template: []
 
     @type t :: %__MODULE__{
-            available_budget: pos_integer(),
-            budget_used: pos_integer(),
-            template: list(enemy())
-          }
+      available_budget: float(),
+      budget_used: float(),
+      template: list(enemy())
+    }
 
     @type enemy :: %{
-            amount: pos_integer(),
-            role: enemy_role(),
-            level: enemy_level(),
-            type: enemy_type()
-          }
+      amount: pos_integer(),
+      role: enemy_role(),
+      level: enemy_level(),
+      type: enemy_type()
+    }
 
     @type enemy_role() :: EnemyTemplateSpec.enemy_role()
     @type enemy_level() :: EnemyTemplateSpec.enemy_level()
     @type enemy_type() :: EnemyTemplateSpec.enemy_type()
   end
 
-  defstruct total_budget: 0, available_budget: 0, enemy_template_spec: nil
+  defstruct total_budget: 0.0,
+            available_budget: 0.0,
+            enemy_template_spec: nil
 
   @doc """
   Generates a list of enemies for the encounter based on an existing template.

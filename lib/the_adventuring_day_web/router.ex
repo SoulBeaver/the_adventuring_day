@@ -71,6 +71,7 @@ defmodule TheAdventuringDayWeb.Router do
     pipe_through :auth_api
 
     post "/combat/", CombatController, :save
+    get "/combat/:id", CombatController, :show
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
