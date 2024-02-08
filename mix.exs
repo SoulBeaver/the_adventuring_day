@@ -30,7 +30,7 @@ defmodule TheAdventuringDay.MixProject do
   def application do
     [
       mod: {TheAdventuringDay.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :observer, :wx]
     ]
   end
 
