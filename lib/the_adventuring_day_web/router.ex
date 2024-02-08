@@ -49,7 +49,6 @@ defmodule TheAdventuringDayWeb.Router do
     get "/swaggerui", OpenApiSpex.Plug.SwaggerUI, path: "/api/openapi"
   end
 
-  # Other scopes may use custom stacks.
   scope "/api", TheAdventuringDayWeb do
     pipe_through :api
 

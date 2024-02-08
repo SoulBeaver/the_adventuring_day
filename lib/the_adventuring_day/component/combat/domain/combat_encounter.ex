@@ -59,8 +59,6 @@ defmodule TheAdventuringDay.Component.Combat.Domain.CombatEncounter do
   defp enemy_template_template_changeset(template, params) do
     all_fields = [:amount, :role, :level, :type]
 
-    params |> IO.inspect(label: :template_params)
-
     template
     |> cast(params, all_fields)
     |> validate_required(all_fields)

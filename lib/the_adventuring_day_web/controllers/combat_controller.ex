@@ -6,8 +6,6 @@ defmodule TheAdventuringDayWeb.CombatController do
   use TheAdventuringDayWeb, :controller
   use OpenApiSpex.ControllerSpecs
 
-  alias OpenApiSpex.Reference
-
   alias TheAdventuringDayWeb.Schemas
   alias TheAdventuringDay.Component.Combat.DomainService.CombatGenerator
   alias TheAdventuringDay.Component.Combat.DomainService.HazardFeatureGenerator
@@ -19,20 +17,26 @@ defmodule TheAdventuringDayWeb.CombatController do
   plug OpenApiSpex.Plug.CastAndValidate, json_render_error_v2: true
 
   tags ["combat"]
-  # security [%{"JWT" => []}]
 
   operation :generate,
     summary: "Generate combat encounter",
     description: "Generates a new combat encounter based on the parameters provided.",
     request_body:
       {"Combat encounter attributes", "application/json", Schemas.CombatEncounterRequest, required: true},
-    responses: [
-      ok: {"Combat Encounter Response", "application/json", Schemas.CombatEncounterResponse},
-      bad_request: %Reference{"$ref": "#/components/responses/bad_request"}
-    ]
+    responses: %{
+      422 => OpenApiSpex.JsonErrorResponse.response(),
+      ok: {"Combat Encounter Response", "application/json", Schemas.CombatEncounterResponse}
+    }
 
-  def generate(conn, _params) do
-    {:ok, encounter} = CombatGenerator.generate(:medium, :outdoor, 4)
+  def generate(%{
+    body_params: %Schemas.CombatEncounterRequest{
+      party_members: party_members,
+      encounter_difficulty: encounter_difficulty,
+      environs: environs,
+      complexity: _complexity
+    }
+  } = conn, _params) do
+    {:ok, encounter} = CombatGenerator.generate(encounter_difficulty, environs, party_members)
     render(conn, :new_encounter, encounter: encounter)
   end
 
@@ -96,7 +100,6 @@ defmodule TheAdventuringDayWeb.CombatController do
     }
 
     with {:ok, saved_encounter} = CombatEncounterRepo.insert_combat_encounter(encounter_params) do
-      saved_encounter |> IO.inspect(label: :saved_encounter)
       render(conn, :show, encounter: saved_encounter)
     end
   end
