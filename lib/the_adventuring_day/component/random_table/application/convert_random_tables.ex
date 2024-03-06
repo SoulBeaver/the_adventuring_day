@@ -18,8 +18,8 @@ defmodule TheAdventuringDay.Component.RandomTable.Application.ConvertRandomTable
           | {:random_table_data, json()}
         ]) :: RandomTableCollection.t()
   def convert_random_tables(collection_name: _coll_name, table_names: table_names, random_table_data: data)
-    when length(table_names) != length(data) do
-      {:error, :table_names_mismatch}
+      when length(table_names) != length(data) do
+    {:error, :table_names_mismatch}
   end
 
   def convert_random_tables(

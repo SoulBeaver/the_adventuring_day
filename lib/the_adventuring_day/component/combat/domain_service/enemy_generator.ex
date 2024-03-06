@@ -15,17 +15,17 @@ defmodule TheAdventuringDay.Component.Combat.DomainService.EnemyGenerator do
               template: []
 
     @type t :: %__MODULE__{
-      available_budget: float(),
-      budget_used: float(),
-      template: list(enemy())
-    }
+            available_budget: float(),
+            budget_used: float(),
+            template: list(enemy())
+          }
 
     @type enemy :: %{
-      amount: pos_integer(),
-      role: enemy_role(),
-      level: enemy_level(),
-      type: enemy_type()
-    }
+            amount: pos_integer(),
+            role: enemy_role(),
+            level: enemy_level(),
+            type: enemy_type()
+          }
 
     @type enemy_role() :: EnemyTemplateSpec.enemy_role()
     @type enemy_level() :: EnemyTemplateSpec.enemy_level()
@@ -39,7 +39,7 @@ defmodule TheAdventuringDay.Component.Combat.DomainService.EnemyGenerator do
   @doc """
   Generates a list of enemies for the encounter based on an existing template.
   A template looks something like this:
-
+  
     %{
       min_budget_required: 4,
       template: [
@@ -60,17 +60,17 @@ defmodule TheAdventuringDay.Component.Combat.DomainService.EnemyGenerator do
         %{when_amount: 2, when_role: :wrecker, then_type: :standard}
       ]
     }
-
+  
   It is pre-populated with a selection of enemies. Each enemy has:
-
+  
   - Amount. How many units of that kind.
   - Role. The role of the unit specific to the 13th Age ruleset.
   - Level. Its level relative to the party.
   - Type. Its strength as a unit. Standard units are roughly on par with 1 PC, double_strength 2 PCs and so on.
-
+  
   Generation adds to the existing enemies or creates new ones based on the available budget given by the group_size parameter.
   There's a little wiggle room, but generation stops once the template is within -0.5 - 0.5 of the available budget.
-
+  
   New enemies are added from the available list of the Addons section. The maximum amount and type of enemies is limited by
   the Restrictions section. Permutations changes the existing template based on certain parameters. In the above example two
   :double_strength wreckers are downgraded to :standard even if they fit into the budget because of the massive damage they'd cause.

@@ -1,0 +1,1282 @@
+d100 Mission Type
+01-25 Individual
+26-50 Item
+51-75 Location
+76-00 Event
+
+d100 Individual mission
+01-05 Bribe or negotiate with
+06-10 Bring message to location of
+11-15 Capture or arrest
+16-20 Conceal/smuggle
+21-25 Deliver/transport
+26-30 Discover identity of
+31-35 Distract, decoy, or deceive
+36-40 Entrap or sting
+41-45 Extort from
+46-50 Find missing
+51-55 Get help from
+56-60 Guard/protect
+61-65 Incriminate or frame
+66-70 Kidnap
+71-75 Kill/assassinate
+76-80 Rescue
+81-85 Sabotage efforts of
+86-90 Spy upon
+91-95 Steal item from
+96-00 Waylay
+
+d100 Individual Subject of Mission
+01-05 Adventurer(s)
+06-10 Agent or diplomat
+11-15 Cleric or religious leader
+16-20 Criminal/outlaw
+21-25 Intelligent monster
+26-30 Local noble
+31-35 Magic-user
+36-40 Messenger
+41-45 Saboteur
+46-50 Secret agent or spy
+51-00 #patrons_and_targets#
+
+d100 Item Mission
+01-05 Attack to obtain
+06-10 Conceal
+11-15 Defend
+16-20 Deliver or transport
+21-25 Destroy
+26-30 Fake existence of
+31-35 Find or locate
+36-40 Guard or protect
+41-45 Hide
+46-50 Hijack
+51-55 Prevent delivery of
+56-60 Prevent sabotage of
+61-65 Raid to obtain
+66-70 Retake or repossess
+71-75 Sabotage
+76-80 Salvage from dangerous place
+81-85 Smuggle
+86-90 Steal from within location
+91-95 Steal while in transit
+96-00 Swap fake imitation
+
+d100 Item Subject of Mission
+01-05 Body or corpse
+06-10 Cargo
+11-15 Cattle or livestock
+16-20 Clue
+21-25 Evidence of crime
+26-30 Evidence of innocence
+31-35 Gold or jewelry
+36-40 Magic item
+41-45 Map
+46-50 Message or letter
+51-55 Monster
+56-60 Mysterious sealed container
+61-65 Ownership documents
+66-70 Religious item
+71-75 Ship
+76-80 Statue or idol (portable)
+81-85 Symbol of authority
+86-90 Unusual animal (familiar, mascot, pet, prize cow, etc.)
+91-95 Vehicles with cargo
+96-00 Weapon (siege engine, famous sword, etc)
+
+d100 Location Mission
+01-04 Assault
+05-08 Assault
+09-12 Break siege of
+13-16 Capture and hold
+17-20 Defend from attack
+21-24 Defend from attack
+25-28 Destroy
+29-32 Escape from
+33-36 Explore
+37-40 Find or locate
+41-44 Get supplies to
+45-48 Infiltrate and control
+49-52 Infiltrate and spy upon
+53-56 Liberate
+57-60 Locate intruder/spy
+61-64 Loot
+65-68 Loot
+69-72 Protect from infiltration
+73-76 Reinforce
+77-80 Rescue hostages from
+81-84 Rescue hostages from
+85-88 Retake
+89-92 Secretly return something to
+93-96 Stage raid upon
+97-00 Stage raid upon
+
+d100 Location Subject of Mission
+01-04 Archaeological dig
+05-08 Caravan
+09-12 Castle
+13-16 Caves
+17-20 Cottage
+21-24 Dungeon
+25-28 Encampment
+29-32 Extra-planar area
+33-36 Flying Structure
+37-40 Flying Vehicle
+41-44 Forest
+45-48 Fort
+49-52 Fortified building or manor
+53-56 Grove
+57-60 Oasis
+61-64 Prison
+65-68 Ruins
+69-72 Ship
+73-76 Stockade
+77-80 Swamp
+81-84 Tavern
+85-88 Temple
+89-92 Village
+93-96 Warehouse
+97-00 Wharfs or Docks
+
+d100 Event Mission
+01-05 Destroy results of
+06-10 Escape from
+11-15 Solve bizarre mystery arising from
+16-20 Expose someone involved in
+21-25 Expose someone involved in
+26-30 Hide evidence of what really happened in a recent
+31-35 Infiltrate group involved in
+36-40 Infiltrate group involved in
+41-45 Investigate events of a recent
+46-50 Investigate events of an ancient
+51-55 Lead or coordinate
+56-60 Plan and execute
+61-65 Prevent
+66-70 Prevent
+71-75 Protect someone involved in
+76-80 Protect someone involved in
+81-85 Sabotage
+86-90 Survive or overcome
+91-95 Survive or overcome
+96-00 Take leadership in
+
+d100 Event Subject of Mission
+01-05 Archaeological dig
+06-10 Arena or gladiatorial battle
+11-15 Arrest or trial
+16-20 Assassination
+21-25 Cattle drive through a dangerous area
+26-30 Coronation or transfer of power
+31-35 Coup d’etat or rebellion
+36-40 Criminal conspiracy
+41-45 Disruption of ceremony
+46-50 Duel
+51-55 Execution or imprisonment
+56-60 Exploration/mapping expedition
+61-65 Furtive, stealthy raid
+66-70 Military assault
+71-75 Murder or attempted murder
+76-80 Natural disaster
+81-85 Swindle
+86-90 Theft
+91-95 Trailblazing attempt into new area
+96-00 Treason and aftermath
+
+d1000 Patrons and targets
+01 Abbot (large abbey)
+02 Abbot (heretic)
+03 Abbot (minor abbey or hermitage)
+04 Accused person (guilty)
+05 Accused person (innocent)
+06 Accuser killer (roll a second time for victim’s identity, if desired)
+07 Actor (famous)
+08 Actor (leader of troupe)
+09 Actor (minor)
+10 Addict (alcohol)
+11 Addict (drugs)
+12 Addict (gambling)
+13 Addict (love)
+14 Addict (music)
+15 Addict (opium or hashish)
+16 Addict (other)
+17 Adulterer
+18 Adulterer (suspected)
+19 Adventurer (cleric)
+20 Adventurer (fighter)
+21 Adventurer (magic-user)
+22 Adventurer (thief)
+23 Agent (of deity)
+24 Agent (of demon)
+25 Agent (of fate)
+26 Agent (of guild)
+27 Agent (of merchant house)
+28 Agent (of mercy)
+29 Agent (of sultan)
+30 Agent (of the king)
+31 Agent (secret diplomat)
+32 Agent (secret police)
+33 Agent (spy)
+34 Alchemist
+35 Alchemist (with secret formula)
+36 Almoner (collecting alms)
+37 Almoner (dispensing alms)
+38 Almoner (embezzlement suspect)
+39 Ambassador (commercial or mercantile)
+40 Ambassador (local political)
+41 Ambassador (major political)
+42 Anarchist (at work)
+43 Anarchist (scheming)
+44 Anarchist (suspected)
+45 Anarcho-syndicalist peasant
+46 Animal trainer (normal animals)
+47 Animal trainer (unusual animals)
+48 Anonymous wretch
+49 Apothecary (illegal or unlicensed)
+50 Apothecary (legal)
+51 Apprentice (mundane craft)
+52 Apprentice (thief or assassin)
+53 Apprentice (wizard or alchemist)
+54 Architect (any)
+55 Architect (castle)
+56 Architect (dungeons or prison)
+57 Architect (palace)
+58 Archivist (births and deaths)
+59 Archivist (city or town history)
+60 Archivist (criminal records)
+61 Archivist (heraldry and lineage)
+62 Archivist (land rights)
+63 Archivist (noble family)
+64 Archivist (temple)
+65 Arena owner
+66 Armorer (famous)
+67 Armorer (skilled)
+68 Artifact holder or guardian
+69 Artificer (lenses and glass)
+70 Artificer (siege engines)
+71 Artificer (water power or aqueducts)
+72 Artisan (any)
+73 Artisan (glass)
+74 Assassin (currently employed)
+75 Assassin (not employed)
+76 Assistant or supporter (unauthorized)
+77 Astrologer (charlatan)
+78 Astrologer (in hiding)
+79 Astrologer (skillful)
+80 Auction-house owner
+81 Author (lascivious verse)
+82 Author (philosophical)
+83 Author (satirical)
+84 Author (spell book or magic tome)
+85 Bailiff (courtroom)
+86 Bailiff (sheriff’s official serving writs, process)
+87 Baker
+88 Bandit (highwayman)
+89 Bandit (leader)
+90 Bandit (lone)
+91 Bandit (popular hero)
+92 Bandit (with stolen treasure)
+93 Barbarian
+94 Barber
+95 Bard (on mission)
+96 Bard (traveling minstrel)
+97 Baron (poor)
+98 Baron (rich)
+99 Baroness (beautiful)
+100 Baroness (cruel)
+101 Baroness (ugly)
+102 Bazaar owner
+103 Beadle (major temple)
+104 Beadle (minor temple)
+105 Beadle (of heretical temple)
+106 Beggar (crippled)
+107 Beggar (normal)
+108 Beggar (secret identity)
+109 Beggar (thief)
+110 Beggar (witness)
+111 Beverage-maker
+112 Bird catcher (fabulous and magical birds)
+113 Bird catcher (falcons)
+114 Bird catcher (game birds)
+115 Bird catcher (songbirds)
+116 Bird-creature
+117 Blackmailer (highly successful)
+118 Blackmailer (knows of crime)
+119 Blackmailer (of evil target)
+120 Blackmailer (political secret)
+121 Blackmailer (sexual information)
+122 Blackmailer (temple secret)
+123 Blacksmith
+124 Blasphemer
+125 Blind man
+126 Bodyguard (failed)
+127 Bodyguard (working)
+128 Bookseller
+129 Bounty hunter (congenial)
+130 Bounty hunter (debtors)
+131 Bounty hunter (escaped prisoners)
+132 Bounty hunter (killer of criminals)
+133 Bounty hunter (unlicensed)
+134 Brigand (highwayman)
+135 Brigand (leader)
+136 Brigand (local hero)
+137 Brigand (seeking vengeance)
+138 Brigand (unjustly accused)
+139 Broker (caravan cargoes)
+140 Broker (gems)
+141 Broker (land)
+142 Broker (loans)
+143 Broker (ship cargoes)
+144 Broker of a strange transaction
+145 Brothel owner
+146 Bureaucratic official (cunning)
+147 Bureaucratic official (diligent)
+148 Bureaucratic official (loyal)
+149 Bureaucratic official (pompous)
+150 Burglar (retired)
+151 Burglar (working)
+152 Burned man
+153 Butcher (poor)
+154 Butcher (rich)
+155 Butcher (sinister)
+156 Butterfly woman
+157 Buyer (of something)
+158 Buyer (prospective)
+159 Captain (barge)
+160 Captain (fishing boat)
+161 Captain (infantry)
+162 Captain (mercenary)
+163 Captain (pirate)
+164 Captain (secret police)
+165 Captain (ship)
+166 Caravan owner
+167 Cartographer (skilled)
+168 Cartographer (with vital map)
+169 Cattle breeder
+170 Cattle owner
+171 Cattle thief
+172 Celebrity figure (artistic)
+173 Celebrity figure (foreign)
+174 Celebrity figure (genius)
+175 Celebrity figure (in hiding or disguise)
+176 Celebrity figure (local)
+177 Celebrity figure (magic-related)
+178 Celebrity figure (sport or contest)
+179 Challenge recipient (cheating)
+180 Challenge recipient (hiding)
+181 Chef (skilled)
+182 Chef (trying hard)
+183 Circus owner
+184 Cleric (evil or chaotic)
+185 Cleric (good or lawful)
+186 Cleric (rebel or heretic)
+187 Clone or simulacrum
+188 Clown (entertaining)
+189 Clown (evil)
+190 Collector (animals)
+191 Collector (books)
+192 Collector (insects)
+193 Collector (magic items)
+194 Collector (minerals)
+195 Collector (mundane items)
+196 Collector (plants)
+197 Collector (unusual: souls, auras, demons, etc)
+198 Commander (city guard)
+199 Commander (secret police)
+200 Connoisseur (dangerous experiences)
+201 Connoisseur (meat)
+202 Connoisseur (men)
+203 Connoisseur (music)
+204 Connoisseur (scents and perfumes)
+205 Connoisseur (wine)
+206 Connoisseur (women)
+207 Conservative
+208 Contest loser
+209 Contest winner
+210 Cook
+211 Cooper
+212 Counselor (attorney)
+213 Counselor (political)
+214 Counterfeiter
+215 Courier (documents)
+216 Courier (gems)
+217 Courier (illegal substances)
+218 Courier (political messages)
+219 Courier (stolen goods)
+220 Courtesan (high class)
+221 Courtesan (low class)
+222 Courtesan (noble)
+223 Courtesan (witness or has secret)
+224 Cousin of someone
+225 Craftsman (general)
+226 Craftsman (glassblower)
+227 Craftsman (magical materials)
+228 Crime boss (cursed)
+229 Crime boss (second in command)
+230 Crime boss (taking care of business)
+231 Crime boss (with personal problems)
+232 Crime boss (worried)
+233 Criminal (accidental)
+234 Criminal (escaped)
+235 Criminal (unjustly accused)
+236 Crippled man
+237 Cutpurse
+238 Damsel (beautiful and noble)
+239 Damsel (commoner)
+240 Damsel (conniving and deceitful)
+241 Damsel (distressed)
+242 Damsel (noble birth)
+243 Damsel (only a disguise)
+244 Damsel (shockingly ugly)
+245 Damsel (unchaste)
+246 Damsel (very intelligent, with a mission)
+247 Dancer (famous)
+248 Dancer (salacious)
+249 Dancer (supernatural capability)
+250 Deaf-mute
+251 Defender (of moral virtue)
+252 Defender (of the peace)
+253 Defender (of the poor)
+254 Deity (very minor) in disguise
+255 Demigod (cursed)
+256 Demigod (imprisoned)
+257 Demigod (incorporeal)
+258 Demonologist
+259 Dentist
+260 Dentist (insane)
+261 Dentist (sinister)
+262 Deserter (army)
+263 Deserter (criminal gang)
+264 Diplomat (any)
+265 Diplomat (commercial)
+266 Diplomat (political)
+267 Disembodied voice
+268 Doctor (charlatan)
+269 Doctor (general practice)
+270 Doctor (mystical)
+271 Doctor (sinister)
+272 Doctor (specialist)
+273 Druid
+274 Drummer
+275 Elemental creature
+276 Emissary (affairs of the heart)
+277 Emissary (commercial)
+278 Emissary (false)
+279 Emissary (political)
+280 Emissary (religious)
+281 Emissary (secret)
+282 Enchanter
+283 Enchanter (evil)
+284 Enchanter (insane)
+285 Enchanter (non-human)
+286 Enchanter (senile)
+287 Enchanter (very young)
+288 Enchantress (beautiful)
+289 Enchantress (in love)
+290 Enchantress (non-human)
+291 Enchantress (reborn)
+292 Enchantress (villainous)
+293 Engineer (aqueducts and water)
+294 Engineer (castles and temples)
+295 Engineer (dungeon excavation)
+296 Engineer (sieges)
+297 Escapee (disaster location)
+298 Escapee (monster’s lair)
+299 Escapee (prison)
+300 Escapee (wizard’s lab)
+301 Executioner
+302 Executioner (disgraced)
+303 Executioner (famous)
+304 Executioner (retired)
+305 Expert (code breaker)
+306 Expert (gems)
+307 Expert (investigator)
+308 Expert (magical substances)
+309 Expert (planting rumors)
+310 Expert (runes)
+311 Expert (weapons)
+312 Expert (wilderness tracking)
+313 Explorer
+314 Explorer (well known)
+315 Explorer (with secret knowledge)
+316 Extortionist (blackmailer)
+317 Extortionist (for something other than money)
+318 Extortionist (magical threats)
+319 Extortionist (violent)
+320 Extraplanar being
+321 Extraplanar being (in trouble)
+322 Falconer
+323 Falconer (unusual birds)
+324 Farmer (poor)
+325 Farmer (rich)
+326 Farmer (with three daughters)
+327 Father or mother
+328 Felon (innocent)
+329 Felon (oppressed)
+330 Ferryman
+331 Ferryman (hunchback)
+332 Fey creature or being
+333 Filthy peasant
+334 Fire marshal
+335 Fisherman (owns boat)
+336 Fisherman (poor)
+337 Flower arranger (possibly a monk?)
+338 Flower-bedecked woman
+339 Food-producer
+340 Fool (cursed)
+341 Fool (insane)
+342 Fool (professional)
+343 Foreigner (beautiful noblewoman)
+344 Foreigner (other plane of existence)
+345 Foreigner (sinister)
+346 Foreigner (spy)
+347 Foreigner (stranded)
+348 Foreigner (with outrageous accent)
+349 Forest owner/protector
+350 Forester (acorn-grubbing peasant)
+351 Forester (forest protector)
+352 Forger (artworks)
+353 Forger (documents)
+354 Fortune-teller (accurate)
+355 Fortune-teller (annoying doom-prophet)
+356 Fortune-teller (crone)
+357 Fortune-teller (fraud)
+358 Friend of Nature
+359 Fugitive
+360 Gambler (deadly games)
+361 Gambler (notorious cheat)
+362 Gambler (recent big losses)
+363 Gambler (recent big winnings)
+364 Gambler (with lucky charm)
+365 Gambling den owner
+366 Ghost (dangerous)
+367 Ghost (female)
+368 Ghost (harmless apparition)
+369 Ghost (unquiet spirit)
+370 Giant Insect (intelligent)
+371 Gladiator (famous)
+372 Gladiator (reluctant)
+373 Gladiatorial trainer
+374 Glassblower
+375 Goldsmith (cursed)
+376 Goldsmith (general)
+377 Goldsmith (impoverished)
+378 Goldsmith (rich)
+379 Goldsmith (skilled)
+380 Goldsmith (threatened)
+381 Goldsmith (with rival)
+382 Governor
+383 Governor (benevolent)
+384 Governor (cursed)
+385 Governor (local)
+386 Governor (oppressive)
+387 Governor (with personal problem)
+388 Grave robber (accused)
+389 Grave robber (avaricious)
+390 Grave robber (necromantic purposes)
+391 Grave robber (terrified)
+392 Grave robber (with curse therefrom)
+393 Grim reaper (yep, no kidding)
+394 Guardian (archives)
+395 Guardian (bodyguard)
+396 Guardian (criminal evidence)
+397 Guardian (holy book or relic)
+398 Guardian (of child)
+399 Guardian (of idea or concept)
+400 Guardian (of magical item)
+401 Guardian (of place)
+402 Guardian (other)
+403 Guardsman
+404 Guild member (high ranking)
+405 Guild member (loyal and hardworking)
+406 Guild member (secret freelancer)
+407 Guildmaster (assassin)
+408 Guildmaster (craft)
+409 Guildmaster (merchants)
+410 Guildmaster (profession)
+411 Guildmaster (thieves)
+412 Hangman (loves his job)
+413 Hangman (retired)
+414 Hangman (working in his official capacity)
+415 Heir (if someone dies)
+416 Heir (to a barony)
+417 Heir (to a fortune)
+418 Heir (to something interesting)
+419 Heir (to the throne)
+420 Heiress (lovable)
+421 Heiress (of curse)
+422 Heiress (of hereditary powers)
+423 Heiress (secret)
+424 Heiress (sinister)
+425 Herbalist (with secret knowledge)
+426 Heretic
+427 Hester (with political influence)
+428 Hidden witness
+429 Historian (ancients and demigods)
+430 Historian (kings and kingdoms)
+431 Historian (magic and wizards)
+432 Historian (of a region)
+433 Historian (of a single famous person)
+434 Holy man (fake)
+435 Holy man (genuine)
+436 Huntsman (mythical beasts)
+437 Huntsman (noble)
+438 Huntsman (people)
+439 Huntsman (stag and pheasant)
+440 Hybrid human/monster type
+441 Illusionist
+442 Imposter (political or social)
+443 Imposter (secret identity)
+444 Infidel
+445 Inquisitor (any sort)
+446 Inquisitor (government)
+447 Inquisitor (illegal)
+448 Inquisitor (of powerful temple)
+449 Intelligent Animal
+450 Intelligent fish or sea animal
+451 Intelligent item (book)
+452 Intelligent item (statue)
+453 Intelligent Plant
+454 Investigator (curious amateur)
+455 Investigator (guild quality standards)
+456 Investigator (knows too much)
+457 Investigator (legitimate)
+458 Investor (lost money)
+459 Investor (needs information)
+460 Investor (suspects funny business)
+461 Jailor (prison official)
+462 Jailor (simple turnkey)
+463 Jester (on the run)
+464 Jester (sinister)
+465 Jester (with magical powers)
+466 Jeweler (working on a commission)
+467 Journalist
+468 Judge (from a past trial)
+469 Judge (local)
+470 Judge (of a contest)
+471 Judge (of a tournament)
+472 Judge (religious court)
+473 Kidnapper (accused but innocent)
+474 Kidnapper (no longer has victim)
+475 Kidnapper (still has victim)
+476 Killer (justified)
+477 King (dead)
+478 King (dethroned)
+479 King (disguised)
+480 King (distant foreign realm)
+481 King (in hiding)
+482 King (in official capacity)
+483 King (insane)
+484 King (missing)
+485 King (of something strange)
+486 King’s body part
+487 Knave (inconstant in affairs of finance)
+488 Knave (inconstant in affairs of the heart)
+489 Knave (inconstant in matters of secrecy)
+490 Knave (inconstant in matters of truthfulness)
+491 Knight (cursed)
+492 Knight (disgraced)
+493 Knight (evil)
+494 Knight (paladin)
+495 Knight (renowned)
+496 Knight (wandering)
+497 Lady in waiting (dishonored)
+498 Lady in waiting (faithful to her lady)
+499 Lady in waiting (knows terrible secret)
+500 Lady in waiting (treacherous)
+501 Land manager/protector
+502 Landlord (greedy)
+503 Landlord (under threat of death)
+504 Landlord (with property problems)
+505 Lawyer
+506 Lawyer (carrying out terms of a will)
+507 Lawyer (for the defense)
+508 Lawyer (for the prosecution)
+509 Lawyer (in a civil suit)
+510 Leader of mob or riots
+511 Leader of prayer group
+512 Leader of sting or entrapment operation
+513 Leader of the autonomous commune
+514 Leader of the glorious uprising
+515 Leader of the pack
+516 Leader of the posse
+517 Legislator (corrupt)
+518 Legislator (getting too close to the truth)
+519 Legislator (kidnapped)
+520 Legislator (moral)
+521 Legislator (radical)
+522 Legislator (suspicious)
+523 Legislator (traditionalist)
+524 Leper (contagious)
+525 Leper (fake)
+526 Leper (real)
+527 Locksmith (accused of crime)
+528 Locksmith (magical locks)
+529 Locksmith (skilled)
+530 Lord
+531 Lord (of the dance)
+532 Lord (of the manor)
+533 Lord (of the skies)
+534 Lord (of yon great castle)
+535 Lottery winner
+536 Love doctor
+537 Loyal friend of someone
+538 Madman
+539 Madman (cyclical madness)
+540 Madman (dangerous)
+541 Madman (obsessed)
+542 Maid
+543 Maid of honor
+544 Maiden (abandoned)
+545 Maiden (chaste)
+546 Maiden (poor)
+547 Maiden (rich)
+548 Maiden (seeking to change that status)
+549 Majordomo (for wizard)
+550 Majordomo (great manor)
+551 Majordomo (large castle or fortress)
+552 Majordomo (of nobleman’s city residence)
+553 Majordomo (small castle)
+554 Majordomo (small manor)
+555 Man in strange mask
+556 Man with red or glowing eyes
+557 Man with unusual capability
+558 Man with unusual legs
+559 Man with unusual pet
+560 Man with unusual skin
+561 Man with wooden leg
+562 Medicine man
+563 Member of secret police
+564 Mercenary (leader)
+565 Mercenary (soldier)
+566 Mercenary (wounded)
+567 Merchant (addictive substances)
+568 Merchant (caravan member)
+569 Merchant (caravan owner)
+570 Merchant (fleet owner)
+571 Merchant (great)
+572 Merchant (minor)
+573 Merchant (ship owner)
+574 Merchant (silks)
+575 Merchant (sinister items)
+576 Merchant (spices)
+577 Merchant (strange items)
+578 Merchant (sundry vices)
+579 Merchant (wine)
+580 Messenger (commercial)
+581 Messenger (for military leader)
+582 Messenger (for wizard)
+583 Messenger (love affair)
+584 Messenger (of death)
+585 Messenger (of deity)
+586 Messenger (of noble)
+587 Messenger (of religious leader)
+588 Messenger (with message for characters)
+589 Military leader (betrayed)
+590 Military leader (defeated)
+591 Military leader (victorious)
+592 Miller
+593 Miller (grinds strange or magical substances)
+594 Miller (with three sons)
+595 Miller (with unusual cat)
+596 Mine owner
+597 Miner (crippled)
+598 Miner (with secret)
+599 Minister of defense
+600 Minister of justice
+601 Minister of pomp and circumstance
+602 Minister of the treasury
+603 Minstrel (poor)
+604 Minstrel (rich)
+605 Minstrel (with attendant fans and followers)
+606 Minstrel (with magic powers or instrument)
+607 Miser
+608 Moneylender (victim of a swindle)
+609 Moneylender (victim of theft)
+610 Moneylender (with an outstanding debt)
+611 Monk (European friar)
+612 Monk (hermit)
+613 Monk (seeks to avenge dead master)
+614 Monk (vow of silence)
+615 Monk’s severed head, talking, in sandalwood box
+616 Necromancer
+617 Noble (cursed)
+618 Noble (debtor)
+619 Noble (dishonored)
+620 Noble (impoverished)
+621 Noble (in hiding)
+622 Noble (rich)
+623 Noble (with disease)
+624 Noble (with personal problem)
+625 Noblewoman (lovely)
+626 Noblewoman (protecting husband)
+627 Noblewoman (shrewish)
+628 Nomad (barbarian wanderer)
+629 Nomad (religious dervish)
+630 Nomad (savage tribesman)
+631 Nomad (seeking lost homeland)
+632 Nomad (semi-civilized herdsman)
+633 Obvious suspect
+634 Oddly familiar person
+635 Operator (gambling den)
+636 Operator (public baths)
+637 Operator (scams)
+638 Opium den owner
+639 Orchard owner
+640 Organizer (coronation)
+641 Organizer (festival)
+642 Organizer (important wedding)
+643 Organizer (labor)
+644 Organizer (political)
+645 Organizer (religious)
+646 Outlaw (hunted)
+647 Outlaw (repentant)
+648 Outlaw (secret)
+649 Outlaw (suspected)
+650 Outlaw (violated taboo)
+651 Outlaw (working in his job capacity)
+652 Outraged parent
+653 Outraged purchaser
+654 Owner of dangerous property
+655 Owner of magic item
+656 Pardoner (fake political pardons)
+657 Pardoner (fraud)
+658 Pardoner (pardons have actual effect)
+659 Pardoner (real criminal pardons for sale)
+660 Partner (in crime)
+661 Partner (in love)
+662 Partner in a business
+663 Patron (of arts)
+664 Patron (of temple)
+665 Peasant (farmer)
+666 Peasant (oppressed)
+667 Peasant (revolting)
+668 Peasant (shepherd)
+669 Peasant (wealthy)
+670 Performer (biting satire)
+671 Performer (deadly stunts)
+672 Performer (feats of memory and observation)
+673 Perfumer (discredited)
+674 Perfumer (rich)
+675 Perfumer (with rival)
+676 Perfumer (with secret)
+677 Person of ancient ancestry
+678 Person of evil ancestry
+679 Person pure of blood
+680 Person who changes size
+681 Person who counted votes for an election
+682 Person who hears a voice
+683 Person who returned from a mysterious journey
+684 Person who returned from the dead
+685 Person with no apparent face
+686 Pickpocket
+687 Pikeman (city guard)
+688 Pikeman (mercenary)
+689 Pikeman (unemployed)
+690 Pilgrim (disguised)
+691 Pilgrim (false)
+692 Pilgrim (seeking absolution)
+693 Pilgrim (seeking better luck)
+694 Pilgrim (seeking vengeance)
+695 Pirate (aerial)
+696 Pirate (captain)
+697 Pirate (first mate)
+698 Pirate (in hiding)
+699 Pirate (sailor)
+700 Plowman
+701 Poacher (noble huntsman)
+702 Poacher (starving peasant)
+703 Poet (heroic verse)
+704 Poet (impoverished)
+705 Poet (insane)
+706 Poet (lovelorn)
+707 Poet (satire)
+708 Poisoner (amateur)
+709 Poisoner (unemployed)
+710 Poisoner (working)
+711 Police authority (guild’s police)
+712 Police authority (illegal police)
+713 Police authority (informal police)
+714 Police authority (military police)
+715 Police authority (public police)
+716 Police authority (vigilantes)
+717 Polluter (food)
+718 Polluter (water)
+719 Portal controller or guardian
+720 Poseur (as celebrity)
+721 Poseur (as guild official)
+722 Poseur (as military leader)
+723 Poseur (as political personage)
+724 Poseur (as religious personage)
+725 Possessed person
+726 Potential witness
+727 Potential witness (financial crime)
+728 Potential witness (political)
+729 Potential witness (religious)
+730 Potion maker
+731 Preacher (anti-establishment, political)
+732 Preacher (new cult)
+733 Preacher (pro-government)
+734 Preacher (return to old ways)
+735 Preacher (sees visions)
+736 Preacher (social reformer)
+737 Priest (defrocked)
+738 Priest (general)
+739 Priest (self-sacrificing)
+740 Priest (sinful)
+741 Priest (with secret past)
+742 Priestess (accessible)
+743 Priestess (inaccessible)
+744 Priestess (oracle)
+745 Priestess (saintly)
+746 Prince (deposed)
+747 Prince (evil)
+748 Prince (foolish)
+749 Prince (general)
+750 Prince (minor)
+751 Prince (unworthy)
+752 Prince (younger son)
+753 Princess (has lost important item)
+754 Princess (imprisoned)
+755 Princess (intriguing for power)
+756 Princess (kidnapped for marriage)
+757 Princess (kidnapped for ransom)
+758 Princess (threatened with death)
+759 Prisoner (guilty)
+760 Prisoner (innocent)
+761 Prisoner (secretly held)
+762 Prodigal son (greedy)
+763 Prodigal son (repentant)
+764 Professor
+765 Prophet (accurate)
+766 Prophet (dangerous)
+767 Prophet (deranged)
+768 Prophet (false)
+769 Prophet (heretical)
+770 Racketeer (extortion)
+771 Racketeer (high finance)
+772 Racketeer (shipping)
+773 Ranger
+774 Ratcatcher
+775 Rebel (against criminal organization)
+776 Rebel (political)
+777 Rebel (religious)
+778 Rebel (without a particular cause)
+779 Recipient of strange challenge
+780 Reeve
+781 Refugee (from bad event)
+782 Refugee (from combat)
+783 Reluctant witness
+784 Revenge-seeker
+785 Revolutionary
+786 Rival (bidder)
+787 Rival (guild)
+788 Rival (in love affair)
+789 Rival (merchant)
+790 Rival (noble)
+791 Rival (of the party)
+792 Rival (poet or artist)
+793 Rival (wizards)
+794 Royalist
+795 Rumormonger
+796 Rumormonger (punished)
+797 Rumormonger (suspected)
+798 Rune-scriber
+799 Sage (astrology)
+800 Sage (history)
+801 Sage (magic)
+802 Sage (mathematics and science)
+803 Sage (nature)
+804 Sage (philosophy)
+805 Sage (religious lore)
+806 Sailor
+807 Savage (curious)
+808 Savage (dangerous)
+809 Scholar (history)
+810 Scholar (magic)
+811 Scholar (natural phenomena)
+812 Scholar (religious lore)
+813 Scribe
+814 Servant (in tavern of inn)
+815 Servant (of assassin)
+816 Servant (of merchant)
+817 Servant (of military leader)
+818 Servant (of noble)
+819 Servant (of priest)
+820 Servant (of sage)
+821 Servant (of wizard)
+822 Shepherd
+823 Sheriff (corrupt)
+824 Sheriff (dutiful)
+825 Sheriff (rural)
+826 Sheriff (sinister)
+827 Sheriff (with personal problems)
+828 Shoemaker (poor)
+829 Shoemaker (rich)
+830 Sin eater
+831 Singer (any sort)
+832 Singer (cursed)
+833 Singer (famous)
+834 Son or daughter
+835 Sorcerer (demagicked)
+836 Sorcerer (political aspirations)
+837 Sorcerer (power in amulet)
+838 Sorcerer (power in familiar)
+839 Sorcerer (power in fingernails)
+840 Sorcerer (power in hair)
+841 Sorcerer (powerful)
+842 Sorcerer (transformed)
+843 Sorcerer (weak)
+844 Speaker for the ancients
+845 Speaker of foreign language
+846 Speaker of the dead
+847 Speaker of the gods
+848 Speaker of the king
+849 Spirit-creature
+850 Spy (for criminal network)
+851 Spy (for guild or merchant)
+852 Spy (for noble)
+853 Spy (for suspicious spouse)
+854 Spy (for the man)
+855 Spy (for the priesthood)
+856 Spy (for wizard)
+857 Squire (for haughty knight)
+858 Squire (for missing or kidnapped knight)
+859 Squire (for poor knight)
+860 Squire (of dead knight)
+861 Steward (for a wizard)
+862 Steward (great manor)
+863 Steward (large castle)
+864 Steward (noble’s city residence)
+865 Steward (small castle)
+866 Steward (small manor)
+867 Stonemason (general)
+868 Stonemason (knows where something is hidden in the walls)
+869 Student
+870 Subject of a recent prophesy
+871 Subject of an ancient prophesy (apparently)
+872 Subject of the inquisition
+873 Subterranean citizen
+874 Survivor (assassination attempt)
+875 Survivor (dungeon expedition)
+876 Survivor (wilderness expedition)
+877 Survivor (with dangerous secret)
+878 Suspected witness
+879 Swindler (accused)
+880 Swindler (suspected)
+881 Swindler (working on scam)
+882 Swordsman
+883 Swordsman (duelist)
+884 Swordsman (legendary)
+885 Swordsman (mercenary)
+886 Swordsman (old)
+887 Swordsmith (discredited)
+888 Swordsmith (famous)
+889 Swordsmith (skilled)
+890 Swordsmith (with a family problem)
+891 Tailor (poor)
+892 Tailor (to the nobility)
+893 Tavern owner
+894 Tax collector (embezzler)
+895 Tax collector (oppressive bully)
+896 Tax collector (working at his job)
+897 Taxidermist (strange beasts)
+898 Teamster (camel driver)
+899 Teamster (caravan leader)
+900 Teamster (regular wagon driver)
+901 Teamster (strange beasts of burden)
+902 Teamster (strange wagons)
+903 Telepathic Blob
+904 The half-a-man
+905 Theater owner
+906 Thief (convicted)
+907 Thief (freelance)
+908 Thief (guild member)
+909 Thief (guildmaster)
+910 Thief (retired)
+911 Thief (strange series of items)
+912 Toll bridge owner
+913 Toll road operator
+914 Town drunk
+915 Trader (cattle)
+916 Trader (furs)
+917 Trader (horses)
+918 Trader (scrolls and books)
+919 Trader (strange items and oddments)
+920 Traditionalist
+921 Traitor (religious)
+922 Traitor (secret society)
+923 Traitor (to city)
+924 Traitor (to guild)
+925 Trapper (furs)
+926 Trapper (live animals)
+927 Traveler (normal)
+928 Traveler (of planes and strange dimensions)
+929 Traveler (stranded)
+930 Traveler (with rumors or news)
+931 Trustee (building)
+932 Trustee (item)
+933 Trustee (land)
+934 Trustee (money)
+935 Twin
+936 Two-headed person
+937 Unbelievably lucky person
+938 Unbelievably unlucky person
+939 Uncle or Aunt of (roll again)
+940 Undead creature (intelligent)
+941 Undertaker
+942 Unknown victim
+943 Unwilling witness
+944 Usurper (criminal)
+945 Usurper (guild)
+946 Usurper (political)
+947 Usurper (religious)
+948 Vampire
+949 Vandal (unintentional)
+950 Veiled person
+951 Vendor (elixirs)
+952 Vendor (food)
+953 Vendor (religious charms)
+954 Vendor (shrunken heads)
+955 Victim (assault)
+956 Victim (counterfeit)
+957 Victim (kidnap)
+958 Victim (murder)
+959 Victim (of rumors)
+960 Victim (of slander)
+961 Victim (of theft)
+962 Vigilante (against crime)
+963 Vigilante (political faction)
+964 Vigilante (religious)
+965 Viking
+966 Vintner (awful wine)
+967 Vintner (fine wines)
+968 Wagoner
+969 Wanderer
+970 Wanderer (adventurer)
+971 Wanderer (outcast)
+972 Wanderer (with followers)
+973 Warden (prisoner has escaped)
+974 Warden (with prisoner)
+975 Warlock (dead)
+976 Warlock (disembodied)
+977 Warlock (suspicious)
+978 Warlock (with rival)
+979 Warlock (with secret agenda)
+980 Weaver (oppressed)
+981 Weaver (rich)
+982 Widow or widower of (roll again)
+983 Wife or husband of (roll again)
+984 Witch (accused)
+985 Witch (working on a task)
+986 Wizard (absentminded)
+987 Wizard (cursed)
+988 Wizard (engaged in research)
+989 Wizard (flamboyant)
+990 Wizard (powerful)
+991 Wizard (sinister)
+992 Wizard (weak or defeated)
+993 Wizard (with personal crisis)
+994 Wizard (working on a commissioned task)
+995 Woman with dancing bear
+996 Woman with snake eyes
+997 Woodcutter
+998 Zealot (political)
+999 Zealot (religious)
+000 Zoo owner
+
+d100 Patron Motivations
+01-05 Cause dishonor for
+06-10 Defeat
+11-15 Escape from
+16-20 Friendship with
+21-25 Gain knowledge about (or on behalf of)
+26-30 Gain status over
+31-35 Gain status with
+36-40 Lust for
+41-45 Protect livelihood of (or from)
+46-50 Protect reputation of (or from)
+51-55 Protect wealth of (or from)
+56-60 Reconciliation with
+61-65 Regain favor with
+66-70 Regain honor stolen by
+71-75 Removal of (by death)
+76-80 Removal of (kidnapping)
+81-85 Rescue
+86-90 Revenge upon (or on behalf of)
+91-95 Self-protection from
+96-00 Steal from
+
+d100 Patron Object or Obstacle
+01-05 Ancestral enemy
+06-10 Business partner
+11-15 Business rival
+16-20 Concubine
+21-25 Detective, investigator, or one who asks too many questions
+26-30 Employer
+31-35 Former compatriot
+36-40 Former employee
+41-45 Friend
+46-50 Guild or business association
+51-55 Offspring
+56-60 Parent
+61-65 Political compatriot
+66-70 Political leader
+71-75 Political or justice official
+76-80 Religious compatriot
+81-85 Spiritual leader
+86-90 Spouse
+91-95 Temple official
+96-00 Temple or religious society
+
+d100 Party Motivation
+01-04 Ability to move inconspicuously in certain groups or places
+05-08 Additional form of movement: swim or breathe water, fly, teleport, etc)
+09-12 Better equipment (possibly magical)
+13-16 Bonuses to saving throws under certain circumstances
+17-20 Cure disease
+21-24 Enhanced ability to cast spells
+25-28 Enhanced ability to see or hear
+29-32 Gain experience points or levels
+33-36 Gain forgiveness or pardons for prior actions
+37-40 Gain hit points
+41-44 Improve physical appearance
+45-48 Improve initiative, rate of attacks or speed of actions
+49-52 Improvement in movement rate
+53-56 Improvement or bonus to class ability (turning undead, picking locks, etc)
+57-60 Increased strength or other ability score
+61-64 Learn additional language
+65-68 Money
+69-72 Noble status or improved social status
+73-76 Permit travel (casting of teleport, creation of planar gate, opening of dimensional gateway, etc)
+77-80 Permit travel (required documents, safepassage, etc)
+81-84 Provide needed equipment
+85-88 Receive useful information
+89-92 Remove a curse (or other problem lingering from a prior adventure)
+93-96 Reverse aging
+97-00 To-hit or damage bonus in certain circumstances
+
+d100 Party Hook
+01-04 A person offers to trade information about the opportunity in exchange for money
+05-08 A person offers to trade information about the opportunity in exchange for money
+09-12 Dream or vision suggests the opportunity in symbols and metaphors
+13-16 Friend, relative, or mentor of a character informs party of the opportunity
+17-20 Inquiries in taverns lead to a rumor of this potential opportunity
+21-24 Inquiries in taverns lead to a rumor of this potential opportunity
+25-28 Inquiries in taverns lead to a rumor of this potential opportunity
+29-32 Legend or prophesy suggests the opportunity
+33-36 Letter or message is intercepted by characters (possibly due to mistaken identity, possibly overheard)
+37-40 Letter or message is sent to characters
+41-44 Potential employer contacts party to offer the opportunity
+45-48 Potential employer contacts party to offer the opportunity
+49-52 Potential employer contacts party to offer the opportunity
+53-56 Potential employer contacts party to offer the opportunity
+57-60 Potential employer contacts party to offer the opportunity
+61-64 Potential employer contacts party to offer the opportunity
+65-68 Potential employer contacts party to offer the opportunity
+69-72 Potential employer contacts party to offer the opportunity
+73-76 Potential employer contacts party to offer the opportunity
+77-80 Potential employer has posted signs with some details of the opportunity
+81-84 Potential employer has posted signs with some details of the opportunity
+85-88 Recently arrived people bring back word of the opportunity
+89-92 Rumors are floating around with some details of the opportunity
+93-96 Rumors are floating around with some details of the opportunity
+97-00 Sent dream suggests the opportunity in clear terms, but without revealing who sent the dream or why

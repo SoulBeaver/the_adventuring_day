@@ -1,5 +1,4 @@
 defmodule TheAdventuringDayWeb.ChangesetJSON do
-
   @doc """
   Renders changeset errors.
   """

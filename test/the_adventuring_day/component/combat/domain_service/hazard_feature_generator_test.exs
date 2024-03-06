@@ -10,13 +10,13 @@ defmodule TheAdventuringDay.Component.Combat.DomainService.HazardFeatureGenerato
 
     {:ok, hazards} = HazardFeatureGenerator.generate_hazard_features(1)
 
-    assert (hazards |> hd) == %HazardFeatureGenerator.GeneratedHazardFeature{
-      hazard_type: :trap,
-      name: "Sawblade trap",
-      description: """
-      There are sawblades in the walls, floor or ceiling. Stepping on a pressure plate activates the sawblades and slice through whatever's in their path.
-      """
-    }
+    assert hazards |> hd == %HazardFeatureGenerator.GeneratedHazardFeature{
+             hazard_type: :trap,
+             name: "Sawblade trap",
+             description: """
+             There are sawblades in the walls, floor or ceiling. Stepping on a pressure plate activates the sawblades and slice through whatever's in their path.
+             """
+           }
   end
 
   test "Never returns a duplicate hazard" do
@@ -29,6 +29,7 @@ defmodule TheAdventuringDay.Component.Combat.DomainService.HazardFeatureGenerato
 
   defp single_hazard() do
     HazardFeaturesRepo.truncate()
+
     HazardFeaturesRepo.insert_hazard_feature!(%{
       hazard_type: :trap,
       name: "Sawblade trap",

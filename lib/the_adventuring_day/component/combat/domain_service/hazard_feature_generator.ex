@@ -7,10 +7,10 @@ defmodule TheAdventuringDay.Component.Combat.DomainService.HazardFeatureGenerato
 
   defmodule GeneratedHazardFeature do
     @type t() :: %__MODULE__{
-      hazard_type: HazardFeatures.terrain_type(),
-      name: String.t(),
-      description: String.t()
-    }
+            hazard_type: HazardFeatures.terrain_type(),
+            name: String.t(),
+            description: String.t()
+          }
 
     defstruct hazard_type: :trap,
               name: "",
@@ -31,7 +31,7 @@ defmodule TheAdventuringDay.Component.Combat.DomainService.HazardFeatureGenerato
     hazards =
       :rand.uniform(max_hazard_features)
       |> random_hazard_features()
-      |> Enum.uniq_by(&(&1.id))
+      |> Enum.uniq_by(& &1.id)
       |> Enum.map(&sanitize_template/1)
 
     {:ok, hazards}

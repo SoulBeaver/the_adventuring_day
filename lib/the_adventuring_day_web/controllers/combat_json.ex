@@ -4,11 +4,13 @@ defmodule TheAdventuringDayWeb.CombatJSON do
   """
 
   def new_encounter(%{encounter: encounter}) do
-    %{encounter: %{
-      :enemies => Map.from_struct(encounter.enemies),
-      :terrain_features => encounter.terrain_features |> Enum.map(&Map.from_struct/1),
-      :hazards => encounter.hazard_features |> Enum.map(&Map.from_struct/1)
-    }}
+    %{
+      encounter: %{
+        :enemies => Map.from_struct(encounter.enemies),
+        :terrain_features => encounter.terrain_features |> Enum.map(&Map.from_struct/1),
+        :hazards => encounter.hazard_features |> Enum.map(&Map.from_struct/1)
+      }
+    }
   end
 
   def show(%{encounter: encounter}) do
@@ -16,12 +18,14 @@ defmodule TheAdventuringDayWeb.CombatJSON do
       %{encounter.enemies | template: encounter.enemies.template |> Enum.map(&Map.from_struct/1)}
       |> Map.from_struct()
 
-    %{encounter: %{
-      :id => encounter.id,
-      :enemies => enemies,
-      :terrain_features => encounter.terrain_features |> Enum.map(&Map.from_struct/1),
-      :hazards => encounter.hazards |> Enum.map(&Map.from_struct/1)
-    }}
+    %{
+      encounter: %{
+        :id => encounter.id,
+        :enemies => enemies,
+        :terrain_features => encounter.terrain_features |> Enum.map(&Map.from_struct/1),
+        :hazards => encounter.hazards |> Enum.map(&Map.from_struct/1)
+      }
+    }
   end
 
   def new_hazard(%{hazard: hazard}) do

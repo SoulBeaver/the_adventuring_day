@@ -10,9 +10,9 @@ defmodule TheAdventuringDayWeb.InitController do
     init_status = Init.seed_data()
 
     render(
-        conn,
-        :index,
-        status: init_status
+      conn,
+      :index,
+      status: init_status
     )
   end
 end

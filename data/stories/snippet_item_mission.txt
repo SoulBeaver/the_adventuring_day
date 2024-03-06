@@ -1,0 +1,2 @@
+- Mission: #missions.item_mission#
+- Subject of Mission: #missions.item_subject_of_mission#

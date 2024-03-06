@@ -1,0 +1,2 @@
+- Mission: #missions.event_mission#
+- Subject of Mission: #missions.event_subject_of_mission#

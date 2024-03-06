@@ -5,10 +5,12 @@ defmodule TheAdventuringDay.Component.RandomTable.Domain.RandomTableCollection d
 
   use Ecto.Schema
 
-  @type random_table_entry :: String.t()
+  @type evaluated_table_entry() :: String.t()
+
+  @type table_entry() :: {:reference, String.t()} | {:value, String.t()}
   @type collection_name() :: String.t()
   @type table_name() :: String.t()
-  @type tables() :: %{table_name() => list(random_table_entry())}
+  @type tables() :: %{table_name() => list(table_entry())}
 
   @type t() :: %__MODULE__{
           collection_name: String.t(),
@@ -20,8 +22,8 @@ defmodule TheAdventuringDay.Component.RandomTable.Domain.RandomTableCollection d
     field(:tables, :map)
   end
 
-  @spec new(collection_name(), tables()) :: t()
-  def new(collection_name, tables) do
+  @spec new(tables(), collection_name()) :: t()
+  def new(tables, collection_name) do
     %__MODULE__{collection_name: collection_name, tables: tables}
   end
 
@@ -37,18 +39,31 @@ defmodule TheAdventuringDay.Component.RandomTable.Domain.RandomTableCollection d
     |> Map.has_key?(table_name)
   end
 
-  @spec pick_random(t(), table_name()) :: random_table_entry()
+  @spec pick_random(t(), table_name()) :: evaluated_table_entry()
   def pick_random(collection, table_name) do
-    case collection.tables[table_name] do
-      nil -> {:error, :unknown_table}
-      table -> Enum.random(table)
+    case pick_random_if_exists(collection, table_name) do
+      {:ok, {:value, value}} ->
+        value
+
+      {:ok, {:reference, reference}} ->
+        pick_random(collection, reference)
+
+      error ->
+        error
     end
   end
 
-  @spec pick_random(t(), table_name(), pos_integer()) :: list(random_table_entry())
+  @spec pick_random(t(), table_name(), pos_integer()) :: list(evaluated_table_entry())
   def pick_random(collection, table_name, times) when times > 0 do
     for _ <- 1..times, do: pick_random(collection, table_name)
   end
 
   def pick_random(_coll, _table_name, _times), do: {:error, :illegal_number}
+
+  defp pick_random_if_exists(collection, table_name) do
+    case collection.tables[table_name] do
+      nil -> {:error, :unknown_table}
+      table -> {:ok, Enum.random(table)}
+    end
+  end
 end

@@ -7,12 +7,12 @@ defmodule TheAdventuringDay.Component.Combat.Domain.TerrainFeatures do
   import Ecto.Changeset
 
   @type t() :: %__MODULE__{
-    terrain_type: terrain_type(),
-    name: String.t(),
-    description: String.t(),
-    interior_examples: list(String.t()),
-    exterior_examples: list(String.t())
-  }
+          terrain_type: terrain_type(),
+          name: String.t(),
+          description: String.t(),
+          interior_examples: list(String.t()),
+          exterior_examples: list(String.t())
+        }
 
   @type terrain_type :: :difficult | :hindering | :blocking | :challenging | :obscured | :cover
 

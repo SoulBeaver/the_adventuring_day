@@ -27,7 +27,8 @@ defmodule TheAdventuringDay.Infrastructure.Persistence.TerrainFeaturesRepo do
     from(ets in TerrainFeatures,
       where: true,
       order_by: fragment("RANDOM()"),
-      limit: 1)
+      limit: 1
+    )
     |> Repo.one!()
   end
 

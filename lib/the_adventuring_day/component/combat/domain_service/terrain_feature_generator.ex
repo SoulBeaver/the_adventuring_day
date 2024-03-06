@@ -1,15 +1,14 @@
 defmodule TheAdventuringDay.Component.Combat.DomainService.TerrainFeatureGenerator do
-
   alias TheAdventuringDay.Component.Combat.Domain.TerrainFeatures
 
   defmodule GeneratedTerrainFeature do
     @type t() :: %__MODULE__{
-      terrain_type: TerrainFeatures.terrain_type(),
-      name: String.t(),
-      description: String.t(),
-      interior_examples: list(String.t()),
-      exterior_examples: list(String.t())
-    }
+            terrain_type: TerrainFeatures.terrain_type(),
+            name: String.t(),
+            description: String.t(),
+            interior_examples: list(String.t()),
+            exterior_examples: list(String.t())
+          }
 
     defstruct terrain_type: :difficult,
               name: "Difficult terrain",
@@ -30,7 +29,7 @@ defmodule TheAdventuringDay.Component.Combat.DomainService.TerrainFeatureGenerat
 
   def generate_terrain_features(max_terrain_features) do
     terrain_features =
-      (1..:rand.uniform(max_terrain_features))
+      1..:rand.uniform(max_terrain_features)
       |> Enum.map(fn _ -> random_terrain_feature() end)
       |> Enum.map(fn template -> sanitize_template(template) end)
 
