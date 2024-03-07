@@ -42,6 +42,12 @@ defmodule TheAdventuringDay.Component.RandomTable.Domain.RandomTableCollection d
   @spec pick_random(t(), table_name()) :: evaluated_table_entry()
   def pick_random(collection, table_name) do
     case pick_random_if_exists(collection, table_name) do
+      {:ok, [:value, value]} ->
+        value
+
+      {:ok, [:reference, reference]} ->
+        pick_random(collection, reference)
+
       {:ok, {:value, value}} ->
         value
 

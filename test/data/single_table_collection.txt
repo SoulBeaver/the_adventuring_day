@@ -1,0 +1,5 @@
+d100 Mission Type
+01-25 Individual
+26-50 Item
+51-75 Location
+76-00 Event

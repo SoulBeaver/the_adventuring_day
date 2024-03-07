@@ -96,3 +96,7 @@ config :the_adventuring_day,
 config :the_adventuring_day,
        :hazard_features_repo,
        TheAdventuringDay.Infrastructure.Persistence.HazardFeaturesRepo
+
+config :the_adventuring_day,
+       :random_table_path,
+       "." |> Path.expand() |> Path.join("data/unstructured_random_tables/")

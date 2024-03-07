@@ -5,40 +5,47 @@ defmodule TheAdventuringDay.Component.RandomTableParsing.DomainService.RandomTab
 
   alias TheAdventuringDay.Component.RandomTable.Domain.RandomTableCollection
 
+  @type collection_name() :: String.t()
+
   @doc """
   Creates a random table collection from the contents of a file. The file must be formatted into table blocks
   ```
   d2 A beggar's request
   1. A new pet to replace the one they lost.
   2. A million gold pieces!
-  
+
   d2 Random loot
   1. A jar of dirt.
   2. An army of orcs, oops!
   ```
   A table is composed of two parts:
-  
+
   - A header with a die size and description (will be converted to the table_name)
   - A number of results equal to the header's dX value. These may reference other tables in this file by using ##, e.g. #patron_or_target#
   """
+  @spec parse(collection_name()) :: {:ok, RandomTableCollection.t()} | {:error, term()}
   def parse(collection_name) do
     with {:ok, file_path} <- file_path("#{collection_name}.txt"),
          {:ok, table_collection} <- parse_collection(file_path) do
-      RandomTableCollection.new(table_collection, collection_name)
+
+      {:ok, RandomTableCollection.new(table_collection, collection_name)}
     end
   end
 
   defp file_path(filename) do
     file_path =
-      "."
-      |> Path.expand()
-      |> Path.join("data/unstructured_random_tables/#{filename}")
+      random_table_path()
+      |> Path.join("/#{filename}")
 
     if File.exists?(file_path) do
       {:ok, file_path}
     else
       {:error, :file_not_found}
     end
+  end
+
+  defp random_table_path() do
+    Application.get_env(:the_adventuring_day, :random_table_path)
   end
 
   defp parse_collection(file_path) do

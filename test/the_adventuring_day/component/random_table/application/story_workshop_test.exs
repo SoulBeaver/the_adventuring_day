@@ -13,7 +13,7 @@ defmodule TheAdventuringDay.Component.RandomTable.Application.StoryWorkshopTest 
 
   test "workshopping a story" do
     {:ok, collection} =
-      RandomTableCollection.new("locations_all", %{"description" => ["Nebulous"], "structure" => ["Spire"]})
+      RandomTableCollection.new(%{"description" => [{:value, "Nebulous"}], "structure" => [{:value, "Spire"}]}, "locations_all")
       |> @repo.create()
 
     story = "The #locations_all.description# #locations_all.structure#"
@@ -34,7 +34,7 @@ defmodule TheAdventuringDay.Component.RandomTable.Application.StoryWorkshopTest 
 
   test "with replacements" do
     {:ok, collection} =
-      RandomTableCollection.new("locations_all", %{"description" => ["Nebulous"], "structure" => ["Spire"]})
+      RandomTableCollection.new(%{"description" => [{:value, "Nebulous"}], "structure" => [{:value, "Spire"}]}, "locations_all")
       |> @repo.create()
 
     story = "The #locations_all.description# #locations_all.structure#"
@@ -45,7 +45,7 @@ defmodule TheAdventuringDay.Component.RandomTable.Application.StoryWorkshopTest 
     @repo.truncate()
 
     {:ok, alt_collection} =
-      RandomTableCollection.new("locations_all", %{"description" => ["Bright"], "structure" => ["Quarry"]})
+      RandomTableCollection.new(%{"description" => [{:value, "Bright"}], "structure" => [{:value, "Quarry"}]}, "locations_all")
       |> @repo.create()
 
     {story, fragments} = StoryWorkshop.reroll("replacement", ["locations_all.description"])

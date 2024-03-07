@@ -20,7 +20,7 @@ defmodule TheAdventuringDay.Component.RandomTable.StoryFragmentTest do
   end
 
   test "adds a substitution" do
-    coll = RandomTableCollection.new("coll", %{"name" => ["entry"]})
+    coll = RandomTableCollection.new(%{"name" => [[:value, "entry"]]}, "coll")
 
     fragment =
       StoryFragment.new("coll.name")
@@ -30,7 +30,7 @@ defmodule TheAdventuringDay.Component.RandomTable.StoryFragmentTest do
   end
 
   test "fails if the collection name is incorrect" do
-    coll = RandomTableCollection.new("coll", %{"name" => ["entry"]})
+    coll = RandomTableCollection.new(%{"name" => [[:value, "entry"]]}, "coll")
 
     fragment =
       StoryFragment.new("missing.name")
@@ -47,7 +47,8 @@ defmodule TheAdventuringDay.Component.RandomTable.StoryFragmentTest do
   end
 
   test "fails if the table name is incorrect" do
-    coll = RandomTableCollection.new("coll", %{"name" => ["entry"]})
+    coll = RandomTableCollection.new(%{"name" => [[:value, "entry"]]}, "coll")
+    # coll = RandomTableCollection.new(%{"name" => [[value: "entry"]]}, "coll")
 
     fragment =
       StoryFragment.new("coll.missing")

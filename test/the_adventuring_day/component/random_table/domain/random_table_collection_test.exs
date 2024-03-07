@@ -37,6 +37,6 @@ defmodule TheAdventuringDay.Component.RandomTable.RandomTableCollectionTest do
   end
 
   defp random_table_collection() do
-    RandomTableCollection.new("ouat", %{"table" => ["entry"]})
+    RandomTableCollection.new(%{"table" => [{:value, "entry"}]}, "ouat")
   end
 end
