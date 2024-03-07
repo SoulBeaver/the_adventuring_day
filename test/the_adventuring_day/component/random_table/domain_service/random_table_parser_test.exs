@@ -1,7 +1,7 @@
-defmodule TheAdventuringDay.Component.RandomTableParsing.DomainService.RandomTableParserTest do
+defmodule TheAdventuringDay.Component.RandomTable.DomainService.RandomTableParserTest do
   use ExUnit.Case
 
-  alias TheAdventuringDay.Component.RandomTableParsing.DomainService.RandomTableParser
+  alias TheAdventuringDay.Component.RandomTable.DomainService.RandomTableParser
   alias TheAdventuringDay.Component.RandomTable.Domain.RandomTableCollection, as: Collection
 
   test "Parses a random table" do
@@ -18,5 +18,19 @@ defmodule TheAdventuringDay.Component.RandomTableParsing.DomainService.RandomTab
     |> Enum.map(fn table_name ->
       assert Collection.exists?(collection, table_name)
     end)
+  end
+
+  test "Parses tables with no result number, e.g. '<result>' instead of '01-05 <result>'" do
+    {:ok, collection} = RandomTableParser.parse("unlisted_entries")
+
+    assert Collection.exists?(collection, "adjective")
+    assert Collection.tables(collection) == %{"adjective" => [
+      value: "Adamantine",
+      value: "Aerial",
+      value: "Amphibious",
+      value: "Ancient",
+      value: "Arachnid",
+      value: "Astrological"
+    ]}
   end
 end

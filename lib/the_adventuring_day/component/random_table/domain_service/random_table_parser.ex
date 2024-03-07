@@ -122,10 +122,12 @@ defmodule TheAdventuringDay.Component.RandomTable.DomainService.RandomTableParse
 
   defp to_single_result_entries(line) do
     entry_regexes = [
-      # Match range results, i.e. 01-05 <result>
+      # Match range results, e.g. 01-05 <result>
       ~r/(\d+)-(\d+) (.+)/i,
-      # Match single result, i.e. 01 <result>
-      ~r/\d+ (.+)/i
+      # Match single result, e.g. 01 <result>
+      ~r/\d+ (.+)/i,
+      # Match results with no number, e.g. <result>
+      ~r/(.+)/i
     ]
 
     matching_regex =
