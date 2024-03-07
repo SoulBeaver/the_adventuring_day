@@ -1,4 +1,4 @@
-defmodule TheAdventuringDay.Component.RandomTableParsing.DomainService.RandomTableParser do
+defmodule TheAdventuringDay.Component.RandomTable.DomainService.RandomTableParser do
   @moduledoc """
   TODO
   """

@@ -1,9 +1,12 @@
-You are offered a(n) #snippet:event_mission|individual_mission|item_mission|location_mission#:
+You are offered a new mission!
+
+- Mission: #missions.individual_mission#
+- Subject of Mission: #missions.individual_subject_of_mission#
 
 Three potential targets or patrons:
 
-1. #missions.patron_or_target#. Motivation: #missions.patron_motivation# #missions.patron_motivation_object_or_obstacle#
-2. #missions.patron_or_target#. Motivation: #missions.patron_motivation# #missions.patron_motivation_object_or_obstacle#
-3. #missions.patron_or_target#. Motivation: #missions.patron_motivation# #missions.patron_motivation_object_or_obstacle#
+1. #missions.patrons_and_targets#. Motivation: #missions.patron_motivations# #missions.patron_object_or_obstacle#
+2. #missions.patrons_and_targets#. Motivation: #missions.patron_motivations# #missions.patron_object_or_obstacle#
+3. #missions.patrons_and_targets#. Motivation: #missions.patron_motivations# #missions.patron_object_or_obstacle#
 
-The party hears of this mission through #missions.hook#. They'll be motivated to complete this mission because they stand to gain #missions.reward#.
+The party hears of this mission through #missions.party_hook#. They'll be motivated to complete this mission because they stand to gain #missions.party_motivation#.

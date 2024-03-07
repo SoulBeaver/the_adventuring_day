@@ -16,7 +16,7 @@ defmodule TheAdventuringDay.Component.RandomTable.Domain.StoryTemplate do
   @type story_template() :: String.t()
   @type written_story() :: String.t()
 
-  @spec new(story_template) :: t()
+  @spec new(story_template()) :: t()
   def new(story_template) do
     %__MODULE__{story_template: story_template, fragments: gather_fragments(story_template)}
   end
@@ -26,7 +26,7 @@ defmodule TheAdventuringDay.Component.RandomTable.Domain.StoryTemplate do
     |> Regex.scan(story_template)
     |> Enum.map(fn [_, match] -> match end)
     |> List.flatten()
-    |> MapSet.new(&StoryFragment.new/1)
+    |> Enum.map(&StoryFragment.new/1)
   end
 
   @spec with_substitutions(t(), %{RandomTableCollection.collection_name() => RandomTableCollection.t()}) :: {:ok, t()}
@@ -77,7 +77,7 @@ defmodule TheAdventuringDay.Component.RandomTable.Domain.StoryTemplate do
 
   defp replace_in_story(%StoryFragment{} = fragment, story_so_far) do
     story_so_far
-    |> String.replace("##{fragment.fragment}#", fragment.substitution)
+    |> String.replace("##{fragment.fragment}#", fragment.substitution, global: false)
   end
 
   @spec reset_fragments(t(), %MapSet{}) :: {:ok, t()} | {:error, :unexpected_fragments_keys, %MapSet{}}

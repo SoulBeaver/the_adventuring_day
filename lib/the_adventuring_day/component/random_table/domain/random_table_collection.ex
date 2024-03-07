@@ -33,6 +33,9 @@ defmodule TheAdventuringDay.Component.RandomTable.Domain.RandomTableCollection d
   @spec tables(t()) :: tables()
   def tables(collection), do: collection.tables
 
+  @spec table_names(t()) :: list(String.t())
+  def table_names(collection), do: collection.tables |> Enum.map(fn {table_name, _} -> table_name end)
+
   @spec exists?(t(), table_name()) :: boolean()
   def exists?(collection, table_name) do
     collection.tables

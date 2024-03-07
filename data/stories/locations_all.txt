@@ -1,0 +1,1 @@
+The #locations_all.description# #locations_all.structure# #locations_all.feature_first# #locations_all.feature_second#

@@ -1,0 +1,2 @@
+- Mission: #missions.individual_mission#
+- Subject of Mission: #missions.individual_subject_of_mission#
