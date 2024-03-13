@@ -7,20 +7,58 @@ defmodule TheAdventuringDay.Infrastructure.Init.Init do
   alias TheAdventuringDay.Infrastructure.Persistence.TerrainFeaturesRepo
   alias TheAdventuringDay.Infrastructure.Persistence.HazardFeaturesRepo
 
+  alias TheAdventuringDay.Component.RandomTable.DomainService.RandomTableParser
+  alias TheAdventuringDay.Infrastructure.Persistence.RandomTableCollectionRepo
+
   def seed_data() do
     truncate_tables()
 
+    seed_combat_generator_tables()
+    seed_random_tables()
+
+    :ok
+  end
+
+  defp seed_random_tables() do
+    results =
+      random_tables_directory()
+      |> File.ls!()
+      |> Enum.map(fn file ->
+        file_trimmed = String.replace(file, ".txt", "")
+
+        Task.Supervisor.async(TheAdventuringDay.Supervisor.ImportTask, fn ->
+          case RandomTableParser.parse(file_trimmed) do
+            {:ok, collection} ->
+              RandomTableCollectionRepo.create(collection)
+              :ok
+
+            error ->
+              error
+          end
+        end)
+      end)
+      |> Task.await_many()
+
+    if Enum.any?(results, fn result -> result != :ok end) do
+      IO.inspect(Enum.filter(results, fn result -> result != :ok end), label: :errors)
+      raise "Encountered exception during import!"
+    end
+  end
+
+  defp random_tables_directory(), do: Application.get_env(:the_adventuring_day, :random_table_path)
+
+  defp seed_combat_generator_tables() do
     seed_enemy_template_specs()
     seed_terrain_features()
     seed_hazard_features()
-
-    :ok
   end
 
   defp truncate_tables() do
     EnemyTemplateSpecRepo.truncate()
     TerrainFeaturesRepo.truncate()
     HazardFeaturesRepo.truncate()
+
+    RandomTableCollectionRepo.truncate()
   end
 
   defp seed_enemy_template_specs() do
@@ -165,9 +203,9 @@ defmodule TheAdventuringDay.Infrastructure.Init.Init do
       name: "Hindering terrain",
       description: """
       Hindering terrain prevents movement (or severely punishes it) or damages creatures that enter it, but allows line of sight.
-      
+
       Hindering terrain can be interesting because it encourages ranged attacks. You can shoot an arrow over hindering terrain, while it is impossible or risky to run through it to attack in melee.
-      
+
       Too much hindering terrain makes melee characters and monsters worthless. It is best used to protect a monster or two, or as a favorable defensive position that the PCs can exploit.
       """,
       interior_examples: ["pits", "room underwater", "fire", "lava"],
@@ -179,9 +217,9 @@ defmodule TheAdventuringDay.Infrastructure.Init.Init do
       name: "Blocking terrain",
       description: """
       Blocking terrain prevents movement and blocks line of sight. The characters might be able to climb over such obstacles, but otherwise this type of terrain prevents movement.
-      
+
       Blocking terrain channels the encounter's flow and cuts down on the range at which the PCs can attack the monsters (and vice versa). Using blocking terrain, you can present two or three distinct paths in an encounter area and different challenges down each one. For example, the characters come under attack when they enter an intersection. Orc warriors charge down two corridors, while an orc shaman casts spells from a third. If the PCs charge the shaman, they risk attack from two sides. If they fall back, they can meet the warriors along one front, but the shaman is safely away from the melee.
-      
+
       Don't use too much blocking terrain. Fights in endless narrow corridors are boring. While the fighter beats on the monster, the rest of the party must rely on ranged attacks.
       """,
       interior_examples: ["walls", "doors", "impassable rubble", "makeshift fortification"],
@@ -193,9 +231,9 @@ defmodule TheAdventuringDay.Infrastructure.Init.Init do
       name: "Challenging terrain",
       description: """
       Challenging terrain requires a check or test of some kind to cross. Fail, and something bad happens to you. Challenging terrain makes skills more important. It adds an active element of risk to the game. Some challenging terrain is also difficult terrain.
-      
+
       The type of terrain determines what happens when characters fail their checks. Climbing characters might fall. Characters wading through mud get stuck or get blindsided by an attack. Characters moving across ice fall down or slide into a disadvantageous position.
-      
+
       Too much challenging terrain wears down the party or slows the action if the characters have a few unlucky tests. If the characters are cautious, they can treat it as hindering terrain instead.
       """,
       interior_examples: ["oil slick", "thin beams", "climbing", "precarious bridge", "narrow ledge"],
@@ -207,9 +245,9 @@ defmodule TheAdventuringDay.Infrastructure.Init.Init do
       name: "Obscured terrain",
       description: """
       Obscured terrain provides concealment and blocks line of sight if a target is far enough away from you. However, it has no effect on movement.
-      
+
       Obscured terrain lends a sense of mystery to an encounter. The characters can't see what lurks ahead, but their enemies have open space they can move through to attack. It restricts ranged attacks similar to blocking terrain does, but it allows more movement. Encounters are a little more tense and unpredictable.
-      
+
       Obscured terrain becomes a problem when it shuts down the fight. The characters likely stick close together, and if the monsters can ignore the concealing terrain due to some magical effect, the fight might be unfair rather than tense.
       """,
       interior_examples: ["fog", "darkness", "poison mist"],
@@ -221,9 +259,9 @@ defmodule TheAdventuringDay.Infrastructure.Init.Init do
       name: "Cover terrain",
       description: """
       Cover terrain provides cover, making ranged attacks more difficult.
-      
+
       Cover terrain forces ranged attackers to move if they want to shoot around it. It also helps creatures avoid ranged attacks.
-      
+
       Too much cover makes the encounter too difficult for ranged attackers
       """,
       interior_examples: ["low walls", "piles of rubble"],

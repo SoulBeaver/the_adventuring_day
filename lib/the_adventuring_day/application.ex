@@ -18,10 +18,11 @@ defmodule TheAdventuringDay.Application do
       {Finch, name: TheAdventuringDay.Finch},
       # Start the Endpoint (http/https)
       TheAdventuringDayWeb.Endpoint,
-      # Start a worker by calling: TheAdventuringDay.Worker.start_link(arg)
-      # {TheAdventuringDay.Worker, arg}
+      # Start the StoryWorkshop
       {Registry, [name: TheAdventuringDay.Registry.StoryWorkshop, keys: :unique]},
-      {DynamicSupervisor, [name: TheAdventuringDay.Supervisor.StoryWorkshop, strategy: :one_for_one]}
+      {DynamicSupervisor, [name: TheAdventuringDay.Supervisor.StoryWorkshop, strategy: :one_for_one]},
+      # Start the import supervisor
+      {Task.Supervisor, name: TheAdventuringDay.Supervisor.ImportTask}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
