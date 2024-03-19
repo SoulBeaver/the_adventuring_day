@@ -1,0 +1,21 @@
+# The Adventuring Day
+
+```elixir
+Mix.install(
+  [
+    {:the_adventuring_day, path: Path.join(__DIR__, ".."), env: :dev}
+  ],
+  config_path: :the_adventuring_day,
+  lockfile: :the_adventuring_day
+)
+```
+
+## Section
+
+Ayyy let's evaluate something!
+
+```elixir
+alias TheAdventuringDay.Component.RandomTable.Domain.StoryTemplate
+
+StoryTemplate.new("There's a #story.damsel# in distress!")
+```

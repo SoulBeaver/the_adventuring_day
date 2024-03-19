@@ -52,3 +52,7 @@ config :the_adventuring_day,
 config :the_adventuring_day,
        :random_table_path,
        "." |> Path.expand() |> Path.join("test/data/")
+
+config :the_adventuring_day,
+       :stories_path,
+       "." |> Path.expand() |> Path.join("test/data/stories/")

@@ -100,3 +100,7 @@ config :the_adventuring_day,
 config :the_adventuring_day,
        :random_table_path,
        "." |> Path.expand() |> Path.join("data/unstructured_random_tables/")
+
+config :the_adventuring_day,
+       :stories_path,
+       "." |> Path.expand() |> Path.join("data/stories/")

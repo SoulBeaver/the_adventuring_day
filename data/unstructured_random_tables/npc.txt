@@ -1,0 +1,621 @@
+d6 Race
+1 Human
+2 Dwarf
+3 Mul
+4 Eladrin
+5 Half-Minotaur
+6 Minotaur
+
+D% Physical Characteristics
+1 Albino
+2 Ancient
+3 Bad breath
+4 Bald
+5 Barrel-chested
+6 Bearded
+7 Bedraggled
+8 Big nose
+9 Big red nose
+10 Birthmark
+11 Bloodshot eyes
+12 Blotchy skin
+13 Bow-legged
+14 Broad
+15 Broken nose
+16 Burnt
+17 Bushy eyebrows
+18 Cadaverous
+19 Chinless
+20 Clean shaven
+21 Composed
+22 Curly hair
+23 Dazzling
+24 Deformed
+25 Different colour eyes
+26 Dimpled
+27 Diseased/ill
+28 Dishevelled
+29 Dresses in exotic garb
+30 Drunk
+31 Dyed hair
+32 Fat
+33 Freckled
+34 Gnarled
+35 Gormless
+36 Haggard
+37 Handsome
+38 Heavily bearded
+39 Heavily scarred
+40 Heavily tanned
+41 Hirsute
+42 Hunchback
+43 Inappropriately dressed
+44 Jaundiced
+45 Lanky
+46 Lazy eye
+47 Lean
+48 Lightly scarred
+49 Long hair
+50 Many chinned
+51 Moustache
+52 Muscular
+53 Mysterious
+54 Noseless 
+55 Obese
+56 Old
+57 Only has one eye
+58 Only has one arm
+59 Only has one ear
+60 Only has one hand
+61 Only has one leg
+62 Outlandish hair style
+63 Pale-skinned
+64 Partially bald
+65 Pasty skin
+66 Patches of hair missing
+67 Paunch
+68 Perfumed
+69 Plump
+70 Pockmarked face
+71 Ramrod straight stance
+72 Richly dressed
+73 Rotund
+74 Ruddy
+75 Runny nose
+76 Shifty
+77 Short
+78 Short hair
+79 Smart
+80 Smells terrible
+81 Squints
+82 Statuesque
+83 Stooped
+84 Strangely coloured hair
+85 Swaggering
+86 Swarthy
+87 Sweaty
+88 Tall
+89 Tattoo
+90 Thin
+91 Tired
+92 Tongueless
+93 Toothless
+94 Ugly/grotesque
+95 Wasted
+96 Wears rags
+97 Wild-eyed
+98 Wizened
+99 Wounded
+100 Young
+
+D% Emotional or Behavioral Traits
+1 Agitated
+2 Agreeable
+3 Ambivalent
+4 Angry
+5 Apathetic
+6 Argumentative
+7 Arrogant
+8 Bellicose
+9 Benign
+10 Bored
+11 Brash
+12 Busy
+13 Casual 
+14 Chatty
+15 Chatty/garrulous
+16 Childish
+17 Clever
+18 Condescending
+19 Confused
+20 Craven
+21 Crushingly boring
+22 Cunning
+23 Cynical
+24 Daring
+25 Depressed
+26 Despondent
+27 Devious
+28 Dispassionate
+29 Distracted
+30 Distraught
+31 Dour
+32 Down to earth
+33 Duplicitous
+34 Ebullient
+35 Egocentric
+36 Euphoric
+37 Evasive
+38 Excited
+39 Exhilarated
+40 Extravert
+41 Feisty
+42 Flighty
+43 Focused
+44 Forgetful
+45 Forthright
+46 Friendly
+47 Gregarious
+48 Gullible
+49 Happy
+50 Harassed
+51 Heart-broken
+52 Humble
+53 Hyperactive
+54 Imbecilic
+55 Impolite
+56 Indignant
+57 Introvert
+58 Irritable
+59 Mad
+60 Malevolent
+61 Mean
+62 Miserable
+63 Morose
+64 Motivated
+65 Naive
+66 Nervous
+67 Noisy
+68 Nosy
+69 Obtuse
+70 Passionate
+71 Pedantic
+72 Perfidious
+73 Placid
+74 Polite
+75 Precise
+76 Presumptuous
+77 Pro-active
+78 Regal
+79 Religious
+80 Sad
+81 Sarcastic
+82 Scared
+83 Shy
+84 Stressed
+85 Stupid
+86 Subservient
+87 Suicidal
+88 Superior
+89 Superstitious
+90 Suspicious
+91 Sycophantic
+92 Sympathetic
+93 Taciturn
+94 Thoughtless
+95 Timid
+96 Tired
+97 Vulnerable 
+98 Whining
+99 Wise
+100 Zany 
+
+D% Mannerisms
+1 Aggressive stance
+2 Appears bored
+3 Appears furtive
+4 Blinks incessantly
+5 Blinks slowly
+6 Both hands behind head
+7 Breathes heavily
+8 Carefully considers each answer
+9 Chews beef jerky
+10 Chews fingernails
+11 Cleans under fingernails with dagger
+12 Clears throat repeatedly
+13 Closes eyes while talking
+14 Clutches stomach as if in pain
+15 Cocks head to one side
+16 Constantly scratches
+17 Coughs
+18 Coughs softly
+19 Cracks knuckles
+20 Cries easily
+21 Crosses arms defensively
+22 Distinctive accent
+23 Expansive body language
+24 Fiddles with dagger
+25 Fidgets
+26 Flairs nostrils
+27 Flatulent
+28 Flexes muscles
+29 Flips coin
+30 Fusses over clothes
+31 Gets excited easily
+32 Gives one-word answers
+33 Hands behind back
+34 Hands on hips
+35 Has distinctive accent
+36 Hops from foot to foot
+37 Hums
+38 Itches ear
+39 Itches upper arm
+40 Jingles a set of keys
+41 Jingles coins in pocket
+42 Keeps hands in pockets
+43 Kisses holy symbol often
+44 Laughs at any joke
+45 Laughs loudly
+46 Leans away from speaker
+47 Leans toward speaker
+48 Leers at opposite sex
+49 Leers at same sex
+50 Licks lips
+51 Mumbles
+52 Nods/shakes head often
+53 Overly emotional
+54 Passive stance
+55 Perpetually scowling
+56 Picks nose
+57 Picks teeth
+58 Plays with hair
+59 Plays with jewellery
+60 Praises deity often
+61 Preens constantly
+62 Refuses eye contact
+63 Repeats questions
+64 Rolls eyes
+65 Rolls shoulders
+66 Rubs eye
+67 Rubs hand together
+68 Rubs neck
+69 Scratches a scar
+70 Seems confused
+71 Shy
+72 Sighs
+73 Slumped shoulders
+74 Smells terrible
+75 Sniffs
+76 Speaks in rhymes
+77 Speaks loudly
+78 Speaks rapidly
+79 Speaks slowly
+80 Speaks softly
+81 Squints
+82 Stares into the distance
+83 Strokes beard
+84 Strokes chin
+85 Stutters/stammers
+86 Sucks in paunch
+87 Swears
+88 Taps teeth
+89 Tells inappropriate stories
+90 Tells outrageous lies
+91 Terrible table manners
+92 Twitches
+93 Unnatural smile
+94 Uses complex words
+95 Uses simple words
+96 Very tactile
+97 Waves hands around
+98 Whistles
+99 Winks suggestively
+100 Yawns a lot
+
+D% Activity
+1 About to commit a crime
+2 Accompanied by 1d4 children
+3 Accompanied by guards
+4 Accosted by beggar
+5 Arguing with companion(s)
+6 Arguing with trader
+7 Attacked by stray dogs
+8 Behaving strangely
+9 Being chased
+10 Being punished
+11 Bleeding
+12 Brawling
+13 Browsing
+14 Buying food
+15 Carrying a present
+16 Carrying heavy sack/object
+17 Chasing a thief
+18 Cleaning boots
+19 Covered in mud
+20 Crying
+21 Deep in discussion
+22 Desperate to tell a rumour 
+23 Doing something he doesn’t want to do
+24 Drunk/high
+25 Eating on the move
+26 Exercising a pet
+27 Finishing journey
+28 Finishing work
+29 Flirting
+30 Going to a secret rendezvous
+31 Going to work
+32 Gossiping 
+33 Guarding something
+34 Guiding a cart
+35 Haggling 
+36 Has just been robbed
+37 Hawking wares
+38 Heading to a tavern
+39 Hiding
+40 Hugging companion
+41 In a hurry
+42 In a large group
+43 In a small group
+44 In an accident
+45 Juggling
+46 Just been thrown out of a shop/tavern
+47 Killing time
+48 Laughing
+49 Lecturing a small crowd
+50 Looking for a friend
+51 Looking for help
+52 Looking for something
+53 Looking up at the sky
+54 Lost
+55 Making a delivery
+56 Making something
+57 Muttering
+58 Needs money...fast
+59 Negotiating for a service
+60 New to the area
+61 Nursing a brutal hangover
+62 Ogling someone
+63 On a quest or mission
+64 On the way to worship
+65 Pontificating
+66 Punishing a child
+67 Queuing
+68 Reading a scroll
+69 Recently bereaved
+70 Repairing something
+71 Resting
+72 Riding a horse
+73 Riding a wagon
+74 Riding in a coach
+75 Running
+76 Rushing to the toilet
+77 Searching for a specific individual
+78 Seeking adventurers
+79 Seeking employment
+80 Shouting a proclamation or advertisement
+81 Shouting at strangers
+82 Sightseeing
+83 Singing a song
+84 Sleeping/dozing
+85 Smiling
+86 Speaking with a stranger
+87 Spoiling for a fight
+88 Spying on spouse
+89 Staggering home drunk
+90 Starting journey
+91 Strolling with lover
+92 Trying a con
+93 Trying to get someone’s attention
+94 Trying to ignore someone
+95 Unwell
+96 Very tired
+97 Watching an accident
+98 Watching birds fly by
+99 Watching street entertainers
+100 Whistling
+
+D% Profession
+1 Acrobat
+2 Adventurer
+3 Adventurer (retired)
+4 Alchemist
+5 Apothecary
+6 Apprentice
+7 Armourer
+8 Artist
+9 Assassin 
+10 Astrologer
+11 Bailiff
+12 Baker
+13 Banker
+14 Barber
+15 Bearer/porter
+16 Beggar
+17 Blacksmith
+18 Bookbinder
+19 Bowyer/fletcher
+20 Builder
+21 Butcher
+22 Carpenter
+23 Carter/teamster
+24 Cartographer
+25 Cartwright
+26 Chandler
+27 Cheesemaker
+28 Clockmaker
+29 Clothes maker
+30 Clothier
+31 Cobbler
+32 Cook
+33 Cooper
+34 Cutler
+35 Diplomat
+36 Draper
+37 Dyer
+38 Engineer
+39 Executioner
+40 Farmer
+41 Fence
+42 Fisherman
+43 Fishmonger
+44 Flower seller
+45 Fuller
+46 Furrier
+47 Gemcutter
+48 Glazier
+49 Goldsmith
+50 Hunter
+51 Innkeeper
+52 Jester
+53 Jeweller
+54 Knight
+55 Labourer 
+56 Leatherworker
+57 Limner/painter
+58 Linkboy
+59 Locksmith
+60 Mason
+61 Mercenary
+62 Midwife
+63 Miller
+64 Minstrel
+65 Moneychanger
+66 Navigator/guide
+67 Nobleman
+68 Page
+69 Pilgrim
+70 Potter
+71 Priest
+72 Rat catcher
+73 Saddlers
+74 Sage
+75 Sailor
+76 Scribe
+77 Servant
+78 Shipwright
+79 Silversmith
+80 Soldier
+81 Spy1
+82 Squire
+83 Stablehand
+84 Tailor
+85 Tanner
+86 Tavern worker
+87 Thief1
+88 Thug
+89 Tilemaker
+90 Tinker
+91 Town crier
+92 Trader/merchant
+93 Unskilled labourer
+94 Valet
+95 Vintner/brewer
+96 Watchman/guard
+97 Weaponsmith
+98 Weaver
+99 Whore
+100 Woodcarver
+
+D% Sumerian Male
+01-02 Aanepada
+03-04 Adad
+05-06 Agga
+07-08 Akalamdug
+09-10 Amar-Sin
+11-12 Anunnaki
+13-14 Atraharsis  
+15-16 Belit-Sheri
+17-18 Dagon
+19-20 Damuzi
+21-22 Dungi
+23-24 Eanatum
+25-26 Eannatum
+27-28 Ekur
+29-30 Endukagga
+31-32 Enki
+33-34 Enkidu
+35-36 Enlil
+37-38 Enmebaragisi
+39-40 Enmerkar
+41-42 Enmul
+43-44 Ennugi
+45-46 Etana
+47-48 Gudea
+49-50 Hanish
+51-52 Humbaba
+53-54 Humwawa  
+55-56 Ibi-Sin
+57-58 Ishme-Dagan
+59-60 Lugal-zaggisi
+61-62 Lugulbanda
+63-64 Mesanepada
+65-66 Mesannipadda
+67-68 Meskalam-dug
+69-70 Namtar
+71-72 Nergal
+73-74 Ninazu
+75-76 Puzur-Amurri
+77-78 Rigiljo
+79-80 Samuqan
+81-82 Sangasu
+83-84 Sargon
+85-86 Shulpae
+87-88 Sisuthros
+89-90 Ubara-Tutu
+91-92 Ur-Nammu
+93-94 Ut-napishtim
+95-96 Utu
+97-98 Xisuthros
+99-100 Ziusudra
+
+D% Sumerian Female
+01-02 Aea
+03-04 Amare
+05-06 Amarenzu
+07-08 Amarezen
+09-10 Amarsin
+11-12 Antum
+13-14 Anu
+15-16 Aruru
+17-18 Asharru
+19-20 Ashusikildigir
+21-22 Aya
+23-24 Bauninsheg
+25-26 Delondra
+27-28 Enanatuma
+29-30 En-hedu-anna
+31-32 Ereshkigal
+33-34 Eulli
+35-36 Gemekala
+37-38 Gemeshega
+39-40 Inanna
+41-42 Irkalla
+43-44 Lilith
+45-46 Lugalme
+47-48 Lugulbanda
+49-50 Mammetum
+51-52 Meania
+53-54 Nanna
+55-56 Nigbau
+57-58 Ninbanda
+59-60 Nindukugga
+61-62 Ninedinni
+63-64 Ningal
+65-66 Ninhursag
+67-68 Ninki
+69-70 Ninlil
+71-72 Ninshuel
+73-74 Ninsun
+75-76 Nintuda
+77-78 Nisaba
+79-80 Puabi
+81-82 Radjni
+83-84 Sabit
+85-86 Shagshag
+87-88 Shub-ad
+89-90 Shubure
+91-92 Siduri
+93-94 Silili
+95-96 Urbau
+97-98 Urnina
+99-100 Zimu

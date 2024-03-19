@@ -1,0 +1,18 @@
+Names:
+
+- Male:  #npc.sumerian_male#, #npc.sumerian_male#, #npc.sumerian_male#
+- Female:  #npc.sumerian_female#, #npc.sumerian_female#, #npc.sumerian_female#
+
+Characteristics:
+
+- Race: #npc.race#
+
+- Physical: #npc.physical_characteristics#
+- Behavioral: #npc.emotional_or_behavioral_traits#
+- Mannerism: #npc.mannerisms#
+- Profession: #npc.profession#
+
+What are they doing? 
+
+- #npc.activity#
+- #npc.activity#

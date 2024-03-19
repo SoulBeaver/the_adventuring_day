@@ -1,0 +1,241 @@
+d240 Trap
+Collapsing staircase creates a ramp that deposits characters into a pit at its lower end
+A stone block falls from the ceiling
+The room locks and the ceiling slowly lowers
+Fire shoots out from wall, floor, or object
+Floor collapses or is an illusion
+Vent releases gas: blinding, acidic, obscuring, paralyzing, poisonous, or sleep-inducing
+Floor tiles are electrified
+Huge wheeled statue rolls down corridor
+Lightning bolt shoots from wall or object
+Locked room floods with water or acid
+A weapon, suit of armor, or rug animates and attacks when touched
+Pendulum, either bladed or weighted as a maul, swings across the room or hall
+Hidden pit opens beneath characters (25 percent chance that a black pudding or gelatinous cube fills the bottom of the pit)
+Hidden pit floods with acid or fire
+Scything blade emerges from wall or object
+Spears (possibly poisoned) spring out
+Steel or stone jaws restrain a character
+Stone block smashes across hallway
+Walls slide together 
+Illusionary Wall: An illusory wall appears to fill a hallway, blocking the way forward. When touched, it disappears revealing the corridor behind it.
+Crushing Block – A large block of stone swings down from the ceiling and crushes anyone standing in its path.
+Laughing Gas – A hidden chamber releases a magical gas that causes anyone inside to break into uncontrollable laughter.
+Pit of Spikes – A hidden pit lined with sharp iron spikes. Anyone falling in must make an acrobatic check to escape or suffer heavy damage.
+Trip Wires – A series of trip wires are strung across the hallway at ankle height. Anyone who steps on them is tripped and sent sprawling to the ground.
+Aquatic Trap – A hidden chamber that floods with water. The party must quickly solve a puzzle in order to deactivate the flooding mechanism before being swept away by the rising tide.
+Ticking Timebomb – An inconspicuous chest filled with explosives and a timer winding down. If it reaches zero, the room will be engulfed in a fiery explosion.
+Spinning Blades – A corridor lined with spinning blades that rotate at different speeds. The adventurers must use their timing and agility to safely pass through.
+Giant Rolling Boulder – A large boulder drops from the ceiling and begins rolling down a hallway, smashing anything in its path.
+Lightning Rod – A magical cylinder of energy zig-zags through the hallway and terminates in a large metal rod. Anyone touching the rod will be struck by powerful lightning bolts.
+Reverse Gravity – The dungeon's gravity suddenly flips, causing objects and creatures to float away from the floor.
+Trap Door – A trapdoor in the floor that opens to a deep chasm. If not detected, adventurers will fall into the abyss below.
+Flooding Room – A hidden chamber will slowly fill with water until it reaches a certain level, forcing anyone inside to find a way out as quickly as possible.
+Poisonous Dart – A hidden panel launches an array of poisoned darts at anyone who passes it. The darts cause intense pain and can paralyze their target if the poison is not neutralized quickly.
+Fireball Launcher – A hidden compartment in the wall opens up to reveal a ballista loaded with a magical fireball. The launcher is triggered by pressure plates in the floor which, if stepped on, will launch the fireball at its target.
+Flaming Fist – A mechanical arm emerges from a hidden alcove and punches anyone it detects within range. The fist is heavily enchanted to deal fire damage.
+Death Clamp – A hidden door opens in the wall, and a large metal clamp slams shut over any who pass through it. Those caught in its grip must break free or suffer certain death.
+Knight in Shining Armor – A suit of inanimate armor stands in the hallway, seemingly unassuming. When approached, it suddenly springs to life and attacks its startled victim with a sword and shield.
+Rotating Platform – A rotating platform is suspended over a deep, bottomless pit. The platform slowly rotates and adventurers must time their movements to cross safely.
+Ventilation Trap – A hidden vent in the wall emits a powerful gust of air that can knock an unsuspecting adventurer off their feet.
+Reverse Gravity Room: A room in which the pull of gravity is reversed, making the ceiling and floor swap places. Those inside must cling to walls and other surfaces to avoid being stuck to the ceiling or falling down into oblivion.
+Impenetrable Bubble – A glowing pink bubble appears in the corridor, blocking passage. Nothing can penetrate it and its opaque surface reveals nothing of what lies beyond.
+Pressure Plate – A hidden pressure plate in the floor triggers a mechanical arm to swing down from the ceiling, swinging wildly at anyone nearby.
+Wall of Flames – A wall of crackling flames emerges from the ground, providing a barrier to any would-be adventurers.
+Exploding Barrel – Hidden around the corner is a barrel full of explosives. Anyone getting too close triggers an explosion that deals damage to anyone nearby.
+Falling Chandalier – A heavy chandelier swings down from the ceiling and attempts to crush anyone below.
+Falling Portcullis – A heavy metal portcullis slams down from the ceiling blocking off the way forward, and anyone in its path is pinned beneath its weight.
+Moving Platform – A platform begins to move in a random pattern, jumping around the room and requiring quick reflexes to avoid.
+Floor Pressure Plate: A pressure plate in the floor triggers a hidden mechanism which launches sharp spikes out of the walls.
+Light-Beam Maze – A seemingly random pattern of bright beams crisscrosses the room, forcing anyone traversing it to avoid touching any of them or else suffer the consequences.
+Lightning Floor – The floor of the hallway is covered in magical runes that periodically discharge electricity, damaging those foolish enough to traverse it.
+Flooding Room – A hidden mechanism triggers a room to fill with water, drowning all those inside.
+Rolling Boulder Trap – A secret switch triggers a giant boulder to roll down the corridor, pushing anything in its path. Those caught by it must make an agility check or suffer heavy damage.
+Burning Flames: A section of the floor is lined with magical runes that erupt in a stream of fire when stepped on.
+Razor Wind – A gust of wind containing thousands of tiny, razor sharp blades fills the hallway. Anyone caught in the wind must make a dexterity check or suffer heavy damage.
+Enchanted Pool - A seemingly innocent pool of water is enchanted, causing anyone who touches it to be transformed into a frog. The only way to reverse the effect is by casting a spell of restoration.
+Falling Bookcase – A heavy bookcase is hidden behind a secret door. Once opened, the bookcase swings outwards, sending anyone standing behind it plummeting into the pit below.
+Cursed Idol – An ancient idol stands in the center of the room, its eyes glowing with a sinister light. Anyone touching it is cursed with a debilitating affliction until it is removed from the premises.
+Magical Firewall – A wall of magical fire springs up from the ground blocking any passage forward. The flames can only be extinguished by solving a riddle or casting the correct spell.
+Pressure Plate – A hidden pressure plate triggers a shower of darts from the walls when stepped on. Adventurers must dodge the onslaught or take heavy damage.
+Magical Shield – A hidden chamber releases a magical shield around the area, preventing anyone from leaving until it is deactivated.
+Phantom Blocks – Large blocks of stone appear out of thin air and form a wall blocking the corridor. They then quickly vanish again after a few seconds, leaving adventurers to ponder their source.
+Exploding Runes – A wall of runes inscribed with powerful magical energies explodes when a single wrong letter is written in the sequence.
+Tripwire – A thin wire strung across a hallway triggers a hidden crossbow trap when tripped.
+Falling Blades – A hidden mechanism triggers a series of blades to drop from the ceiling, swinging in arcs from one side of the room to the other.
+Invisible Tripwire – An invisible wire crosses the hallway at shin level. Those who cross it are sent flying into the air, thrown backwards by an unseen force.
+Screaming Skull – A decapitated skull mounted on the wall with a pressure plate beneath it. When stepped on, the skull emits a loud, terrifying scream that echoes through the dungeon.
+Exploding Barrels – A narrow hallway is lined with barrels filled with combustible fluid. When the right trigger is activated, the barrels explode in a fiery ball of destruction, damaging anyone nearby.
+Ventilation Trap – A hidden fan inside the wall emits a powerful gust of air when triggered, strong enough to knock over anyone in its path.
+Toxic Fog – A noxious mist fills the room, dealing damage to anyone who breathes it in.
+Toxic Smog – A hidden chamber fills with thick, noxious smog. The smog deals damage to anyone who inhales it and has a chance to inflict them with a deadly poison.
+Mimic Chest – A chest that appears to be filled with treasure is in fact inhabited by a powerful mimic creature. Those who open it without caution will find themselves face-to-face with a deadly monster.
+Raining Fire – A hidden chamber triggers a rain of fireballs that relentlessly shoot down from the ceiling, dealing heavy damage to anyone caught in their path.
+Wall of Blades – A corridor lined with spinning blades that move in and out of the walls.
+Arcane Beam – A powerful beam of magical energy emits from the wall, dealing heavy damage to anyone in its path.
+Teleporting Golem - A large clay golem appears from thin air and attempts to block the adventurers' path. It will teleport short distances if outmaneuvered.
+Deadly Sentry – A magical golem made of iron and stone stands guard at the entrance to a secret chamber. It will attack any intruder it detects.
+Magical Whirlwind – A swirling vortex of dust and debris sprung from a magical glyph. Anyone caught in the tornado must make a strength check to escape or suffer moderate damage.
+Poisonous Liquid – A hidden chamber is filled with a mysterious liquid that causes paralyzing effects when touched.
+Summoned Monster – Suddenly, a powerful monster appears and attacks the party. The creature can only be defeated by solving a difficult puzzle or magical riddle.
+Hall of Mirrors – A room filled with dozens of mirrors, each reflecting a distorted, spectral image of the party. Those who cannot make their way out will become lost in the maze forever.
+Exploding Barrel – A barrel full of gunpowder that detonates when someone approaches, causing fire damage to all within its radius.
+Burning Ceiling – A hallway filled with magical flames that rain down, dealing heavy damage to all creatures beneath them. 
+Deafening swinging glaives and moldy spears triggered by an idol on pedestal.
+Flaming spores and panic-inducing rocks triggered by golden angelic statue.
+Infested floor tiles and nauseating crossbows triggered by a gilded sarcophagus.
+Stunning razor-wire and diseased crushing walls triggered by a forbidden scroll.
+Shadowy skulls and fungus-encrusted cages triggered by an ornate throne.
+Fear-inducing glyphs and fatiguing hammers triggered by beams of light.
+Necrotic javelins and confusion-inducing catapults triggered by a hidden enemy.
+Invisible darts and poisonous swinging blades triggered by a weapon on an altar.
+Dazzling spiked pits and radiant alarms triggered by an old wooden chest.
+Sonic pillars and negative energy metal disks triggered by an ancient leatherbound tome.
+Silencing scythes and sleep-inducing caltrops triggered by an onyx demonic skull.
+Unholy swinging axes and ethereal beams triggered by a jeweled skull.
+Explosive snares and acidic ballistae triggered by steep stairs.
+Icy animated statues and forceful swinging spiked chains triggered by iron-bound chests.
+Ooze-covered bolas and arcane bear traps triggered by the correct answer to an easy riddle.
+Gravity reversing barbed nets and entangling monster summoners triggered by tiny threads strung across the room.
+Energy-draining crossbows and electrical spears triggered by alternating floor tiles.
+Blinding hammers and gaseous caltrops triggered by delicate magic-detecting spheres.
+Unholy bolas and necrotic alarms triggered by glass orbs that vibrate with sound.
+Invisible swinging spiked chains and negative energy crushing walls triggered by a rough gemstone.
+Ooze-covered scythes and sonic spiked pits triggered by floor plates.
+Dazzling monster summoners and diseased skulls triggered by a crystal goblet on a pedestal.
+Stunning bear traps and blinding animated statues triggered by a child's toy.
+Fungus-encrusted floor tiles and silencing swinging axes triggered by a jeweled pillar.
+Arcane catapults and radiant spores triggered by a sacrificial bowl and dagger.
+Explosive swinging glaives and flaming cages triggered by tripwires.
+Gravity reversing javelins and infested razor-wire triggered by giant knockers.
+Moldy darts and electrical swinging blades triggered by a bound prisoner.
+Energy-draining ballistae and psychic barbed nets triggered by hanging ropes.
+Sleep-inducing rocks and poisonous glyphs triggered by a jeweled crown on a skeleton's head.
+Deafening beams and panic-inducing pillars triggered by hidden magnets.
+Icy snares and gaseous metal disks triggered by delicate pots.
+Fear-inducing javelins and entangling bear traps triggered by mischievous ghosts.
+Shadowy razor-wire and forceful metal disks triggered by tiny threads strung across the room.
+Nauseating scythes and ethereal darts triggered by delicate pots.
+Confusion-inducing monster summoners and fatiguing swinging glaives triggered by a jeweled crown on a skeleton's head.
+Acidic skulls and unholy swinging axes triggered by a crystal goblet on a pedestal.
+Poisonous caltrops and negative energy crossbows triggered by a bound prisoner.
+Stunning spiked pits and electrical alarms triggered by a gilded sarcophagus.
+Ooze-covered floor tiles and radiant swinging spiked chains triggered by floor plates.
+Moldy catapults and sleep-inducing ballistae triggered by an idol on pedestal.
+Icy animated statues and energy-draining barbed nets triggered by a child's toy.
+Invisible pillars and flaming spears triggered by a forbidden scroll.
+Confusion-inducing bolas and panic-inducing crushing walls triggered by glass orbs that vibrate with sound.
+Shadowy cages and fear-inducing hammers triggered by giant knockers.
+Blinding snares and gaseous beams triggered by the correct answer to an easy riddle.
+Fatiguing glyphs and diseased swinging blades triggered by a jeweled pillar.
+Unholy rocks and arcane spores triggered by iron-bound chests.
+Necrotic crossbows and fungus-encrusted skulls triggered by tripwires.
+Nauseating alarms and sonic cages triggered by delicate magic-detecting spheres.
+Forceful snares and ethereal swinging spiked chains triggered by hanging ropes.
+Infested hammers and explosive floor tiles triggered by golden angelic statue.
+Deafening swinging blades and psychic spiked pits triggered by a jeweled skull.
+Acidic javelins and dazzling metal disks triggered by mischievous ghosts.
+Gravity reversing crushing walls and silencing animated statues triggered by a weapon on an altar.
+Ethereal scythes and fatiguing darts triggered by alternating floor tiles.
+Forceful rocks and energy-draining glyphs triggered by a rough gemstone.
+Fungus-encrusted caltrops and gaseous catapults triggered by an ancient leatherbound tome.
+Shadowy ballistae and sonic spores triggered by an ornate throne.
+Dazzling spears and radiant razor-wire triggered by hidden magnets.
+Flaming monster summoners and gravity reversing pillars triggered by a hidden enemy.
+Necrotic barbed nets and blinding bear traps triggered by steep stairs.
+Sleep-inducing swinging glaives and arcane bolas triggered by a sacrificial bowl and dagger.
+Panic-inducing swinging axes and explosive beams triggered by an onyx demonic skull.
+Ooze-covered snares and poisonous cages triggered by beams of light.
+Infested monster summoners and negative energy spores triggered by an old wooden chest.
+Entangling swinging glaives and psychic bolas triggered by a forbidden scroll.
+Fear-inducing ballistae and electrical crossbows triggered by hidden magnets.
+Diseased barbed nets and moldy caltrops triggered by a weapon on an altar.
+Acidic pillars and invisible rocks triggered by a bound prisoner.
+Unholy swinging axes and icy razor-wire triggered by steep stairs.
+Deafening swinging spiked chains and confusion-inducing skulls triggered by an old wooden chest.
+Stunning alarms and nauseating darts triggered by giant knockers.
+Silencing catapults and ethereal beams triggered by hanging ropes.
+Energy-draining scythes and poisonous hammers triggered by an idol on pedestal.
+Moldy animated statues and arcane bear traps triggered by beams of light.
+Necrotic javelins and stunning spiked pits triggered by alternating floor tiles.
+Explosive floor tiles and gaseous metal disks triggered by mischievous ghosts.
+Invisible glyphs and blinding crushing walls triggered by a sacrificial bowl and dagger.
+Acidic swinging blades and diseased spears triggered by tiny threads strung across the room.
+Confusion-inducing metal disks and entangling animated statues triggered by a jeweled skull.
+Dazzling ballistae and flaming alarms triggered by a crystal goblet on a pedestal.
+Silencing floor tiles and fungus-encrusted spears triggered by the correct answer to an easy riddle.
+Ooze-covered crossbows and unholy crushing walls triggered by glass orbs that vibrate with sound.
+Sleep-inducing catapults and negative energy scythes triggered by an onyx demonic skull.
+Deafening spores and shadowy spiked pits triggered by delicate magic-detecting spheres.
+Fear-inducing bear traps and infested caltrops triggered by a jeweled pillar.
+Electrical monster summoners and sonic razor-wire triggered by floor plates.
+Panic-inducing swinging spiked chains and ethereal hammers triggered by a gilded sarcophagus.
+Forceful beams and fatiguing swinging axes triggered by delicate pots.
+Icy darts and gravity reversing swinging blades triggered by an ornate throne.
+Nauseating skulls and psychic snares triggered by an ancient leatherbound tome.
+Gaseous rocks and flaming pillars triggered by tripwires.
+Fungus-encrusted cages and poisonous glyphs triggered by a rough gemstone.
+Nauseating javelins and fatiguing swinging glaives triggered by a child's toy.
+Arcane bolas and radiant barbed nets triggered by iron-bound chests.
+Negative energy swinging blades and diseased spears triggered by a hidden enemy.
+Explosive snares and necrotic crushing walls triggered by golden angelic statue.
+Dazzling glyphs and sonic crossbows triggered by a jeweled crown on a skeleton's head.
+Fear-inducing cages and silencing spores triggered by an ornate throne.
+Abyssal Wellspring. A wellspring fills 4 contiguous squares. A chaotic evil creature starting its turn in this space takes 5 damage per tier, but it gains a +1 bonus to attack rolls per tier and +2 bonus to damage rolls per tier until the end of its turn.
+Angelic Lantern. Floats in a square, shedding bright light in a radius of 20 squares. Any character standing in a space containing an angelic lantern and using an attack with the either the divine or the radiant keyword gains a +1 bonus to attack rolls per tier. An angelic lantern winks out of existence at the end of the turn that it first grants a bonus to such attacks.
+Astral Flame. Fiery liquid that sheds bright light in a radius of 20 squares. The astral flame completely fills a square; costs 1 square of movement to enter; any creature entering an astral flame square or starting his or her turn in a square containing astral flame takes 10 radiant damage per tier. However, a character adjacent to this space can coat his or her weapon or implement with the stuff as a minor action. Until the end of the encounter, all attacks using that weapon or implement gain the radiant keyword.
+Blast Cloud. The squares containing the cloud are lightly obscured. When a burst or a blast created by a fire, force, lightning, psychic, or thunder power touches a square ofblast cloud, the size of the burst or blast is increased by 1.
+Blood Midge Cloud. The squares occupied by the cloud are lightly obscured, and the cloud is difficult terrain. If no creature is in the cloud when a creature starts its turn within 3 squares of a blood midge cloud, the cloud moves 5 squares and attempts to cover as many living creatures as possible. If an area or close attack includes squares occupied by the cloud, the cloud is destroyed in those squares. If a cloud is broken into smaller pieces by an attack, each piece acts as a separate terrain feature.
+Blood Rock. A creature standing in a square of blood rock can score a critical hit on a natural die roll of 19 or 20.
+Bolt Stone. When a creature enters a square of bolt stone, it takes 5 lightning damage per tier. Roll a d20; on a 10 or higher, the bolt stone's energy is discharged, and the stone becomes inert. Otherwise, the lightning energy is transferred to all unoccupied squares adjacent to the origin square, and those squares become bolt stone.
+Cave Slime. A creature that enters a square filled with cave slime must succeed at an Acrobatics check or fall prone.
+Choke Frost. Each time a creature enters a square of choke frost, it takes a –1 penalty to speed. As a move action, a creature can negate this penalty. Creatures that have the cold keyword are immune to this effect.
+Cloudspore. As soon as a creature enters a square of these mushrooms, the mushrooms create a thick cloud of spores. The square provides concealment for 5 minutes. Once a square has discharged a cloud, it cannot do so again for 24 hours.
+Creeping Ice. Any creature that starts and ends its turn in any square of creeping ice takes 5 cold damage per tier.
+Defiled Ground. Undead gain a +1 bonus to rolls to recharge their powers while on defiled ground. In addition, if an undead creature is reduced to 0 hit points while on defiled ground, roll a d20; on a 10 or higher, the undead creature rises with 1 hit point on its next turn. If radiant damage reduces an undead creature to 0 hit points, it can't rise again in this manner.
+Dimensional Turbulence. A creature that teleports into a square of dimensional turbulence slides 1d4 squares in a random direction after teleporting.
+Divine Blood. Any character who ends his or her move in the pool gains 5 temporary hit points per tier, but takes a –1 penalty to attack rolls and checks from the confusing visions and memories assailing his or her mind. This penalty remains until the temporary hit points are lost. Although the visions are random and seemingly nonsensical, occasionally the visions impart important information that is useful to the character experiencing them.
+Doomlight Crystal. A fist-sized doomlight crystal emits dim yellow light in a 3-square radius. If a character in a square with a doomlight crystal is hit by a close or an area attack, the crystal is destroyed as well - and the gas inside it explodes, dealing 5 damage per tier to the character in its square.
+Eldritch Influx. As a standard action, a character in a square of eldritch influx can channel its energy to recharge an expended magic item power. Recharging a power in this way does not grant the item's wielder the ability to make use ofmore daily magic item powers between milestones. Using an eldritch influx for this purpose depletes its energy, and it can't be used again until 24 hours have passed.
+Elemental Seepage. Fills up to 4 contiguous squares. An attack power with one or more keywords corresponding to the types of energy comprising the seepage and used within 5 squares of the elemental seepage gains a +1 bonus to attack rolls per tier. The seepage is harmless, though some areas of elemental seepage are known to hide one-way directional and wildly imprecise portals to locations on the Elemental Chaos.
+Elemental Windchurn. An area of elemental windchurn is difficult terrain for creatures that are flying, and a creature that ends its turn aloft in the area slides 1d6 squares in a random direction.
+Ember Moss. A character in a square with ember moss takes an extra 5 damage from all fire attacks and takes a –4 penalty to saving throws to end ongoing fire damage.
+Energy Crystals. An energy crystal takes up 1 square, is considered difficult terrain, and has AC 5 and Fortitude 10. It has 20 hit points per tier. Whenever an energy crystal is attacked by a power with the cold, fire, lightning, necrotic, radiant, or thunder keyword, it takes no damage from the effects of those energy types. Until the end of the next turn of the creature making the attack, any creature entering or starting its turn adjacent to the crystal takes 5 damage per tier of the energy type(s) absorbed by the crystal. If the energy crystal is destroyed after absorbing energy but before the end of its attacker’s next turn, it explodes, dealing 10 damage per tier of the energy type(s) it has absorbed to all creatures within 3 squares of the energy crystal.
+Energy Node. A creature that starts its turn in an energy node's square can spend a minor action while in the square to regain a single encounter or recharge power. Using a node for this purpose depletes its energy, and it can't be used again until 24 hours have passed.
+Erratic Portal. When a creature ends its move on an erratic portal square, it makes an immediate saving throw. On a save, that creature can teleport up to 5 squares per tier as a free action. On a failed saving throw, the creature can teleport up to 2 squares per tier as a free action, and it takes 10 lightning damage per tier. If the creature chooses not to teleport, it still takes the lightning damage.
+Fey Circle. A creature can spend a minor action while in a fey circle's square to teleport 5 squares.
+Font of Power. Pick one power keyword. Attacks that have that keyword gain a +5 bonus per tier to damage.
+Grab Grass. A creature that falls prone in a square of grab grass must make a Strength check to stand up.
+Grasping Bog. A grasping bog is difficult terrain. In addition, a creature that falls prone in a square of grasping bog is restrained (save ends).
+Grasping Slime. Grasping slime is difficult terrain.An Athletics check is required to pass through the slime. On a failed check, the creature enters the slime, but its move ends immediately.
+Healing Ground. If a creature in this terrain spends a healing surge, it regains an additional 2 hit points per tier. Healing ground is also difficult terrain due to the abundant plant life.
+Hellfire. A square of hellfire sheds bright light in a radius of 20 squares; adjacent creatures add the fire keyword to their ranged attacks; a creature entering or starting a turn in hellfire takes ongoing 5 fire damage per tier. A failed saving throw against hellfire ongoing fire damage also increases the ongoing fire damage by 5 per tier (up to a limit of three times the original ongoing damage).
+Illusions.
+Illusory Wall.
+Infernal Fumes. Squares filled with infernal fumes are lightly obscured. The fumes can move up to 4 squares each round. A creature that ends its turn in a square of infernal fumes takes 5 fire and poison damage per tier and is dazed until the end of its next turn.
+Jade Flame. A creature that enters a square of jade flame or that starts its turn adjacent to such a square takes ongoing 5 radiant damage per tier (save ends). However, until the creature saves against the ongoing damage, it has resist fire equal to 10 per tier.
+Martyr's Monument. The monument grants a +2 bonus to saving throws to all creatures within 5 squares of it. In addition, a creature adjacent to the monument can touch it as a minor action to make a saving throw. Each time a creature touches the monument to make a saving throw, roll a d20; on a 5 or lower, the monument loses all its magical properties for 24 hours.
+Loadstone. It is difficult terrain, and ranged attacks that trace line of sight through it take a –2 penalty to attack rolls.
+Mirror Crystal. A creature standing on mirror crystal can look down and see all the other mirror crystal spaces within 20 squares. Creatures can make ranged attacks through mirror crystal, targeting any creature on or adjacent to another square of mirror crystal. The range to a creature attacked through mirror crystal is 1 square.
+Necrotic Ground. A creature that spends a healing surge in an area of necrotic ground recovers only half the normal number of hit points.
+Needle Hedge. A needle hedge is difficult terrain, and it grants cover to a creature within it or behind it. If a creature moves through more than 1 square of needle hedge during a single move action or incident of forced movement, that creature takes 5 damage per tier.
+Pillar of Life. Any creature that begins its turn adjacent to it regains 5 hit points per tier.
+Phase Mist. A square of phase mist is lightly obscured. A creature that starts its turn in a square of phase mist gains phasing until the end of its turn.
+Phase Rock. When a creature ends its move in a square of phase rock, that creature is insubstantial and gains phasing until it moves out of the phase rock.
+Quick Sear. A creature that starts its turn in a square of quick sear or adjacent to such a square takes 5 acid damage per tier. If a square of quick sear is within the area of effect of a close or an area attack, it moves 1d6 squares in a random direction.
+Rage Stone. A creature that starts its turn in a square of rage stone must make a melee attack on that turn or takes 5 psychic damage per tier.
+Razorvine. Razorvine comes in clumps of 10 contiguous squares. It counts as difficult terrain, and a creature entering or starting its turn in a square of razorvine takes 10 damage per tier.
+Sacred Circle. A creature that shares that deity’s alignment gains a +2 bonus to attack rolls while standing in the circle. A sacred circle typically fills an area 3 squares by 3 squares.
+Slides. A slide is difficult terrain. A character who enters a slide square must make an Acrobatics check. A creature that fails immediately moves to the end of the slide, falls prone, and ends its move.
+Spiderwebs. The webs of giant spiders are difficult terrain. A character who enters a spiderweb must make an Athletics check or Acrobatics check or become immobilized. Trapped creatures can use the escape action to free themselves from the web. Spiderwebs also provide concealment.
+Teleporters. A creature that enters a teleporter’s space immediately moves to the teleporter’s destination square. The square can be another teleporter to allow for two‑way travel. In that case, the creature automatically moves adjacent to the destination teleporter.
+Thunder Shards. Squares of thunder shards are difficult terrain. If a creature makes a melee attack against a target in a thunder shard square, roll a d20; on a 10 or higher, both the attacker and the target take 5 thunder damage and are pushed 1d4 squares from each other.
+Whirlwind. A creature that enters a whirlwind moves a distance and direction determined by the strength of the whirlwind. An affected creature can fight against the wind by spending squares of movement to reduce the distance the wind slides it. Only one whirlwind square can affect a creature at a time. If the wind slides the creature through or into another whirlwind square, that square has no effect. A whirlwind can also move creatures upward. A creature that ends its turn outside of a whirlwind square and aloft falls to the ground. 
+Acid Sprayer. A pressure plate that sprays a liquid.
+Adamantine Surprise. A pillar with a button that releases Adamantine warriors
+Adomorn's Barrier. A magical hovering barrier highly resistant to damage.
+Arcane Bolt Tower. Hurls wave after wave of arcane projectiles at targets it can see.
+Atlas Ceiling. A shield that one must carry to safely traverse a hazardous room.
+Autonomous Sentry. A heavy crossbow mounted on a self-driven contraption.
+Tumble Room Trap. A room rigged to roll in a fixed direction.
+Wind Tunnel. A hallway that can be blasted with wind, flinging players backward and potentially into hazards or other traps. 
